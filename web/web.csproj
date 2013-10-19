@@ -1471,6 +1471,9 @@
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\images\Jellyfish.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Desert.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Jellyfish.jpg" />
+    <Content Include="Areas\Admin\Content\images\bg-login.jpg" />
+    <Content Include="Areas\Admin\Content\images\bg-loginboxes.gif" />
+    <Content Include="Areas\Admin\Content\images\bt-login.gif" />
     <Content Include="Areas\Admin\Content\images\icons\experimental.png" />
     <Content Include="Areas\Admin\Content\images\icons\lookup.png" />
     <Content Include="Areas\Admin\Content\images\icons\photo.png" />
@@ -1688,6 +1691,7 @@
     <Content Include="Areas\Admin\Content\styles\leftsidebar.css" />
     <Content Include="Areas\Admin\Content\styles\lists.css" />
     <Content Include="Areas\Admin\Content\styles\login.css" />
+    <Content Include="Areas\Admin\Content\styles\login_notification.css" />
     <Content Include="Areas\Admin\Content\styles\msgBoxLight.css" />
     <Content Include="Areas\Admin\Content\styles\navigation.css" />
     <Content Include="Areas\Admin\Content\styles\notification.css" />
@@ -1942,6 +1946,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\check-exists.php" />
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\index.php" />
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\uploadify.php" />
+    <Content Include="Areas\Admin\Views\Account\Login_v2.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />

@@ -14,7 +14,8 @@ namespace web.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            context.MapRoute("loginpagex", "yonetim/login", new { action = "Login", Controller = "Account" });
+            context.MapRoute("loginpagex", "yonetim/login_eski", new { action = "Login", Controller = "Account" });
+            context.MapRoute("loginpagex_v2", "yonetim/login", new { action = "Login_v2", Controller = "Account" });
             context.MapRoute("logoutx", "cikis", new { action = "Logout", Controller = "Account" });
             context.MapRoute("homepage_defaultx", "yonetim", new { action = "Index", Controller = "Home" });
             context.MapRoute("homepagex", "yonetim/anasayfa", new { action = "Index", Controller = "Home" });

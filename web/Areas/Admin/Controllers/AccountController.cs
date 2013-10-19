@@ -18,7 +18,11 @@ namespace web.Areas.Admin.Controllers
             return View();
         }
 
-        
+        public ActionResult Login_v2()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Login(LoginModel loginmodel)
         {
