@@ -24,7 +24,7 @@ namespace web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(LoginModel loginmodel)
+        public ActionResult Login_v2(LoginModel loginmodel)
         {
             if (ModelState.IsValid)
             {
