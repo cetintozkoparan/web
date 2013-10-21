@@ -1485,7 +1485,6 @@
     <Content Include="Areas\Admin\Content\images\icons\usermanual.png" />
     <Content Include="Areas\Admin\Content\images\icons\video.png" />
     <Content Include="Areas\Admin\Content\images\logo-deneysan.png" />
-    <Content Include="Areas\Admin\Content\scripts\modernizr.custom.39460.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\bank\banklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\contact\contact.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\adddocument.js" />
@@ -1692,7 +1691,6 @@
     <Content Include="Areas\Admin\Content\styles\leftsidebar.css" />
     <Content Include="Areas\Admin\Content\styles\lists.css" />
     <Content Include="Areas\Admin\Content\styles\login.css" />
-    <Content Include="Areas\Admin\Content\styles\login_notification.css" />
     <Content Include="Areas\Admin\Content\styles\msgBoxLight.css" />
     <Content Include="Areas\Admin\Content\styles\navigation.css" />
     <Content Include="Areas\Admin\Content\styles\notification.css" />
