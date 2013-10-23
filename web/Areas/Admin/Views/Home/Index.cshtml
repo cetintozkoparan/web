@@ -5,37 +5,188 @@
 }
 
 @Html.Partial("home_leftbar")
+<link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
+<link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
 <div id="mid-col">
       
       	<div class="lbox">      
       		<h4 class="white">HIZLI MENÜ</h4>
         <div class="lbox-container">
 		  		<ul id="quick-visual-links">
-		  			<li><a href="#"><img src="/areas/admin/content/images/ql-settings.gif" alt="" /><br/>Settings</a></li>
-		  			<li><a href="#"><img src="/areas/admin/content/images/ql-users.gif" alt="" /><br/>Users</a></li>
-		  			<li><a href="#"><img src="/areas/admin/content/images/ql-messages.gif" alt="" /><br/>Messages</a></li>
-		  			<li><a href="#"><img src="/areas/admin/content/images/ql-photos.gif" alt="" /><br/>Photos</a></li>
-		  			<li><a href="#"><img src="/areas/admin/content/images/ql-media.gif" alt="" /><br/>Media</a></li>
-		  			<li><a href="#"><img src="/areas/admin/content/images/ql-design.gif" alt="" /><br/>Design</a></li>
-		  			<li><a href="#"><img src="/areas/admin/content/images/ql-options.gif" alt="" /><br/>Options</a></li>
-		  			<li><a href="#"><img src="/areas/admin/content/images/ql-databases.gif" alt="" /><br/>Databases</a></li>
-		  			<li><a href="#"><img src="/areas/admin/content/images/ql-paths.gif" alt="" /><br/>File Paths</a></li>   
+		  			<li><a href="#"><img src="/areas/admin/content/images/ql-settings.gif" alt="" /><br/>Ayarlar</a></li>
+		  			<li><a href="#"><img src="/areas/admin/content/images/ql-users.gif" alt="" /><br/>Kullanıcılar</a></li>
+		  			<li><a href="#"><img src="/areas/admin/content/images/ql-messages.gif" alt="" /><br/>Mesajlar</a></li>
+		  			<li><a href="#"><img src="/areas/admin/content/images/ql-photos.gif" alt="" /><br/>Galeri</a></li>
+		  			<li><a href="#"><img src="/areas/admin/content/images/ql-media.gif" alt="" /><br/>Medya</a></li>
+		  			<li><a href="#"><img src="/areas/admin/content/images/ql-design.gif" alt="" /><br/>Tasarım</a></li>
+		  			<li><a href="#"><img src="/areas/admin/content/images/ql-options.gif" alt="" /><br/>Seçenekler</a></li>
+		  			<li><a href="#"><img src="/areas/admin/content/images/ql-databases.gif" alt="" /><br/>Veritabanı</a></li>
+		  			<li><a href="#"><img src="/areas/admin/content/images/ql-paths.gif" alt="" /><br/>Dosya</a></li>   
 		  		</ul>
                 <span class="clearFix">&nbsp;</span> 
           </div>
       	</div><!-- end of div.box -->
-</div>
-      <div id="mid-col">
-      
-      	<div class="lbox">      
+
+          	<div class="lbox">      
       		<h4 class="white">SON HAREKETLER</h4>
         <div class="lbox-container">
-      		<form action="" method="post" class="middle-forms">
-      			<h3>Form Title</h3>
-      			<p>Please complete the form below. Mandatory fields marked <em>*</em></p>
-      				
-      				<span class="clearFix">&nbsp;</span>
-      		</form>
+      		    <table id="tblcategory" class="table no-border tablesorter">
+        <thead>
+            <tr>
+                <th class="center width5">#</th>
+                <th class="center witdh10">İşlem</th>
+                <th class="center witdh30">Link</th>
+                <th class="center witdh40">Açıklama</th>
+                <th class="center witdh5">Tarih</th>
+            </tr>
+        </thead>
+         <tbody id="item-list">
+            @*@foreach (var item in Model)
+            {
+                *@<tr class="handle">
+                    <td class="center">
+                        <span>1</span>
+                    </td>
+                    <td class="center">
+                        <span>Ürün güncellendi</span>
+                    </td>
+                    <td class="center">
+                        <span><a href="#">/urunler/kategoriler/7/ornek-urun</a></span>
+                    </td>
+                    <td class="center">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
+                    </td>
+                    <td class="center">
+                        <span>24/10/2013 00:09</span>
+                    </td>
+                </tr>
+             <tr class="handle">
+                    <td class="center">
+                        <span>2</span>
+                    </td>
+                    <td class="center">
+                        <span>Ürün güncellendi</span>
+                    </td>
+                    <td class="center">
+                        <span><a href="#">/urunler/kategoriler/7/ornek-urun</a></span>
+                    </td>
+                    <td class="center">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
+                    </td>
+                    <td class="center">
+                        <span>24/10/2013 00:09</span>
+                    </td>
+                </tr>
+             <tr class="handle">
+                    <td class="center">
+                        <span>3</span>
+                    </td>
+                    <td class="center">
+                        <span>Ürün güncellendi</span>
+                    </td>
+                    <td class="center">
+                        <span><a href="#">/urunler/kategoriler/7/ornek-urun</a></span>
+                    </td>
+                    <td class="center">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
+                    </td>
+                    <td class="center">
+                        <span>24/10/2013 00:09</span>
+                    </td>
+                </tr>
+             <tr class="handle">
+                    <td class="center">
+                        <span>4</span>
+                    </td>
+                    <td class="center">
+                        <span>Ürün güncellendi</span>
+                    </td>
+                    <td class="center">
+                        <span><a href="#">/urunler/kategoriler/7/ornek-urun</a></span>
+                    </td>
+                    <td class="center">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
+                    </td>
+                    <td class="center">
+                        <span>24/10/2013 00:09</span>
+                    </td>
+                </tr>
+             <tr class="handle">
+                    <td class="center">
+                        <span>5</span>
+                    </td>
+                    <td class="center">
+                        <span>Ürün güncellendi</span>
+                    </td>
+                    <td class="center">
+                        <span><a href="#">/urunler/kategoriler/7/ornek-urun</a></span>
+                    </td>
+                    <td class="center">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
+                    </td>
+                    <td class="center">
+                        <span>24/10/2013 00:09</span>
+                    </td>
+                </tr>
+             <tr class="handle">
+                    <td class="center">
+                        <span>6</span>
+                    </td>
+                    <td class="center">
+                        <span>Ürün güncellendi</span>
+                    </td>
+                    <td class="center">
+                        <span><a href="#">/urunler/kategoriler/7/ornek-urun</a></span>
+                    </td>
+                    <td class="center">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
+                    </td>
+                    <td class="center">
+                        <span>24/10/2013 00:09</span>
+                    </td>
+                </tr>
+             <tr class="handle">
+                    <td class="center">
+                        <span>7</span>
+                    </td>
+                    <td class="center">
+                        <span>Ürün güncellendi</span>
+                    </td>
+                    <td class="center">
+                        <span><a href="#">/urunler/kategoriler/7/ornek-urun</a></span>
+                    </td>
+                    <td class="center">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
+                    </td>
+                    <td class="center">
+                        <span>24/10/2013 00:09</span>
+                    </td>
+                </tr>
+             <tr class="handle">
+                    <td class="center">
+                        <span>8</span>
+                    </td>
+                    <td class="center">
+                        <span>Ürün güncellendi</span>
+                    </td>
+                    <td class="center">
+                        <span><a href="#">/urunler/kategoriler/7/ornek-urun</a></span>
+                    </td>
+                    <td class="center">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span>
+                    </td>
+                    <td class="center">
+                        <span>24/10/2013 00:09</span>
+                    </td>
+                </tr>
+            @*}*@
+        </tbody>
+    </table>
         </div><!-- end of div.box-container -->
-      	</div><!-- end of div.box -->
+      	
 </div>
+</div>
+      
+      
+
