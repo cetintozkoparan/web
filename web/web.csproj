@@ -1471,6 +1471,8 @@
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\images\Jellyfish.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Desert.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Jellyfish.jpg" />
+    <Content Include="Areas\Admin\Content\images\bg-buttons-left.gif" />
+    <Content Include="Areas\Admin\Content\images\bg-buttons-right.gif" />
     <Content Include="Areas\Admin\Content\images\bg-login.jpg" />
     <Content Include="Areas\Admin\Content\images\bg-loginboxes.gif" />
     <Content Include="Areas\Admin\Content\images\bt-login.gif" />
@@ -1484,7 +1486,19 @@
     <Content Include="Areas\Admin\Content\images\icons\technic.png" />
     <Content Include="Areas\Admin\Content\images\icons\usermanual.png" />
     <Content Include="Areas\Admin\Content\images\icons\video.png" />
+    <Content Include="Areas\Admin\Content\images\link-arrow-hover.gif" />
+    <Content Include="Areas\Admin\Content\images\link-arrow-regular.gif" />
     <Content Include="Areas\Admin\Content\images\logo-deneysan.png" />
+    <Content Include="Areas\Admin\Content\images\ql-databases.gif" />
+    <Content Include="Areas\Admin\Content\images\ql-design.gif" />
+    <Content Include="Areas\Admin\Content\images\ql-media.gif" />
+    <Content Include="Areas\Admin\Content\images\ql-messages.gif" />
+    <Content Include="Areas\Admin\Content\images\ql-options.gif" />
+    <Content Include="Areas\Admin\Content\images\ql-paths.gif" />
+    <Content Include="Areas\Admin\Content\images\ql-photos.gif" />
+    <Content Include="Areas\Admin\Content\images\ql-settings.gif" />
+    <Content Include="Areas\Admin\Content\images\ql-users.gif" />
+    <Content Include="Areas\Admin\Content\images\sunny.png" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\bank\banklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\contact\contact.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\adddocument.js" />
@@ -1514,6 +1528,7 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.9.1.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-ui-1.10.3.custom.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.corners.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.min.js" />
     <Content Include="Areas\Admin\Content\CKEditor\ckeditor\.htaccess" />
     <Content Include="Areas\Admin\Content\CKEditor\ckeditor\ckeditor.pack" />

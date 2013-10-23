@@ -25,16 +25,23 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, figure, footer, header, 
 hgroup, menu, nav, section, menu,
-time, mark, audio, video {
-  margin:0;
-  padding:0;
-  border:0;
-  outline:0;
-  font-size:100%;
-  vertical-align:baseline;
-  background:transparent;
-}                  
-
+time, mark, audio, video {margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;}                  
+/** YENÝ EKLENEN STÝLLER */
+div#left-col, div#mid-col {float:left; margin-right:12px; height:100%}
+div#mid-col {width:79%;}
+div#right-col {margin-right:0px; float:right;}
+div#left-col, div#right-col {width:18%;}
+div.full-col {width:740px !important; margin-right:0px !important;}
+div#content-top {border-bottom: 1px solid #bcbcb7;padding-bottom: 8px;margin-bottom: 15px;}
+span.clearFix {width: 100%;height: 0px;visibility: hidden;clear: both;display: block;margin: 0;padding: 0;font-size: 0px;}
+/** QUICK VISUAL LINKS **/
+ul#quick-visual-links {width:100%; margin-left:0px;}
+ul#quick-visual-links li {float:left;list-style: none;}
+ul#quick-visual-links li a {width:62px; text-align:center; margin:0 8px 5px 0; font-size:0.9em; border:1px solid #ccc; display:block; padding:5px 0; text-decoration:none;
+color:#444; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
+ul#quick-visual-links li img {margin-bottom:3px;}
+ul#quick-visual-links li a:hover {color:#000; border-color:#999; background:#f3f6f7}
+/************************/
 article, aside, figure, footer, header, 
 hgroup, nav, section { display:block; }
 

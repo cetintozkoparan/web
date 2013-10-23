@@ -1,7 +1,4 @@
-﻿
-<aside>
-
-@*<ul id="sidebar-nav"> 
+﻿@*<ul id="sidebar-nav"> 
 <li><a href="#">HIZLI MENÜ</a>
 <ul class="drop" style="display: block;">
      <li><a href="/yonetim/teklifler/tumteklifler"><img src="/Areas/Admin/Content/images/icons/16/page.png">Tüm Teklifler</a></li>
@@ -12,9 +9,60 @@
 </li>
 </ul>
 <br /> <br /> *@
-      
-</aside>
+<div id="left-col">
 
+    <div class="lbox">
+        <h4 class="yellow">Sık Kullanılanlar</h4>
+        <div class="lbox-container">
+            <!-- use no-padding wherever you need element padding gone -->
+            <ul class="list-links">
+                <li><a href="#">Yeni Haber Ekle</a></li>
+                <li><a href="#">Ürünler</a>
+                <li><a href="#">Modül Ayarları</a>
+                    @*<ul>
+                        <li><a href="#">Configure Paths</a></li>
+                        <li><a href="#">Define Database Name</a></li>
+                        </ul>*@
+                </li>
+            </ul>
+        </div>
+        <!--end of div.box-container -->
+    </div>
+    <!-- end of div.box -->
 
+    <div class="lbox">
+        <h4 class="light-grey">Tarih &amp; Takvim</h4>
+        <div class="lbox-container">
+            <div id="date-container">
+                <span class="hour"></span> @*<span class="date"></span>*@
+                <span class="clearFix">&nbsp;</span>
+            </div>
+            <!-- end of div#box-date -->
+
+            <div id="calendar-container">
+                <div id="calendar"></div>
+                <div class="inner-nav">
+                    <div class="align-left"><a href="#"><span>+ add event</span></a></div>
+                    <div class="align-right"><a href="#"><span>? list events</span></a></div>
+                    <span class="clearFix">&nbsp;</span>
+                </div>
+            </div>
+            <!-- end of div#calendar-container -->
+        </div>
+        <!-- end of div.box-container -->
+    </div>
+
+    <div class="lbox">
+        <h4 class="light-grey">Hava Durumu</h4>
+        <div class="lbox-container">
+                <div id="weather"></div>
+                <span class="clearFix">&nbsp;</span>
+                
+            <!-- end of div#calendar-container -->
+        </div>
+        <!-- end of div.box-container -->
+    </div>
+    <!-- end of div.box -->
+</div>
 
 

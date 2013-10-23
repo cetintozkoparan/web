@@ -811,6 +811,7 @@ form.login input {
 }
 body.sidebar-left #page {
 	background:url(/Areas/Admin/Content/images/sidebar-bg-l.gif) repeat-y left;
+    background-size:19% 100%;
 }
 body.sidebar-right #page {
 	background:url(/Areas/Admin/Content/images/sidebar-bg-r.gif) repeat-y right;
