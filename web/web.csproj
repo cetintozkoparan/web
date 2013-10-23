@@ -1499,6 +1499,8 @@
     <Content Include="Areas\Admin\Content\images\ql-settings.gif" />
     <Content Include="Areas\Admin\Content\images\ql-users.gif" />
     <Content Include="Areas\Admin\Content\images\sunny.png" />
+    <Content Include="Areas\Admin\Content\scripts\modernizr.custom.39460.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\account\login.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\bank\banklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\contact\contact.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\adddocument.js" />
@@ -2045,6 +2047,7 @@
     <Folder Include="Areas\Admin\Content\CKEditor\ckfinder\plugins\watermark\bin\Debug\" />
     <Folder Include="Areas\Admin\Content\CKEditor\ckfinder\plugins\watermark\bin\Release\" />
     <Folder Include="Areas\Admin\Content\images\icons\small\" />
+    <Folder Include="Areas\Admin\Content\scripts\pagescripts\NewFolder1\" />
     <Folder Include="Content\Images\Banka\" />
     <Folder Include="Content\Images\bankinfo\" />
     <Folder Include="Content\Images\documents\" />
