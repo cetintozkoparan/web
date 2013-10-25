@@ -35,6 +35,8 @@ namespace DAL.Context
         public DbSet<TeklifUrun> TeklifUrun { get; set; }
         public DbSet<MailSetting> MailSetting { get; set; }
         public DbSet<MailUsers> MailUsers { get; set; }
+        public DbSet<SolutionPartner> SolutionPartner { get; set; }
+        public DbSet<HumanResourcePosition> HumanResourcePosition { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -63,6 +65,8 @@ namespace DAL.Context
             modelBuilder.Entity<TeklifUrun>().ToTable("TeklifUrun");
             modelBuilder.Entity<MailUsers>().ToTable("MailUsers");
             modelBuilder.Entity<MailSetting>().ToTable("MailSetting");
+            modelBuilder.Entity<SolutionPartner>().ToTable("SolutionPartner");
+            modelBuilder.Entity<HumanResourcePosition>().ToTable("HumanResourcePosition");
             
         }
     }

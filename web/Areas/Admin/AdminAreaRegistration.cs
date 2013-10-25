@@ -60,6 +60,12 @@ namespace web.Areas.Admin
             context.MapRoute("referenceaddx", "yonetim/referansekle", new { action = "AddReference", Controller = "Reference" });
             context.MapRoute("referenceeditx", "yonetim/referansduzenle/{id}", new { action = "EditReference", Controller = "Reference" });
 
+            //IS ORTAKLARI
+            context.MapRoute("solutionpartner_defaultx", "yonetim/cozumortaklari", new { action = "Index", Controller = "SolutionPartner" });
+            context.MapRoute("solutionpartnerx", "yonetim/cozumortaklari/{lang}", new { action = "Index", Controller = "SolutionPartner" });
+            context.MapRoute("solutionpartneraddx", "yonetim/cozumortagiekle", new { action = "AddSolutionPartner", Controller = "SolutionPartner" });
+            context.MapRoute("solutionpartnereditx", "yonetim/cozumortagiduzenle/{id}", new { action = "EditSolutionPartner", Controller = "SolutionPartner" });
+
             //MAİL KULLANICILARI
             context.MapRoute("mailuser_defx", "yonetim/mailkullanicilari", new { action = "Index", Controller = "Mail" });
             context.MapRoute("mailuserx", "yonetim/mailkullanicilari/{type}", new { action = "Index", Controller = "Mail" });
@@ -110,8 +116,8 @@ namespace web.Areas.Admin
 
 
             context.MapRoute("ik_indexx", "yonetim/insankaynaklari", new { action = "Index", Controller = "HumanResource" });
-            context.MapRoute("ik_mision_defaultx", "yonetim/insankaynaklari/{lang}", new { action = "Index", Controller = "HumanResource" });
-            
+            context.MapRoute("ik_positionsx", "yonetim/insankaynaklari/pozisyonlar", new { action = "HumanResourcePositions", Controller = "HumanResource" });
+            context.MapRoute("ik_positionadd", "yonetim/insankaynaklari/pozisyonekle", new { action = "AddHumanResourcePosition", Controller = "HumanResource" });
 
 
 

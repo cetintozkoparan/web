@@ -184,6 +184,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BankController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SolutionPartnerController.cs" />
     <Compile Include="Areas\Admin\Controllers\DocumentGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\DocumentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\GalleryController.cs" />
@@ -1488,7 +1489,7 @@
     <Content Include="Areas\Admin\Content\images\icons\video.png" />
     <Content Include="Areas\Admin\Content\images\link-arrow-hover.gif" />
     <Content Include="Areas\Admin\Content\images\link-arrow-regular.gif" />
-    <Content Include="Areas\Admin\Content\images\logo-deneysan.png" />
+    <Content Include="Areas\Admin\Content\images\logo-web.png" />
     <Content Include="Areas\Admin\Content\images\ql-databases.gif" />
     <Content Include="Areas\Admin\Content\images\ql-design.gif" />
     <Content Include="Areas\Admin\Content\images\ql-media.gif" />
@@ -1499,7 +1500,6 @@
     <Content Include="Areas\Admin\Content\images\ql-settings.gif" />
     <Content Include="Areas\Admin\Content\images\ql-users.gif" />
     <Content Include="Areas\Admin\Content\images\sunny.png" />
-    <Content Include="Areas\Admin\Content\scripts\modernizr.custom.39460.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\account\login.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\bank\banklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\contact\contact.js" />
@@ -1509,6 +1509,8 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\documentlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\gallery\addimage.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\gallery\gallerygroup.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\humanresourceposition\addhumanresourceposition.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\humanresourceposition\humanresourcepositionlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\hr.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\instituional\mision.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\links\linklist.js" />
@@ -1524,6 +1526,8 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\projects\projectlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\addreference.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\referencelist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\solutionpartner\addsolutionpartner.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\solutionpartner\solutionpartnerlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\teklif\teklif.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\autoNumeric.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\Formatter.js" />
@@ -1963,6 +1967,13 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\index.php" />
     <Content Include="Areas\Admin\Content\scripts\plugins\uploadify\uploadify.php" />
     <Content Include="Areas\Admin\Views\Account\Login_v2.cshtml" />
+    <Content Include="Areas\Admin\Views\SolutionPartner\AddSolutionPartner.cshtml" />
+    <Content Include="Areas\Admin\Views\SolutionPartner\EditSolutionPartner.cshtml" />
+    <Content Include="Areas\Admin\Views\SolutionPartner\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SolutionPartner\SolutionPartner_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\HumanResource\AddPosition.cshtml" />
+    <Content Include="Areas\Admin\Views\HumanResource\EditPosition.cshtml" />
+    <Content Include="Areas\Admin\Views\HumanResource\Positions.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -2048,6 +2059,7 @@
     <Folder Include="Areas\Admin\Content\CKEditor\ckfinder\plugins\watermark\bin\Release\" />
     <Folder Include="Areas\Admin\Content\images\icons\small\" />
     <Folder Include="Areas\Admin\Content\scripts\pagescripts\NewFolder1\" />
+    <Folder Include="Areas\Admin\Views\Service\" />
     <Folder Include="Content\Images\Banka\" />
     <Folder Include="Content\Images\bankinfo\" />
     <Folder Include="Content\Images\documents\" />

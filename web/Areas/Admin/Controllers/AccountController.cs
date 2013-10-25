@@ -35,6 +35,7 @@ namespace web.Areas.Admin.Controllers
                 }
                 else
                 {
+                    ViewBag.ProcessMessage = "false";
                     ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Hatalı!");
                 }
 
@@ -51,7 +52,7 @@ namespace web.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login","Account");
+            return RedirectToAction("Login_v2", "Account");
 
         }
 

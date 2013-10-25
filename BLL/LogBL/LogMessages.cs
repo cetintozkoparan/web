@@ -16,6 +16,12 @@ namespace BLL.LogBL
         public static string ReferenceDeleted = "Referans Silindi";
         public static string ReferenceNotDeleted = "Referans Silinemedi";
 
+        public static string SolutionPartnerAdded = "Çözüm Ortağı Eklendi";
+        public static string SolutionPartnerNotAdded = "Çözüm Ortağı Eklenemedi";
+        public static string SolutionPartnerEdited = "Çözüm Ortağı Düzenlendi";
+        public static string SolutionPartnerNotEdited = "Çözüm Ortağı Düzenlenemedi";
+        public static string SolutionPartnerDeleted = "Çözüm Ortağı Silindi";
+        public static string SolutionPartnerNotDeleted = "Çözüm Ortağı Silinemedi";
 
         public static string DocumentGroupAdded = "Yeni Döküman grubu Eklendi";
         public static string DocumentGroupNotAdded = "Yeni Döküman grubu Eklenemedi";
