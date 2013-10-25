@@ -23,6 +23,13 @@ namespace BLL.LogBL
         public static string SolutionPartnerDeleted = "Çözüm Ortağı Silindi";
         public static string SolutionPartnerNotDeleted = "Çözüm Ortağı Silinemedi";
 
+        public static string HumanResourcePositionAdded = "Pozisyon Eklendi";
+        public static string HumanResourcePositionNotAdded = "Pozisyon Eklenemedi";
+        public static string HumanResourcePositionEdited = "Pozisyon Düzenlendi";
+        public static string HumanResourcePositionNotEdited = "Pozisyon Düzenlenemedi";
+        public static string HumanResourcePositionDeleted = "Pozisyon Silindi";
+        public static string HumanResourcePositionNotDeleted = "Pozisyon Silinemedi";
+
         public static string DocumentGroupAdded = "Yeni Döküman grubu Eklendi";
         public static string DocumentGroupNotAdded = "Yeni Döküman grubu Eklenemedi";
         public static string DocumentGroupEdited = " Döküman grubu Düzenlendi";

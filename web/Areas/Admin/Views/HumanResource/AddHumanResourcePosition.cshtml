@@ -17,13 +17,13 @@
     
 <section class="grid_12 form">
     @Html.Hidden("ProcessMessage",(object)@ViewBag.ProcessMessage) 
-    @using(Html.BeginForm("AddHumanResourcePosition", "HumanResourcePosition", FormMethod.Post, new { enctype = "multipart/form-data"}))
+    @using(Html.BeginForm("AddHumanResourcePosition", "HumanResource", FormMethod.Post, new { enctype = "multipart/form-data"}))
     {
          @Html.Hidden("hdfieldcategory")
          @Html.Hidden("hdfieldtaglist")
         @Html.ValidationSummary(true)
         <fieldset>
-        <legend>İNSAN KAYNAKLARI Ekle</legend>
+        <legend>Pozisyon Ekle</legend>
         <p>
             @Html.LabelFor(m=>m.Language)
             @Html.DropDownListFor(m=>m.Language,(IEnumerable<SelectListItem>)ViewBag.LanguageList,"Dil Seçiniz...")

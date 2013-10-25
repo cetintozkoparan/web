@@ -24,6 +24,7 @@ namespace DAL.Entities
         public int  SortOrder { get; set; }
         
         [Required(ErrorMessage = "Dili Seçiniz.")]
+        [Display(Name = "Dil")]
         public string Language { get; set; }
     }
 }

@@ -62,7 +62,7 @@
     <Compile Include="SearchBL\ObjectContextExtensions.cs" />
     <Compile Include="DocumentsBL\DocumentManager.cs" />
     <Compile Include="Gallery\GalleryManager.cs" />
-    <Compile Include="HRBL\InstituionalManager.cs" />
+    <Compile Include="HRBL\HumanResourceManager.cs" />
     <Compile Include="InstituionalBL\InstituionalManager.cs" />
     <Compile Include="LanguageBL\LanguageManager.cs" />
     <Compile Include="LinkBL\LinkManager.cs" />

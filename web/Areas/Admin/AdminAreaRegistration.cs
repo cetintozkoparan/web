@@ -110,17 +110,18 @@ namespace web.Areas.Admin
             context.MapRoute("bankaddx", "yonetim/bankabilgisiekle", new { action = "AddBank", Controller = "Bank" });
             context.MapRoute("bankeditx", "yonetim/bankabilgisiduzenle/{id}", new { action = "EditBank", Controller = "Bank" });
 
+            // İLETİŞİM
 
             context.MapRoute("contact_defaultx", "yonetim/iletisim", new { action = "Index", Controller = "Contact" });
             context.MapRoute("contactx", "yonetim/iletisim/{lang}", new { action = "Index", Controller = "Contact" });
 
-
+            // İNSAN KAYNAKLARI
             context.MapRoute("ik_indexx", "yonetim/insankaynaklari", new { action = "Index", Controller = "HumanResource" });
             context.MapRoute("ik_positionsx", "yonetim/insankaynaklari/pozisyonlar", new { action = "HumanResourcePositions", Controller = "HumanResource" });
-            context.MapRoute("ik_positionadd", "yonetim/insankaynaklari/pozisyonekle", new { action = "AddHumanResourcePosition", Controller = "HumanResource" });
+            context.MapRoute("ik_positionaddx", "yonetim/insankaynaklari/pozisyonekle", new { action = "AddHumanResourcePosition", Controller = "HumanResource" });
+            context.MapRoute("ik_positioneditx", "yonetim/insankaynaklari/pozisyonduzenle/{id}", new { action = "EditHumanResourcePosition", Controller = "HumanResource" });
 
-
-
+            context.MapRoute("songuncellemeler", "yonetim/songuncellemeler", new { action = "Index", Controller = "Updates" });
 
             context.MapRoute(
                 "Admin_defaultx",

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DAL.Entities.HumanResourcePositions>
+﻿@model IEnumerable<DAL.Entities.HumanResourcePosition>
 @{
     ViewBag.Title = "Positions";
     Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
@@ -44,17 +44,17 @@
                     </td>
                     <td class="center">
                         @if (item.Online == true)
-                        {<img   id="img_online_@item.HumanResourcePositionId" src="/Areas/Admin/Content/images/icons/online.png" class="cursorpointer" title="Offline yap" onclick="SetOnlineStatus('/HumanResourcePosition/HumanResourcePositionEditStatus',@item.HumanResourcePositionId)" />}
-                        else{<img id="img_online_@item.HumanResourcePositionId" src="/Areas/Admin/Content/images/icons/offline.png" class="cursorpointer" title="Online yap" onclick="SetOnlineStatus('/HumanResourcePosition/HumanResourcePositionEditStatus',@item.HumanResourcePositionId)" />}
+                        {<img   id="img_online_@item.HumanResourcePositionId" src="/Areas/Admin/Content/images/icons/online.png" class="cursorpointer" title="Offline yap" onclick="SetOnlineStatus('/HumanResource/HumanResourcePositionEditStatus',@item.HumanResourcePositionId)" />}
+                        else{<img id="img_online_@item.HumanResourcePositionId" src="/Areas/Admin/Content/images/icons/offline.png" class="cursorpointer" title="Online yap" onclick="SetOnlineStatus('/HumanResource/HumanResourcePositionEditStatus',@item.HumanResourcePositionId)" />}
                     </td>
                     <td class="center">@item.TimeCreated</td>
                     <td class="center">
-                       <a href="/yonetim/Pozisyonduzenle/@item.HumanResourcePositionId">
+                       <a href="/yonetim/insankaynaklari/pozisyonduzenle/@item.HumanResourcePositionId">
                         <img id="btn_update_@item.HumanResourcePositionId"  src="/Areas/Admin/Content/images/icons/16/edit.png"  title="Güncelle" class="cursorpointer" >
                        </a>
                         <img id="btn_save_@item.HumanResourcePositionId"  src="/Areas/Admin/Content/images/icons/16/save.png"  title="Kaydet" class="displaynone cursorpointer" onclick="UpdateRecord(@item.HumanResourcePositionId)">
                         <img id="btn_cancel_@item.HumanResourcePositionId"  src="/Areas/Admin/Content/images/icons/16/error.png"  title="İptal" class="displaynone cursorpointer" onclick="CancelRecord(@item.HumanResourcePositionId)">
-                       <img id="DeleteImage_@item.HumanResourcePositionId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/HumanResourcePosition/DeleteHumanResourcePosition',@item.HumanResourcePositionId)">
+                       <img id="DeleteImage_@item.HumanResourcePositionId"  src="/Areas/Admin/Content/images/icons/16/delete.png" class="cursorpointer"  title="Sil" onclick="DeleteRecord('/HumanResource/DeleteHumanResourcePosition',@item.HumanResourcePositionId)">
                     </td>
                 </tr>
             }
