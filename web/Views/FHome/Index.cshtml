@@ -1,7 +1,154 @@
 ﻿@model web.Models.HomePageWrapperModel
 @{
-    ViewBag.Title = "web. Eğitim Cihazları";
-    Layout = "/Views/Shared/frontlayout.cshtml";
+    ViewBag.Title = "Eğitim Cihazları";
 }
 
-Anasayfa
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Kontrolmatik | Anasayfa</title>
+<link rel="stylesheet" type="text/css" href="~/css/style.css"/>
+
+</head>
+<body>
+<div class="mainSlider">
+<ul class="bxslider">
+  <li><img src="/img/slide01.jpg" />
+    <p> Otomatik kontrol sistemlerimiz sayesinde, <br />
+      enerjinizi verimli şekilde kullanır, <br />
+      dünyamızın doğallığını <br />
+      korumaya yardımcı olursunuz.</p>
+    <div class="blackBg"></div>
+  </li>
+  <li><img src="/img/slide01.jpg" />
+    <div class="blackBg"></div>
+  </li>
+</ul>
+</div>
+<div class="wrapper">
+  <div class="header"> <a href="#" class="logo"><img src="/img/logo.png" border="0" /></a>
+    <div class="search">
+      <input type="text" />
+    </div>
+    <ul class="topMenu">
+      <li>@Html.ActionLink("TR", "ChangeCulture", "FHome", new { lang = "tr", returnUrl = this.Request.RawUrl }, null)</li>
+      <li>@Html.ActionLink("EN", "ChangeCulture", "FHome", new { lang = "en", returnUrl = this.Request.RawUrl }, null)</li>
+      <li><a href="#" class="last">@SharedRess.SharedStrings.contact.ToUpper()</a></li>
+    </ul>
+    <ul class="mainMenu">
+       
+      <li class="l1 menuItem"><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_aboutus">@SharedRess.SharedStrings.aboutus</a></li>
+      <li class="l2 menuItem"><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_services">@SharedRess.SharedStrings.services</a></li>
+      <li class="l3 menuItem"><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_sectors">@SharedRess.SharedStrings.sectors</a>
+        <div class="menuContent">
+          <h2>@SharedRess.SharedStrings.sectors</h2>
+          <div class="sektor energy"> <a href="#">Energy</a> </div>
+          <div class="sektor facilities"> <a href="#">Facilities</a> </div>
+          <div class="sektor enviromental"> <a href="#">Enviromental</a> </div>
+          <div class="sektor resources last"> <a href="#">Resources</a> </div>
+          <div class="sektor transportation"> <a href="#">Transportation</a> </div>
+          <div class="sektor water"> <a href="#">Water</a> </div>
+        </div>
+      </li>
+      <li class="l4 menuItem"><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products">@SharedRess.SharedStrings.products</a></li>
+      <li class="l5 menuItem"><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_references">@SharedRess.SharedStrings.references</a></li>
+    </ul>
+  </div>
+  <div class="main">
+    <div class="projects">
+      <h2 class="sectionTitle"><span>@ProjectsRess.ProjectsStrings.projects</span></h2>
+      <div class="project">
+        <div class="projectImg"> <a href="#"><img src="/img/project.jpg"  /><span> Erbil Gas Power Station (EGPS) 132KV Substation</span></a> </div>
+        <p>Erbil Gas Power Station (EGPS)  Located in the south of Erbil governorate, about 22 Kilometers from Erbil city center...</p>
+      </div>
+      <div class="project">
+        <div class="projectImg"> <a href="#"><img src="/img/project.jpg"  /><span> Erbil Gas Power Station (EGPS) 132KV Substation</span></a> </div>
+        <p>Erbil Gas Power Station (EGPS)  Located in the south of Erbil governorate, about 22 Kilometers from Erbil city center...</p>
+      </div>
+      <div class="project">
+        <div class="projectImg"> <a href="#"><img src="/img/project.jpg"  /><span> Erbil Gas Power Station (EGPS) 132KV Substation</span></a> </div>
+        <p>Erbil Gas Power Station (EGPS)  Located in the south of Erbil governorate, about 22 Kilometers from Erbil city center...</p>
+      </div>
+      <div class="project last">
+        <div class="projectImg"> <a href="#"><img src="/img/project.jpg"  /><span> Erbil Gas Power Station (EGPS) 132KV Substation</span></a> </div>
+        <p>Erbil Gas Power Station (EGPS)  Located in the south of Erbil governorate, about 22 Kilometers from Erbil city center...</p>
+      </div>
+    </div>
+    <div class="biz">
+      <h2 class="sectionTitle"><span>BİZ</span></h2>
+      <ul>
+        <li><a href="#">Power generation and transmission solution</a></li>
+        <li><a href="#">Enerji Üretim & İletim Çözümleri Kataloğu</a></li>
+        <li><a href="#">Raylı Sistemler & Ulaşım Kataloğu</a></li>
+        <li><a href="#">DCS Based Automation System</a></li>
+        <li><a href="#">Enerji Verimliliği Kataloğu</a></li>
+        <li class="last"><a href="#">daha fazlası...</a></li>
+      </ul>
+    </div>
+    <div class="bizdenHaberler">
+      <h2 class="sectionTitle"><span>BİZDEN HABERLER</span></h2>
+      <div id="news" class="slidorion">
+    <div class="slider">
+    @foreach(var newsitem in Model.news)
+    {
+        <div class="slide"><img src="@newsitem.NewsImage" alt="@newsitem.Header" width="235"></div>
+    }
+        
+        
+    </div>
+
+    <div class="accordion">
+    @foreach (var newsitem in Model.news)
+    {
+        <div class="headers">@newsitem.Header</div>
+        <div class="content">@newsitem.Spot</div>
+    }
+        <a class="allNews" href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_allnews">@HomeRess.HomeStrings.allnews</a>
+    </div>
+</div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footerLeft">
+      <ul>
+        <li><a href="#">Kontrolmatik Hakkında</a></li>
+        <li><a href="#">Hizmetler</a></li>
+        <li><a href="#">Sektörler</a></li>
+        <li><a href="#">Ürünler</a></li>
+        <li><a href="#" class="last">Referanslar</a></li>
+      </ul>
+      <p><span>Adres:</span> Tekstilkent Koza Plaza A Blok No:11 Esenler/İSTANBUL<br/>
+        <span>Tel:</span> +90 212 659 24 41 - 438 24 41<br/>
+        <span>Fax:</span> +90 212 659 24 81<br/>
+        <span>E-Posta:</span> info@kontrolmatik.com</p>
+    </div>
+    <div class="footerRight">
+      <p><img src="/img/logoFooter.png" style="margin-bottom: -4px;margin-right: 2px;"/> Copyright 2013</p>
+      <p>Designed and Development <a href="http://www.wortec.net">WORTEC</a></p>
+    </div>
+  </div>
+</div>
+<script src="~/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="~/Content/Scripts/modernizr-2.0.4.min.js" type="text/javascript"></script>
+<script src="~/js/jquery.bxslider.min.js" type="text/javascript"></script>
+<script src="~/js/jquery.easing.js"></script>
+<script src="~/js/jquery.slidorion.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.bxslider').bxSlider({
+            mode: 'fade',
+            captions: true
+        });
+        $(".logo").animate({ top: "0" }, { queue: false, duration: 1000 });
+        $(".bxslider").animate({ opacity: "1" }, { queue: false, duration: 2000 });
+        $('#news').slidorion({
+            speed: 500,
+            interval: 6000,
+            effect: 'slideLeft'
+        });
+    });
+
+</script>
+</body>
+</html>

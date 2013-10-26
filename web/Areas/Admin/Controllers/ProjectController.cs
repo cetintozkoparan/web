@@ -39,7 +39,7 @@ namespace web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddProject(Projects newmodel, HttpPostedFileBase uploadfile)
+        public ActionResult AddProject(Projects newmodel, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadimage)
         {
             var languages = LanguageManager.GetLanguages();
             var list = new SelectList(languages, "Culture", "Language");
@@ -52,6 +52,18 @@ namespace web.Areas.Admin.Controllers
                     int rand = random.Next(1000, 99999999);
                     uploadfile.SaveAs(Server.MapPath("/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName)));
                     newmodel.ProjectFile = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                }
+
+                if (uploadimage != null && uploadimage.ContentLength > 0)
+                {
+                    Random random = new Random();
+                    int rand = random.Next(1000, 99999999);
+                    new ImageHelper(240, 240).SaveThumbnail(uploadimage, "/Content/images/projects/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
+                    newmodel.Logo = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
+                }
+                else
+                {
+                    newmodel.Logo = "/Content/images/front/noimage.jpeg";
                 }
                 newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
                 newmodel.TimeCreated = DateTime.Now;
@@ -90,7 +102,7 @@ namespace web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditProject(Projects newmodel, HttpPostedFileBase uploadfile)
+        public ActionResult EditProject(Projects newmodel, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadimage)
         {
             var languages = LanguageManager.GetLanguages();
             var list = new SelectList(languages, "Culture", "Language");
@@ -106,6 +118,13 @@ namespace web.Areas.Admin.Controllers
                     newmodel.ProjectFile = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
                 }
 
+                if (uploadimage != null && uploadimage.ContentLength > 0)
+                {
+                    Random random = new Random();
+                    int rand = random.Next(1000, 99999999);
+                    new ImageHelper(240, 240).SaveThumbnail(uploadimage, "/Content/images/projects/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
+                    newmodel.Logo = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
+                }
                 newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
 
                 if (RouteData.Values["id"] != null)
@@ -128,8 +147,6 @@ namespace web.Areas.Admin.Controllers
             }
             else
                 return View();
-
-            return View();
         }
 
 

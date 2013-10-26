@@ -18,6 +18,7 @@ namespace DAL.Entities
         public string Content { get; set; }
         [Display(Name = "Proje Ek Doya")]
         public string ProjectFile { get; set; }
+        public string Logo { get; set; }
         public bool Online { get; set; }
         public int SortOrder { get; set; }
         public DateTime TimeCreated { get; set; }

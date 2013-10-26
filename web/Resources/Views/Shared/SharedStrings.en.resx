@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="aboutus" xml:space="preserve">
-    <value>About Us</value>
+    <value>About Kontrolmatik</value>
   </data>
   <data name="address" xml:space="preserve">
     <value>Address</value>
@@ -127,7 +127,7 @@
     <value>Bank Accounts</value>
   </data>
   <data name="contact" xml:space="preserve">
-    <value>CONTACT</value>
+    <value>Contact</value>
   </data>
   <data name="contactdetails" xml:space="preserve">
     <value>Contact Details</value>
@@ -142,7 +142,7 @@
     <value>Türkçe</value>
   </data>
   <data name="documents" xml:space="preserve">
-    <value>DOCUMENTS</value>
+    <value>Documents</value>
   </data>
   <data name="email" xml:space="preserve">
     <value>E-mail</value>
@@ -154,7 +154,7 @@
     <value>Go Back</value>
   </data>
   <data name="homepage" xml:space="preserve">
-    <value>HOMEPAGE</value>
+    <value>Homepage</value>
   </data>
   <data name="institutional" xml:space="preserve">
     <value>INSTITUTIONAL</value>
@@ -164,6 +164,9 @@
   </data>
   <data name="map" xml:space="preserve">
     <value>Map</value>
+  </data>
+  <data name="menu_aboutus" xml:space="preserve">
+    <value>about-kontrolmatik</value>
   </data>
   <data name="menu_allnews" xml:space="preserve">
     <value>all-news</value>
@@ -213,6 +216,12 @@
   <data name="menu_references" xml:space="preserve">
     <value>references</value>
   </data>
+  <data name="menu_sectors" xml:space="preserve">
+    <value>Sectors</value>
+  </data>
+  <data name="menu_services" xml:space="preserve">
+    <value>Services</value>
+  </data>
   <data name="menu_visionmision" xml:space="preserve">
     <value>vision-mision</value>
   </data>
@@ -226,13 +235,22 @@
     <value>Phone</value>
   </data>
   <data name="products" xml:space="preserve">
-    <value>PRODUCTS</value>
+    <value>Products</value>
+  </data>
+  <data name="references" xml:space="preserve">
+    <value>References</value>
   </data>
   <data name="requiredfields" xml:space="preserve">
     <value>Please fill the form completely</value>
   </data>
   <data name="searchinsite" xml:space="preserve">
     <value>Search in site</value>
+  </data>
+  <data name="sectors" xml:space="preserve">
+    <value>Sectors</value>
+  </data>
+  <data name="services" xml:space="preserve">
+    <value>Services</value>
   </data>
   <data name="taxoffice" xml:space="preserve">
     <value>Tax Off.</value>

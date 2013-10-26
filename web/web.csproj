@@ -1870,8 +1870,6 @@
     <Content Include="Content\Images\prettyPhoto\light_square\default_thumbnail.gif" />
     <Content Include="Content\Images\prettyPhoto\light_square\loader.gif" />
     <Content Include="Content\Images\prettyPhoto\light_square\sprite.png" />
-    <Content Include="Content\Images\proforma\top.png" />
-    <Content Include="Content\Images\proforma\top.tif" />
     <Content Include="Content\Scripts\jquery-1.8.3.min.js" />
     <Content Include="Content\Scripts\jquery-ui.js" />
     <Content Include="Content\Scripts\jquery.bxslider.min.js" />
@@ -1989,6 +1987,7 @@
     <Content Include="img\Thumbs.db" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
+    <None Include="Properties\PublishProfiles\kontrolmatik.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="HTMLTemplate\imza.png" />
     <Content Include="HTMLTemplate\Receipt.htm" />

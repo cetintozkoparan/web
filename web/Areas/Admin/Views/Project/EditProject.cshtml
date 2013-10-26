@@ -36,11 +36,15 @@
             @Html.TextBoxFor(m=>m.Name, new { @class="textwidth50"})
             @Html.ValidationMessageFor(m => m.Name)
         </p>
-        
         <p>
-            <label for="txtname">Dosya</label>
+            <label>Logo</label>
             
-            <input type="file" name="uploadfile" id="uploadfile" />
+            <input type="file" name="uploadimage" id="uploadimage" />
+        </p>
+        <p>
+            <label>Proje Dosyası</label>
+            
+            <input type="file" name="uploadimage" id="uploadfile" />
         </p>
        
         <p>
