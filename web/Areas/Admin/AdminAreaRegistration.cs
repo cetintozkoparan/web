@@ -66,6 +66,12 @@ namespace web.Areas.Admin
             context.MapRoute("solutionpartneraddx", "yonetim/cozumortagiekle", new { action = "AddSolutionPartner", Controller = "SolutionPartner" });
             context.MapRoute("solutionpartnereditx", "yonetim/cozumortagiduzenle/{id}", new { action = "EditSolutionPartner", Controller = "SolutionPartner" });
 
+            //IS ORTAKLARI
+            context.MapRoute("certificate_defaultx", "yonetim/sertifikalar", new { action = "Index", Controller = "Certificate" });
+            context.MapRoute("certificatex", "yonetim/sertifikalar/{lang}", new { action = "Index", Controller = "Certificate" });
+            context.MapRoute("certificateaddx", "yonetim/sertifikaekle", new { action = "AddCertificate", Controller = "Certificate" });
+            context.MapRoute("certificateeditx", "yonetim/sertifikaduzenle/{id}", new { action = "EditCertificate", Controller = "Certificate" });
+
             //MAİL KULLANICILARI
             context.MapRoute("mailuser_defx", "yonetim/mailkullanicilari", new { action = "Index", Controller = "Mail" });
             context.MapRoute("mailuserx", "yonetim/mailkullanicilari/{type}", new { action = "Index", Controller = "Mail" });

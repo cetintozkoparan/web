@@ -126,6 +126,9 @@
   <data name="bankaccounts" xml:space="preserve">
     <value>Banka Bilgileri</value>
   </data>
+  <data name="certificates" xml:space="preserve">
+    <value>Sertifikalarımız</value>
+  </data>
   <data name="contact" xml:space="preserve">
     <value>İLETİŞİM</value>
   </data>
@@ -147,6 +150,9 @@
   <data name="email" xml:space="preserve">
     <value>E-posta</value>
   </data>
+  <data name="equipments" xml:space="preserve">
+    <value>Ekipmanlarımız</value>
+  </data>
   <data name="fax" xml:space="preserve">
     <value>Fax</value>
   </data>
@@ -155,6 +161,9 @@
   </data>
   <data name="homepage" xml:space="preserve">
     <value>ANASAYFA</value>
+  </data>
+  <data name="humanresources" xml:space="preserve">
+    <value>İnsan Kaynakları</value>
   </data>
   <data name="institutional" xml:space="preserve">
     <value>KURUMSAL</value>
@@ -166,7 +175,7 @@
     <value>Harita</value>
   </data>
   <data name="menu_aboutus" xml:space="preserve">
-    <value>kontrolmatik-hakkinda</value>
+    <value>hakkimizda</value>
   </data>
   <data name="menu_allnews" xml:space="preserve">
     <value>tum-haberler</value>
@@ -180,6 +189,9 @@
   <data name="menu_career" xml:space="preserve">
     <value>kariyer</value>
   </data>
+  <data name="menu_certificates" xml:space="preserve">
+    <value>sertifikalar</value>
+  </data>
   <data name="menu_contactdetails" xml:space="preserve">
     <value>iletisim-bilgileri</value>
   </data>
@@ -192,8 +204,14 @@
   <data name="menu_documents" xml:space="preserve">
     <value>dokumanlar</value>
   </data>
+  <data name="menu_equipments" xml:space="preserve">
+    <value>ekipmanlar</value>
+  </data>
   <data name="menu_homepage" xml:space="preserve">
     <value>anasayfa</value>
+  </data>
+  <data name="menu_humanresources" xml:space="preserve">
+    <value>insan-kaynaklari</value>
   </data>
   <data name="menu_institutional" xml:space="preserve">
     <value>hakkimizda</value>
@@ -222,11 +240,20 @@
   <data name="menu_services" xml:space="preserve">
     <value>hizmetler</value>
   </data>
+  <data name="menu_solutionpartners" xml:space="preserve">
+    <value>cozum-ortaklari</value>
+  </data>
   <data name="menu_visionmision" xml:space="preserve">
     <value>vizyon-misyon</value>
   </data>
+  <data name="more" xml:space="preserve">
+    <value>daha fazlası...</value>
+  </data>
   <data name="myofferlist" xml:space="preserve">
     <value>Teklif Listem</value>
+  </data>
+  <data name="our" xml:space="preserve">
+    <value>Biz</value>
   </data>
   <data name="pagetitle" xml:space="preserve">
     <value>DENEYSAN - Eğitim Cihazları</value>
@@ -251,6 +278,9 @@
   </data>
   <data name="services" xml:space="preserve">
     <value>Hizmetler</value>
+  </data>
+  <data name="solutionpartners" xml:space="preserve">
+    <value>Çözüm Ortaklarımız</value>
   </data>
   <data name="taxoffice" xml:space="preserve">
     <value>Vergi D.</value>

@@ -126,6 +126,9 @@
   <data name="bankaccounts" xml:space="preserve">
     <value>Bank Accounts</value>
   </data>
+  <data name="certificates" xml:space="preserve">
+    <value>Certificates</value>
+  </data>
   <data name="contact" xml:space="preserve">
     <value>Contact</value>
   </data>
@@ -147,6 +150,9 @@
   <data name="email" xml:space="preserve">
     <value>E-mail</value>
   </data>
+  <data name="equipments" xml:space="preserve">
+    <value>Equipments</value>
+  </data>
   <data name="fax" xml:space="preserve">
     <value>Fax</value>
   </data>
@@ -155,6 +161,9 @@
   </data>
   <data name="homepage" xml:space="preserve">
     <value>Homepage</value>
+  </data>
+  <data name="humanresources" xml:space="preserve">
+    <value>Human Resources</value>
   </data>
   <data name="institutional" xml:space="preserve">
     <value>INSTITUTIONAL</value>
@@ -166,7 +175,7 @@
     <value>Map</value>
   </data>
   <data name="menu_aboutus" xml:space="preserve">
-    <value>about-kontrolmatik</value>
+    <value>aboutus</value>
   </data>
   <data name="menu_allnews" xml:space="preserve">
     <value>all-news</value>
@@ -180,6 +189,9 @@
   <data name="menu_career" xml:space="preserve">
     <value>career</value>
   </data>
+  <data name="menu_certificates" xml:space="preserve">
+    <value>certificates</value>
+  </data>
   <data name="menu_contactdetails" xml:space="preserve">
     <value>contact-details</value>
   </data>
@@ -192,8 +204,14 @@
   <data name="menu_documents" xml:space="preserve">
     <value>documents</value>
   </data>
+  <data name="menu_equipments" xml:space="preserve">
+    <value>equipments</value>
+  </data>
   <data name="menu_homepage" xml:space="preserve">
     <value>homepage</value>
+  </data>
+  <data name="menu_humanresources" xml:space="preserve">
+    <value>human-resources</value>
   </data>
   <data name="menu_institutional" xml:space="preserve">
     <value>aboutus</value>
@@ -222,11 +240,20 @@
   <data name="menu_services" xml:space="preserve">
     <value>Services</value>
   </data>
+  <data name="menu_solutionpartners" xml:space="preserve">
+    <value>solution-partners</value>
+  </data>
   <data name="menu_visionmision" xml:space="preserve">
     <value>vision-mision</value>
   </data>
+  <data name="more" xml:space="preserve">
+    <value>more...</value>
+  </data>
   <data name="myofferlist" xml:space="preserve">
     <value>Offer List</value>
+  </data>
+  <data name="our" xml:space="preserve">
+    <value>Our</value>
   </data>
   <data name="pagetitle" xml:space="preserve">
     <value>DENEYSAN - Education Devices</value>
@@ -251,6 +278,9 @@
   </data>
   <data name="services" xml:space="preserve">
     <value>Services</value>
+  </data>
+  <data name="solutionpartners" xml:space="preserve">
+    <value>Solution Partners</value>
   </data>
   <data name="taxoffice" xml:space="preserve">
     <value>Tax Off.</value>

@@ -184,6 +184,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BankController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CertificateController.cs" />
     <Compile Include="Areas\Admin\Controllers\SolutionPartnerController.cs" />
     <Compile Include="Areas\Admin\Controllers\DocumentGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\DocumentsController.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Areas\Admin\Helpers\Utility.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Areas\Admin\Models\TeklifModel.cs" />
+    <Compile Include="Controllers\FCertificateController.cs" />
     <Compile Include="Controllers\FReferencesController.cs" />
     <Compile Include="Controllers\FDocumentsController.cs" />
     <Compile Include="Controllers\FHomeController.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="Controllers\FNewsController.cs" />
     <Compile Include="Controllers\FProjectsController.cs" />
     <Compile Include="Controllers\FSearchController.cs" />
+    <Compile Include="Controllers\FSolutionPartnerController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1506,6 +1509,8 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\account\login.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\bank\banklist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\contact\contact.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\certificate\addCertificate.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\certificate\Certificatelist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\adddocument.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\editdocument.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\documentgroup.js" />
@@ -1985,6 +1990,10 @@
     <Content Include="Areas\Admin\Views\HumanResource\HumanResourcePositions.cshtml" />
     <Content Include="Areas\Admin\Views\Updates\Index.cshtml" />
     <Content Include="img\Thumbs.db" />
+    <Content Include="Areas\Admin\Views\Certificate\AddCertificate.cshtml" />
+    <Content Include="Areas\Admin\Views\Certificate\EditCertificate.cshtml" />
+    <Content Include="Areas\Admin\Views\Certificate\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Certificate\Certificate_leftbar.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\kontrolmatik.pubxml" />
@@ -2094,6 +2103,9 @@
     <Content Include="Views\Shared\_addOfferList.cshtml" />
     <Content Include="Views\Shared\_emptyOfferList.cshtml" />
     <Content Include="Views\Shared\_sentOfferList.cshtml" />
+    <Content Include="Views\Shared\_main2Left.cshtml" />
+    <Content Include="Views\FSolutionPartner\Index.cshtml" />
+    <Content Include="Views\FCertificate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -29,7 +29,7 @@
 <div class="wrapper">
   <div class="header"> <a href="#" class="logo"><img src="/img/logo.png" border="0" /></a>
     <div class="search">
-      <input type="text" />
+        @{ Html.RenderAction("_search", "FSearch"); }
     </div>
     <ul class="topMenu">
       <li>@Html.ActionLink("TR", "ChangeCulture", "FHome", new { lang = "tr", returnUrl = this.Request.RawUrl }, null)</li>
@@ -57,40 +57,42 @@
   </div>
   <div class="main">
     <div class="projects">
-      <h2 class="sectionTitle"><span>@ProjectsRess.ProjectsStrings.projects</span></h2>
-      <div class="project">
-        <div class="projectImg"> <a href="#"><img src="/img/project.jpg"  /><span> Erbil Gas Power Station (EGPS) 132KV Substation</span></a> </div>
-        <p>Erbil Gas Power Station (EGPS)  Located in the south of Erbil governorate, about 22 Kilometers from Erbil city center...</p>
-      </div>
-      <div class="project">
-        <div class="projectImg"> <a href="#"><img src="/img/project.jpg"  /><span> Erbil Gas Power Station (EGPS) 132KV Substation</span></a> </div>
-        <p>Erbil Gas Power Station (EGPS)  Located in the south of Erbil governorate, about 22 Kilometers from Erbil city center...</p>
-      </div>
-      <div class="project">
-        <div class="projectImg"> <a href="#"><img src="/img/project.jpg"  /><span> Erbil Gas Power Station (EGPS) 132KV Substation</span></a> </div>
-        <p>Erbil Gas Power Station (EGPS)  Located in the south of Erbil governorate, about 22 Kilometers from Erbil city center...</p>
-      </div>
-      <div class="project last">
-        <div class="projectImg"> <a href="#"><img src="/img/project.jpg"  /><span> Erbil Gas Power Station (EGPS) 132KV Substation</span></a> </div>
-        <p>Erbil Gas Power Station (EGPS)  Located in the south of Erbil governorate, about 22 Kilometers from Erbil city center...</p>
-      </div>
+      <h2 class="sectionTitle"><span>@ProjectsRess.ProjectsStrings.projects.ToUpper()</span></h2>
+      @{int i = 0;}
+        @foreach (var project in Model.projects)
+        {
+            i++;
+            if (i != 4)
+            {
+            <div class="project">
+                <div class="projectImg"> <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_projects/@project.PageSlug/@project.ProjectId"><img src="@project.Logo" /><span> @project.Name</span></a> </div>
+                <p>@Html.Raw(project.Content)</p>
+            </div>
+            }
+            else
+            {
+             <div class="project last">
+                <div class="projectImg"> <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_projects/@project.PageSlug/@project.ProjectId"><img src="@project.Logo" /><span> @project.Name</span></a> </div>
+                <p>@Html.Raw(project.Content)</p>
+             </div>
+            }
+        }
     </div>
     <div class="biz">
-      <h2 class="sectionTitle"><span>BİZ</span></h2>
+      <h2 class="sectionTitle"><span>@SharedRess.SharedStrings.our.ToUpper()</span></h2>
       <ul>
-        <li><a href="#">Power generation and transmission solution</a></li>
-        <li><a href="#">Enerji Üretim & İletim Çözümleri Kataloğu</a></li>
-        <li><a href="#">Raylı Sistemler & Ulaşım Kataloğu</a></li>
-        <li><a href="#">DCS Based Automation System</a></li>
-        <li><a href="#">Enerji Verimliliği Kataloğu</a></li>
-        <li class="last"><a href="#">daha fazlası...</a></li>
+       @foreach (var doc in Model.docs)
+        {
+          <li><a href="@doc.DocumentFile">@doc.Name</a></li>
+        }
+        <li class="last"><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_documents">@SharedRess.SharedStrings.more</a></li>
       </ul>
     </div>
     <div class="bizdenHaberler">
       <h2 class="sectionTitle"><span>BİZDEN HABERLER</span></h2>
       <div id="news" class="slidorion">
     <div class="slider">
-    @foreach(var newsitem in Model.news)
+    @foreach (var newsitem in Model.news)
     {
         <div class="slide"><img src="@newsitem.NewsImage" alt="@newsitem.Header" width="235"></div>
     }
@@ -112,16 +114,18 @@
   <div class="footer">
     <div class="footerLeft">
       <ul>
-        <li><a href="#">Kontrolmatik Hakkında</a></li>
-        <li><a href="#">Hizmetler</a></li>
-        <li><a href="#">Sektörler</a></li>
-        <li><a href="#">Ürünler</a></li>
-        <li><a href="#" class="last">Referanslar</a></li>
+         <ul>
+          <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_aboutus">@SharedRess.SharedStrings.aboutus</a></li>
+          <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_services">@SharedRess.SharedStrings.services</a></li>
+          <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_sectors">@SharedRess.SharedStrings.sectors</a></li>
+          <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products">@SharedRess.SharedStrings.products</a></li>
+          <li><a class="last" href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_references">@SharedRess.SharedStrings.references</a></li>
+        </ul>
       </ul>
-      <p><span>Adres:</span> Tekstilkent Koza Plaza A Blok No:11 Esenler/İSTANBUL<br/>
-        <span>Tel:</span> +90 212 659 24 41 - 438 24 41<br/>
-        <span>Fax:</span> +90 212 659 24 81<br/>
-        <span>E-Posta:</span> info@kontrolmatik.com</p>
+      <p><span>@SharedRess.SharedStrings.address:</span> Tekstilkent Koza Plaza A Blok No:11 Esenler/İSTANBUL<br/>
+         <span>@SharedRess.SharedStrings.phone:</span> +90 212 659 24 41 - 438 24 41<br/>
+         <span>@SharedRess.SharedStrings.fax:</span> +90 212 659 24 81<br/>
+         <span>@SharedRess.SharedStrings.email:</span> info@kontrolmatik.com</p>
     </div>
     <div class="footerRight">
       <p><img src="/img/logoFooter.png" style="margin-bottom: -4px;margin-right: 2px;"/> Copyright 2013</p>

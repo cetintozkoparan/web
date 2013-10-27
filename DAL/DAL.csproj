@@ -50,6 +50,7 @@
     <Compile Include="Entities\AdminUser.cs" />
     <Compile Include="Entities\BankInfo.cs" />
     <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\CertificatePartner.cs" />
     <Compile Include="Entities\HumanResourcePosition.cs" />
     <Compile Include="Entities\DocumentGroup.cs" />
     <Compile Include="Entities\Document.cs" />

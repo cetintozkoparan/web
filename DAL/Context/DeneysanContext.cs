@@ -37,6 +37,7 @@ namespace DAL.Context
         public DbSet<MailUsers> MailUsers { get; set; }
         public DbSet<SolutionPartner> SolutionPartner { get; set; }
         public DbSet<HumanResourcePosition> HumanResourcePosition { get; set; }
+        public DbSet<Certificate> Certificate { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -67,6 +68,7 @@ namespace DAL.Context
             modelBuilder.Entity<MailSetting>().ToTable("MailSetting");
             modelBuilder.Entity<SolutionPartner>().ToTable("SolutionPartner");
             modelBuilder.Entity<HumanResourcePosition>().ToTable("HumanResourcePosition");
+            modelBuilder.Entity<Certificate>().ToTable("Certificate");
             
         }
     }

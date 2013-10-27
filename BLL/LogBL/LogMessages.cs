@@ -23,6 +23,13 @@ namespace BLL.LogBL
         public static string SolutionPartnerDeleted = "Çözüm Ortağı Silindi";
         public static string SolutionPartnerNotDeleted = "Çözüm Ortağı Silinemedi";
 
+        public static string CertificateAdded = "Sertifika Eklendi";
+        public static string CertificateNotAdded = "Sertifika Eklenemedi";
+        public static string CertificateEdited = "Sertifika Düzenlendi";
+        public static string CertificateNotEdited = "Sertifika Düzenlenemedi";
+        public static string CertificateDeleted = "Sertifika Silindi";
+        public static string CertificateNotDeleted = "Sertifika Silinemedi";
+
         public static string HumanResourcePositionAdded = "Pozisyon Eklendi";
         public static string HumanResourcePositionNotAdded = "Pozisyon Eklenemedi";
         public static string HumanResourcePositionEdited = "Pozisyon Düzenlendi";

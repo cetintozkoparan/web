@@ -79,6 +79,12 @@ namespace web
             routes.MapRoute("reference_tr", "tr/referanslar", new { action = "Index", Controller = "FReferences" });
             routes.MapRoute("reference_en", "en/references", new { action = "Index", Controller = "FReferences" });
 
+            routes.MapRoute("solutionpartner_tr", "tr/cozum-ortaklari", new { action = "Index", Controller = "FSolutionPartner" });
+            routes.MapRoute("solutionpartner_en", "en/solution-partners", new { action = "Index", Controller = "FSolutionPartner" });
+
+            routes.MapRoute("certificate_tr", "tr/sertifikalar", new { action = "Index", Controller = "FCertificate" });
+            routes.MapRoute("certificate_en", "en/certificates", new { action = "Index", Controller = "FCertificate" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
