@@ -18,7 +18,7 @@ namespace web
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            
             log4net.Config.XmlConfigurator.Configure();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
