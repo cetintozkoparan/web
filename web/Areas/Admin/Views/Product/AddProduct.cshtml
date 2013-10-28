@@ -24,8 +24,7 @@
          <div id="tabs">
               <ul>
                 <li><a href="#tabs-1">Ürün Bilgileri</a></li>
-                <li><a href="#tabs-2">Ürün Dökümanları</a></li>
-                <li><a href="#tabs-3">Ürün Açıklaması</a></li>
+                <li><a href="#tabs-2">Ürün Açıklaması</a></li>
               </ul>
           <div id="tabs-1">
                   
@@ -50,33 +49,23 @@
             @Html.TextBoxFor(m=>m.Code, new { @class="textwidth50"})
             @Html.ValidationMessageFor(m => m.Code)
         </p>
-         <p>
+         <p style="display:none">
             @Html.LabelFor(m=>m.Price)
          @*   @Html.TextBoxFor(m=>m.Price, new { @class="textwidth10"})*@
-             @Html.TextBox("txtPrice", null,new { @class="textwidth10 required"})
+             @Html.TextBox("txtPrice", null,new { @class="textwidth10"})
 
             @Html.ValidationMessage("1212")
         </p>
         
-        @*  <p>
-                <label>Para Birimi</label>
-           
-                 @Html.DropDownListFor(m => m.MoneyType, new[] {
-                    new SelectListItem{ Text="TL", Value="TL" },
-                    new SelectListItem{ Text= "$", Value="$" },
-                    new SelectListItem{ Text= "€", Value="€" }
-                 }, new { @class = "textwidth10"})
-           </p>*@
         <p>
             <label for="txtname">Ürün Resmi</label>
             
             <input type="file" name="uploadfile" id="uploadfile"  />
-        </p><br />
+        </p>
             
-          <p>
+          <p style="display:none">
                 <label>Ürün Donanımı Var mı?</label>
                 @Html.CheckBoxFor(m => m.Hardware)
-               
            </p>
            <p class="pprice">
                 @Html.LabelFor(m=>m.HardwarePrice)
@@ -86,37 +75,17 @@
             @Html.ValidationMessage("1212")
              
            </p>
-         @*   <p class="pprice">
-                <label>Para Birimi</label>
-                 @Html.DropDownListFor(m=>m.HMoneyType, new[] {
-                    new SelectListItem{ Text="TL", Value="TL" },
-                    new SelectListItem{ Text= "$", Value="$" },
-                    new SelectListItem{ Text= "€", Value="€" }
-                 }, new { @class = "textwidth10"})
-           </p>*@
-
-         </div>
-          <div id="tabs-2">
-            
-              <p>
+            <p>
                 <label for="txtname" class="label2">Ürün Döküman</label>
                  <input type="file" name="uploadtechfile" id="uploadtechfile"  />
              </p>
-             <p>
-                <label for="txtname">Teknik Şartname</label>
-                <input type="file" name="uploadtraining" id="uploadtraining"  />
-            </p>
-            <p>
-                <label for="txtname">Deney Dökümanı</label>
-                <input type="file" name="uploadexperimentfile" id="uploadexperimentfile"  />
-            </p>
-            <p>
+              <p>
                 <label for="txtname">Ürün Video</label>
                 <input type="file" name="uploadvideo" id="uploadvideo"/>
             </p>
-
-          </div>
-          <div id="tabs-3">
+         </div>
+          
+          <div id="tabs-2">
                  <p>
             @Html.TextAreaFor(m => m.Content, new { id = "txtcontent", @class = "required" })
             @Html.ValidationMessageFor(m => m.Content)

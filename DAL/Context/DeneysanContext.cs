@@ -30,6 +30,9 @@ namespace DAL.Context
         public DbSet<Product> Product { get; set; }
         public DbSet<ImportantLinks> ImportantLinks { get; set; }
         public DbSet<Projects> Projects { get; set; }
+        public DbSet<ProjectGroup> ProjectGroup { get; set; }
+        public DbSet<ProjectReferences> ProjectReferences { get; set; }
+        public DbSet<ProjectReferenceGroup> ProjectReferenceGroup { get; set; }
         public DbSet<HumanResource> HumanResource { get; set; }
         public DbSet<Teklif> Teklif { get; set; }
         public DbSet<TeklifUrun> TeklifUrun { get; set; }
@@ -61,6 +64,9 @@ namespace DAL.Context
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<ImportantLinks>().ToTable("ImportantLinks");
             modelBuilder.Entity<Projects>().ToTable("Projects");
+            modelBuilder.Entity<ProjectGroup>().ToTable("ProjectGroup");
+            modelBuilder.Entity<ProjectReferences>().ToTable("ProjectReferences");
+            modelBuilder.Entity<ProjectReferenceGroup>().ToTable("ProjectReferenceGroup");
             modelBuilder.Entity<HumanResource>().ToTable("HumanResource");
             modelBuilder.Entity<Teklif>().ToTable("Teklif");
             modelBuilder.Entity<TeklifUrun>().ToTable("TeklifUrun");

@@ -40,7 +40,17 @@ namespace web.Areas.Admin
             context.MapRoute("projectaddx", "yonetim/projeekle", new { action = "AddProject", Controller = "Project" });
             context.MapRoute("projecteditx", "yonetim/projeduzenle/{id}", new { action = "EditProject", Controller = "Project" });
 
+            context.MapRoute("projectgroups_defaultx", "yonetim/projegruplari", new { action = "Index", Controller = "ProjectGroup" });
+            context.MapRoute("projectgroupsx", "yonetim/projegruplari/{lang}", new { action = "Index", Controller = "ProjectGroup" });
 
+            //PROJECT_REFERENCES
+            context.MapRoute("projectreference_defaultx", "yonetim/projereferanslari", new { action = "Index", Controller = "ProjectReference" });
+            context.MapRoute("projectreferencex", "yonetim/projereferanslari/{lang}", new { action = "Index", Controller = "ProjectReference" });
+            context.MapRoute("projectreferenceaddx", "yonetim/projereferansekle", new { action = "AddProjectReference", Controller = "ProjectReference" });
+            context.MapRoute("projectreferenceeditx", "yonetim/projereferansduzenle/{id}", new { action = "EditProjectReference", Controller = "ProjectReference" });
+
+            context.MapRoute("projectreferencegroups_defaultx", "yonetim/projereferansgruplari", new { action = "Index", Controller = "ProjectReferenceGroup" });
+            context.MapRoute("projectreferencegroupsx", "yonetim/projereferansgruplari/{lang}", new { action = "Index", Controller = "ProjectReferenceGroup" });
             //TEKLİFLER
          //   context.MapRoute("teklif_default", "yonetim/tumteklifler", new { action = "Index", Controller = "Teklif" });
             context.MapRoute("teklifx", "yonetim/teklifler/{type}", new { action = "Index", Controller = "Teklif" });

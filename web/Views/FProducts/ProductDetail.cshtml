@@ -3,22 +3,83 @@
     ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
-<link rel="stylesheet" href="~/Content/Styles/portfolio.css" type="text/css" />
-<script src="/Content/Scripts/jquery.prettyPhoto.js"></script>
-<link href="/Content/Styles/prettyPhoto.css" rel="stylesheet" />
-<link href="~/Content/Styles/jquery.gritter.css" rel="stylesheet" />
-<script src="~/Content/Scripts/jquery.gritter.min.js"></script>
-<script>
-    $(function () {
-        $(".gallery a").live("click", function () {
-            $('img').bind('contextmenu', function (e) {
-                return false;
-            });
+<script src="/js/jquery.bxslider.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.productSlide').bxSlider({
+            mode: 'fade',
+            captions: true,
+            controls: false
+
         });
-        
     });
-    </script>
-<div class="main_content mainpage pageheight" style="">
+</script>
+@Html.Partial("_main2Left")
+<div class="main2Right">
+        <div class="pagenav">
+          <ul>
+            <li><a href="#">Anasayfa</a></li>
+            <li><a href="#">Ürünler</a></li>
+            <li><a href="#" class="last">Abb</a></li>
+          </ul>
+        </div>
+        <h3 class="pageTitle">@Model.Name</h3>
+        <div class="pageContent">
+        
+        <div class="productContentSlider">
+        <ul class="productSlide">
+        <li class="slideList">
+        
+        <img src="@Model.ProductImage" width="398" alt="yüksek gerilim" />
+        
+        <div class="productArticle">
+        <h3 class="pageTitle">@Model.Name</h3>
+<ul class="productInfo">
+<li><span class="red">Client:</span>San Mamés Barria S. L.</li>
+<li><span class="red">Services:</span>Project and Site Supervision</li>
+<li><span class="red">Year:</span>En proceso / In progress</li>
+<p class="contentArticle">@Html.Raw(Model.Content) </p>
+<a href="#" class="downloadPdf"><img src="/img/downloadPdf.jpg" alt="download PDF" /></a>
+</ul>
+        
+        </div>
+        
+        </li>
+        
+        <li class="slideList">
+        
+        <img src="/img/yuksekgerilim.jpg" alt="yüksek gerilim" />
+        
+        <div class="productArticle">
+        <h3 class="pageTitle">UNITROL® 1000-7 compact Automatic<br/>
+Voltage Regulator</h3>
+<ul>
+<li><span class="red">Client:</span>San Mamés Barria S. L.</li>
+<li><span class="red">Services:</span>Project and Site Supervision</li>
+<li><span class="red">Year:</span>En proceso / In progress</li>
+<p class="contentArticle">The location of the new stadium at the end of the urban stretch of the enlargement of Bilbao, which looms over the river, makes it 
+a piece of architecture that must demonstrate strength, conviction and respect towards the surrounding buildings. When defining the project, this idea came together </p>
+<a href="#" class="downloadPdf"><img src="/img/downloadPdf.jpg" alt="download PDF" /></a>
+</ul>
+        
+        </div>
+        
+        </li>
+        
+        
+        </ul>
+        
+        
+        </div>
+              
+              
+        
+        </div>
+      </div>
+
+
+
+@*<div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
         <div class="content_page page">
 
@@ -167,4 +228,4 @@
             }
         });
     });
-</script>
+</script>*@

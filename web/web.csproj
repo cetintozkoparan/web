@@ -185,6 +185,8 @@
     <Compile Include="Areas\Admin\Controllers\BankController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\CertificateController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectReferenceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProjectReferenceGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\SolutionPartnerController.cs" />
     <Compile Include="Areas\Admin\Controllers\DocumentGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\DocumentsController.cs" />
@@ -1511,6 +1513,10 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\contact\contact.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\certificate\addCertificate.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\certificate\Certificatelist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\projectreferences\addprojectreference.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\projectreferences\editprojectreference.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\projectreferences\projectreferencegroup.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\projectreferences\projectreferencelist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\adddocument.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\editdocument.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\documents\documentgroup.js" />
@@ -1531,6 +1537,9 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\editproduct.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\productgroup.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\product\productlist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\projects\addproject.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\projects\editproject.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\projects\projectgroup.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\projects\projectlist.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\addreference.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\reference\referencelist.js" />
@@ -1994,6 +2003,14 @@
     <Content Include="Areas\Admin\Views\Certificate\EditCertificate.cshtml" />
     <Content Include="Areas\Admin\Views\Certificate\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Certificate\Certificate_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectGroup\project_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectGroup\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectReference\AddProjectReference.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectReference\EditProjectReference.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectReference\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectReference\projectreference_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectReferenceGroup\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectReferenceGroup\projectreference_leftbar.cshtml" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\kontrolmatik.pubxml" />
@@ -2080,7 +2097,6 @@
     <Content Include="Views\FContact\Index.cshtml" />
     <Content Include="Views\FContact\Bank.cshtml" />
     <Content Include="Views\FContact\Form.cshtml" />
-    <Content Include="Views\FProducts\Index.cshtml" />
     <Content Include="Views\FDocuments\Index.cshtml" />
     <Content Include="Views\FDocuments\DocumentList.cshtml" />
     <Content Include="Views\FCareer\Index.cshtml" />
@@ -2098,7 +2114,7 @@
     <Content Include="Views\Shared\_search.cshtml" />
     <Content Include="Views\FSearch\Index.cshtml" />
     <Content Include="Views\FReferences\Index.cshtml" />
-    <Content Include="Views\FProducts\ProductList.cshtml" />
+    <Content Include="Views\FProducts\Index.cshtml" />
     <Content Include="Views\FProducts\ProductDetail.cshtml" />
     <Content Include="Views\Shared\_addOfferList.cshtml" />
     <Content Include="Views\Shared\_emptyOfferList.cshtml" />

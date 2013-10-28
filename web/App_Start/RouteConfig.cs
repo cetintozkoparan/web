@@ -24,6 +24,9 @@ namespace web
             routes.MapRoute("visionmision_tr", "tr/vizyon-misyon", new { action = "VisionMision", Controller = "FInstitutional" });
             routes.MapRoute("visionmision_en", "en/vision-mision", new { action = "VisionMision", Controller = "FInstitutional" });
 
+            //routes.MapRoute("products_tr", "tr/urunler", new { action = "Index", Controller = "FProducts" });
+            //routes.MapRoute("products_en", "en/products", new { action = "Index", Controller = "FProducts" });
+
             routes.MapRoute("products_tr", "tr/urunler", new { action = "Index", Controller = "FProducts" });
             routes.MapRoute("products_en", "en/products", new { action = "Index", Controller = "FProducts" });
 

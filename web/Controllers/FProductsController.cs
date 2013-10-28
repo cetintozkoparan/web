@@ -18,19 +18,21 @@ namespace web.Controllers
 
         public ActionResult Index()
         {
-            var product_group_list = ProductManager.GetProductGroupListForFront(lang);
+            //var product_group_list = ProductManager.GetProductGroupListForFront(lang);
+            //var product_list = ProductManager.GetProductListAllForFront(lang);
+            //ProductWrapperModel modelbind = new ProductWrapperModel(product_list, product_group_list);
+            //return View(modelbind);
             var product_list = ProductManager.GetProductListAllForFront(lang);
-            ProductWrapperModel modelbind = new ProductWrapperModel(product_list, product_group_list);
-            return View(modelbind);
+            return View(product_list);
         }
 
-        public ActionResult ProductList(int gid)
-        {
-            var product_group_list = ProductManager.GetProductGroupListForFront(lang);
-            var product_list = ProductManager.GetProductList(gid);
-            ProductWrapperModel modelbind = new ProductWrapperModel(product_list, product_group_list);
-            return View(modelbind);
-        }
+        //public ActionResult ProductList(int gid)
+        //{
+        //    var product_group_list = ProductManager.GetProductGroupListForFront(lang);
+        //    var product_list = ProductManager.GetProductList(gid);
+        //    ProductWrapperModel modelbind = new ProductWrapperModel(product_list, product_group_list);
+        //    return View(modelbind);
+        //}
 
         public ActionResult ProductDetail(int pid)
         {

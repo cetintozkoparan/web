@@ -5,32 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.Context;
 using DAL.Entities;
-using BLL.LogBL;
-using System.Web;
 
-namespace BLL.Project
+namespace BLL.ProjectReferenceBL
 {
-    public class ProjectManager
+    public class ProjectReferenceManager
     {
-        public static List<Projects> GetProjectList(string language)
+        public static List<ProjectReferences> GetProjectReferenceList(string language)
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var list = db.Projects.Where(d => d.Language == language).OrderBy(d => d.SortOrder).ToList();
+                var list = db.ProjectReferences.Where(d =>  d.Language == language).OrderBy(d=>d.SortOrder).ToList();
                 return list;
             }
         }
 
-        public static List<Projects> GetProjectListForFront(string language)
+        public static List<ProjectReferences> GetProjectReferenceListForFront(string language)
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var list = db.Projects.Where(d => d.Language == language && d.Online == true).OrderBy(d => d.SortOrder).ToList();
+                var list = db.ProjectReferences.Where(d => d.Language == language && d.Online==true).OrderBy(d => d.SortOrder).ToList();
                 return list;
             }
         }
 
-        public static bool AddProject(Projects record)
+        public static bool AddProjectReference(ProjectReferences record)
         {
             using (DeneysanContext db = new DeneysanContext())
             {
@@ -39,7 +37,7 @@ namespace BLL.Project
                     record.TimeCreated = DateTime.Now;
                     record.SortOrder = 9999;
                     record.Online = true;
-                    db.Projects.Add(record);
+                    db.ProjectReferences.Add(record);
                     db.SaveChanges();
 
                     return true;
@@ -57,7 +55,7 @@ namespace BLL.Project
         {
             using (DeneysanContext db = new DeneysanContext())
             {
-                var list = db.Projects.SingleOrDefault(d => d.ProjectId == id);
+                var list = db.ProjectReferences.SingleOrDefault(d => d.ProjectReferenceId == id);
                 try
                 {
 
@@ -84,8 +82,8 @@ namespace BLL.Project
             {
                 try
                 {
-                    var record = db.Projects.FirstOrDefault(d => d.ProjectId == id);
-                    db.Projects.Remove(record);
+                    var record = db.ProjectReferences.FirstOrDefault(d => d.ProjectReferenceId == id);
+                    db.ProjectReferences.Remove(record);
                     db.SaveChanges();
                     return true;
                 }
@@ -96,13 +94,13 @@ namespace BLL.Project
             }
         }
 
-        public static Projects GetProjectById(int nid)
+        public static ProjectReferences GetProjectReferenceById(int nid)
         {
             using (DeneysanContext db = new DeneysanContext())
             {
                 try
                 {
-                    Projects record = db.Projects.Where(d => d.ProjectId == nid).SingleOrDefault();
+                    ProjectReferences record = db.ProjectReferences.Where(d => d.ProjectReferenceId == nid).SingleOrDefault();
                     if (record != null)
                         return record;
                     else
@@ -115,27 +113,27 @@ namespace BLL.Project
             }
         }
 
-        public static bool EditProject(Projects Projectmodel)
+        public static bool EditProjectReference(ProjectReferences ProjectReferencemodel)
         {
             using (DeneysanContext db = new DeneysanContext())
             {
                 try
                 {
-                    Projects record = db.Projects.Where(d => d.ProjectId == Projectmodel.ProjectId).SingleOrDefault();
+                    ProjectReferences record = db.ProjectReferences.Where(d => d.ProjectReferenceId == ProjectReferencemodel.ProjectReferenceId).SingleOrDefault();
                     if (record != null)
                     {
-                        record.Content = Projectmodel.Content;
-                        record.Name = Projectmodel.Name;
-
-                        record.Language = Projectmodel.Language;
-                        if (!string.IsNullOrEmpty(Projectmodel.ProjectFile))
+                        record.Content = ProjectReferencemodel.Content;
+                        record.Name = ProjectReferencemodel.Name;
+                        
+                        record.Language = ProjectReferencemodel.Language;
+                        if (!string.IsNullOrEmpty(ProjectReferencemodel.ProjectReferenceFile))
                         {
-                            record.ProjectFile = Projectmodel.ProjectFile;
+                            record.ProjectReferenceFile = ProjectReferencemodel.ProjectReferenceFile;
                         }
-                        record.Content = Projectmodel.Content;
+                        record.Content = ProjectReferencemodel.Content;
                         db.SaveChanges();
 
-
+                       
 
                         return true;
                     }
@@ -162,7 +160,7 @@ namespace BLL.Project
                     foreach (string id in idsList)
                     {
                         int mid = Convert.ToInt32(id);
-                        Projects sortingrecord = db.Projects.SingleOrDefault(d => d.ProjectId == mid);
+                        ProjectReferences sortingrecord = db.ProjectReferences.SingleOrDefault(d => d.ProjectReferenceId == mid);
                         sortingrecord.SortOrder = Convert.ToInt32(row);
                         db.SaveChanges();
                         row++;

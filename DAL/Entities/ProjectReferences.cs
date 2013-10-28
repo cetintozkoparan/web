@@ -7,17 +7,20 @@ using System.Threading.Tasks;
 
 namespace DAL.Entities
 {
-    public class Projects
+    public class ProjectReferences
     {
         [Key]
-        public int ProjectId { get; set; }
+        public int ProjectReferenceId { get; set; }
+        [Required(ErrorMessage = "Proje Grubunu Seçiniz.")]
+        public int ProjectReferenceGroupId { get; set; }
         [Display(Name="Proje İsmi")]
         [Required(ErrorMessage="Proje İsmini Giriniz.")]
         public string Name { get; set; }
         [Display(Name = "Proje Açıklaması")]
         public string Content { get; set; }
         [Display(Name = "Proje Ek Doya")]
-        public string ProjectFile { get; set; }
+        public string ProjectReferenceFile { get; set; }
+        public string Logo { get; set; }
         public bool Online { get; set; }
         public int SortOrder { get; set; }
         public DateTime TimeCreated { get; set; }
@@ -25,8 +28,5 @@ namespace DAL.Entities
         [Required(ErrorMessage = "Dili Seçiniz.")]
         public string Language { get; set; }
         public string PageSlug { get; set; }
-        public string Logo { get; set; }
-        public bool Deleted { get; set; }
-        public DateTime TimeUpdated { get; set; }
     }
 }

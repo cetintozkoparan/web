@@ -44,6 +44,20 @@ namespace BLL.LogBL
         public static string DocumentGroupDeleted = "Döküman grubu Silindi";
         public static string DocumentGroupNotDeleted = "Döküman grubu Silinemedi";
 
+        public static string ProjectGroupAdded = "Proje grubu Eklendi";
+        public static string ProjectGroupNotAdded = "Proje grubu Eklenemedi";
+        public static string ProjectGroupEdited = "Proje Düzenlendi";
+        public static string ProjectGroupNotEdited = "Proje grubu Düzenlenemedi";
+        public static string ProjectGroupDeleted = "Proje grubu Silindi";
+        public static string ProjectGroupNotDeleted = "Proje grubu Silinemedi";
+
+        public static string ProjectReferenceGroupAdded = "Referans grubu Eklendi";
+        public static string ProjectReferenceGroupNotAdded = "Referans grubu Eklenemedi";
+        public static string ProjectReferenceGroupEdited = "Referans Düzenlendi";
+        public static string ProjectReferenceGroupNotEdited = "Referans grubu Düzenlenemedi";
+        public static string ProjectReferenceGroupDeleted = "Referans grubu Silindi";
+        public static string ProjectReferenceGroupNotDeleted = "Referans grubu Silinemedi";
+
         public static string DocumentAdded = "Yeni Döküman Eklendi";
         public static string DocumentNotAdded = "Yeni Döküman Eklenemedi";
         public static string DocumentEdited = " Döküman Düzenlendi";

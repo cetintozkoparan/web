@@ -1,31 +1,54 @@
-﻿@model web.Models.ProductWrapperModel
+﻿@*@model web.Models.ProductWrapperModel*@
+@model IEnumerable<DAL.Entities.Product>
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
-<link rel="stylesheet" href="~/Content/Styles/portfolio.css" type="text/css" />
 
-<div class="main_content mainpage pageheight" style="">
-    <div class="wrapper mainpage grid_12">
-        <div class="content_page page">
-            <h2>@ProductRess.ProductStrings.productsheader</h2>
-            <hr class="wide">
-            <div id="portfolio">
-                @foreach (var group in Model.productgroups)
-                {
-                    <div class="portfolio-item">
-                        <div class="portfolio-image" style="display: block">
-                            <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@group.PageSlug/@group.ProductGroupId">
-                                <img src="@group.GroupImage" alt="@group.GroupName" title="@group.GroupName" />
-                            </a>
-                        </div>
-                        <div class="portfolio-title">
-                            <h3 title="@group.GroupName">
-                                <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@group.PageSlug/@group.ProductGroupId">@group.GroupName</a>
-                            </h3>
-                        </div>
-                    </div>
-                }
-            </div>
+    @Html.Partial("_main2Left")
+    <div class="main2Right">
+        <div class="pagenav">
+            <ul>
+            <li><a href="#">@SharedRess.SharedStrings.homepage</a></li>
+            <li><a href="#" class="last">@SharedRess.SharedStrings.products</a></li>
+            </ul>
         </div>
+    <h3 class="pageTitle">@SharedRess.SharedStrings.products</h3>
+    <div class="pageContent">
+    @{int i = 0;}
+
+        @foreach (var product in Model){
+            i++;
+            if (i%3 != 0)
+            {
+                <div class="productContent">
+                    <div class="productImage">
+                        <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@product.ProductGroup.PageSlug/@product.PageSlug/@product.ProductId">
+                            <img src="/img/product_01.jpg" alt="Line Differential Protection" />
+                        </a>
+                    </div>
+                    <div class="clear">&nbsp;</div>
+                    <div class="productName">
+                        @product.Name
+                    </div>
+                    @*<div class="productExplain">@product.Name</div>*@
+                </div>
+            }
+            else
+            {
+                <div class="productContent lastContent">
+                    <div class="productImage">
+                        <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@product.ProductGroup.PageSlug/@product.PageSlug/@product.ProductId">
+                            <img src="/img/product_01.jpg" alt="Line Differential Protection" />
+                        </a>
+                    </div>
+                    <div class="clear">&nbsp;</div>
+                    <div class="productName">
+                        @product.Name
+                    </div>
+                    @*<div class="productExplain">@product.Name</div>*@
+                </div>
+            }
+        }
     </div>
 </div>
+

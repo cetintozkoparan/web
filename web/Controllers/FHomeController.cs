@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using web.Models;
 using BLL.NewsBL;
 using BLL.ReferenceBL;
-using DAL;
-using DAL.Entities;
 using BLL.Project;
 using BLL.DocumentsBL;
 namespace web.Controllers
