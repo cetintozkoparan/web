@@ -13,7 +13,7 @@ namespace BLL.MailBL
        
         public static List<MailUsers> GetMailUsersList(int type)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.MailUsers.Where(d => d.MailType == type).ToList();
                 return list;
@@ -23,7 +23,7 @@ namespace BLL.MailBL
 
         public static bool AddMailUsers(MailUsers record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -45,7 +45,7 @@ namespace BLL.MailBL
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -67,7 +67,7 @@ namespace BLL.MailBL
 
         public static MailUsers GetMailUsersById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -86,7 +86,7 @@ namespace BLL.MailBL
 
         public static bool EditMailUser(MailUsers model)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -117,7 +117,7 @@ namespace BLL.MailBL
 
         public static MailSetting GetMailSettings()
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -139,7 +139,7 @@ namespace BLL.MailBL
 
         public static dynamic AddSetting(MailSetting model)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -159,7 +159,7 @@ namespace BLL.MailBL
 
         public static bool EditSetting(MailSetting model)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

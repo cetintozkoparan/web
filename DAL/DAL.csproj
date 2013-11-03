@@ -46,11 +46,21 @@
   <ItemGroup>
     <Compile Include="Context\Configuration.cs" />
     <Compile Include="Context\DatabaseCreatorClass.cs" />
-    <Compile Include="Context\DeneysanContext.cs" />
+    <Compile Include="Context\MainContext.cs" />
     <Compile Include="Entities\AdminUser.cs" />
     <Compile Include="Entities\BankInfo.cs" />
     <Compile Include="Entities\Contact.cs" />
     <Compile Include="Entities\CertificatePartner.cs" />
+    <Compile Include="Entities\Log4Net_Error.cs" />
+    <Compile Include="Entities\OurSectors.cs" />
+    <Compile Include="Entities\Sector.cs" />
+    <Compile Include="Entities\SectorGroup.cs" />
+    <Compile Include="Entities\Photo.cs" />
+    <Compile Include="Entities\Equipment.cs" />
+    <Compile Include="Entities\OurServices.cs" />
+    <Compile Include="Entities\Service.cs" />
+    <Compile Include="Entities\ServiceGroup.cs" />
+    <Compile Include="Entities\ProductSubGroup.cs" />
     <Compile Include="Entities\ProjectReferenceGroup.cs" />
     <Compile Include="Entities\ProjectReferences.cs" />
     <Compile Include="Entities\ProjectGroup.cs" />
@@ -71,6 +81,7 @@
     <Compile Include="Entities\Projects.cs" />
     <Compile Include="Entities\References.cs" />
     <Compile Include="Entities\SolutionPartner.cs" />
+    <Compile Include="Entities\SubscribeModel.cs" />
     <Compile Include="Entities\Teklif.cs" />
     <Compile Include="Entities\TeklifUrun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

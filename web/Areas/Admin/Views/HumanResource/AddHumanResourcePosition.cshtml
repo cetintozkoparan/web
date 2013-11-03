@@ -38,8 +38,13 @@
         </p>
         
         <p>
+            @Html.LabelFor(m=>m.Workdef)
+            @Html.TextAreaFor(m=>m.Workdef, new { @class="textwidth50", @rows="5"})
+            @Html.ValidationMessageFor(m=>m.Workdef)
+        </p>
+        <p>
             @Html.LabelFor(m=>m.Content)
-            @Html.TextAreaFor(m=>m.Content, new { @class="textwidth50"})
+            @Html.TextAreaFor(m=>m.Content, new { @class="textwidth50", @rows="5"})
             @Html.ValidationMessageFor(m=>m.Content)
         </p>
         <p>

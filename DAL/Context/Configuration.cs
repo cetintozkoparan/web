@@ -8,12 +8,12 @@ using DAL.Entities;
 
 namespace DAL.Context
 {
-    public class Configration : DbMigrationsConfiguration<DeneysanContext>
+    public class Configration : DbMigrationsConfiguration<MainContext>
     {
         public Configration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = true; // production'da false yapılacak...
+            AutomaticMigrationDataLossAllowed = false;
         }
 
        

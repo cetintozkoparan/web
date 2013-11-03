@@ -9,10 +9,10 @@ using DAL.Entities;
 using myBLOGData.Context;
 namespace DAL.Context
 {
-    public class DeneysanContext : DbContext
+    public class MainContext : DbContext
     {
 
-        public DeneysanContext() : base("name=DeneysanContext") { }
+        public MainContext() : base("name=MainContext") { }
 
 
         public DbSet<AdminUser> AdminUser { get; set; }
@@ -26,6 +26,7 @@ namespace DAL.Context
         public DbSet<DocumentGroup> DocumentGroup { get; set; }
         public DbSet<Document> Document { get; set; }
         public DbSet<BankInfo> BankInfo { get; set; }
+        public DbSet<ProductSubGroup> ProductSubGroup { get; set; }
         public DbSet<ProductGroup> ProductGroup { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ImportantLinks> ImportantLinks { get; set; }
@@ -41,12 +42,21 @@ namespace DAL.Context
         public DbSet<SolutionPartner> SolutionPartner { get; set; }
         public DbSet<HumanResourcePosition> HumanResourcePosition { get; set; }
         public DbSet<Certificate> Certificate { get; set; }
+        public DbSet<Service> Service { get; set; }
+        public DbSet<ServiceGroup> ServiceGroup { get; set; }
+        public DbSet<OurServices> OurServices { get; set; }
+        public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<Photo> Photo { get; set; }
+        public DbSet<Sector> Sector { get; set; }
+        public DbSet<SectorGroup> SectorGroup { get; set; }
+        public DbSet<OurSectors> OurSectors { get; set; }
+        public DbSet<Log4Net_Error> Log4Net_Error { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
             Database.SetInitializer(new DatabaseCreatorClass());
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DeneysanContext, Configration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MainContext, Configration>());
 
 
             modelBuilder.Entity<AdminUser>().ToTable("AdminUser");
@@ -60,6 +70,7 @@ namespace DAL.Context
             modelBuilder.Entity<DocumentGroup>().ToTable("DocumentGroup");
             modelBuilder.Entity<Document>().ToTable("Document");
             modelBuilder.Entity<BankInfo>().ToTable("BankInfo");
+            modelBuilder.Entity<ProductSubGroup>().ToTable("ProductSubGroup");
             modelBuilder.Entity<ProductGroup>().ToTable("ProductGroup");
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<ImportantLinks>().ToTable("ImportantLinks");
@@ -75,6 +86,15 @@ namespace DAL.Context
             modelBuilder.Entity<SolutionPartner>().ToTable("SolutionPartner");
             modelBuilder.Entity<HumanResourcePosition>().ToTable("HumanResourcePosition");
             modelBuilder.Entity<Certificate>().ToTable("Certificate");
+            modelBuilder.Entity<Service>().ToTable("Service");
+            modelBuilder.Entity<ServiceGroup>().ToTable("ServiceGroup");
+            modelBuilder.Entity<OurServices>().ToTable("OurServices");
+            modelBuilder.Entity<Equipment>().ToTable("Equipment");
+            modelBuilder.Entity<Photo>().ToTable("Photo");
+            modelBuilder.Entity<Sector>().ToTable("Sector");
+            modelBuilder.Entity<SectorGroup>().ToTable("SectorGroup");
+            modelBuilder.Entity<OurSectors>().ToTable("OurSectors");
+            modelBuilder.Entity<Log4Net_Error>().ToTable("Log4Net_Error");
             
         }
     }

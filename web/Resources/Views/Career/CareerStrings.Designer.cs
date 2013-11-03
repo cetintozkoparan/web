@@ -115,6 +115,24 @@ namespace CareerRess {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CV&apos;niz gönderilememektedir. Lütfen iletişime geçiniz..
+        /// </summary>
+        public static string cv_not_sended {
+            get {
+                return ResourceManager.GetString("cv_not_sended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CV&apos;niz başarı ile gönderilmiştir..
+        /// </summary>
+        public static string cv_sended {
+            get {
+                return ResourceManager.GetString("cv_sended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Başvuracağınız Pozisyon.
         /// </summary>
         public static string department {

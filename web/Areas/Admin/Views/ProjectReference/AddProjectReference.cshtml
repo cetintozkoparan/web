@@ -7,7 +7,7 @@
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
-
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery.MultiFile.js"></script>
 @Html.Partial("ProjectReference_leftbar")
 
 <div id="page-content" class="container_12">
@@ -41,16 +41,30 @@
             @Html.TextBoxFor(m=>m.Name, new { @class="textwidth50"})
             @Html.ValidationMessageFor(m => m.Name)
         </p>
+        <p>
+            @Html.Label("Alt Başlık")
+            @Html.TextBoxFor(m=>m.SubTitle, new { @class="textwidth50", @row="3"})
+            @Html.ValidationMessageFor(m => m.SubTitle)
+        </p>
          <p>
             <label>Logo</label>
             
             <input type="file" name="uploadimage" id="uploadimage" />
         </p>
+
         <p>
             <label for="txtname">Referans Dosyası</label>
-            
             <input type="file" name="uploadfile" id="uploadfile" />
         </p>
+
+        <p style="float:left; margin-right:4px !important;">
+            <label>Referans Fotoğrafları</label>
+        </p>
+        <div style="width:249px; width:25%; float:left">
+             <input type="file" style="width:99%" name="attachments" class="multi"/>
+        </div>
+        
+       
        
         <p>
             @Html.Label("Referans Açıklaması")

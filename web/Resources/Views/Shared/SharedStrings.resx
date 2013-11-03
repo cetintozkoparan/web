@@ -126,11 +126,17 @@
   <data name="bankaccounts" xml:space="preserve">
     <value>Banka Bilgileri</value>
   </data>
+  <data name="brand" xml:space="preserve">
+    <value>Marka</value>
+  </data>
+  <data name="category" xml:space="preserve">
+    <value>Kategori</value>
+  </data>
   <data name="certificates" xml:space="preserve">
     <value>Sertifikalarımız</value>
   </data>
   <data name="contact" xml:space="preserve">
-    <value>İLETİŞİM</value>
+    <value>İletişim</value>
   </data>
   <data name="contactdetails" xml:space="preserve">
     <value>İletişim Bilgileri</value>
@@ -225,6 +231,9 @@
   <data name="menu_offer" xml:space="preserve">
     <value>teklif</value>
   </data>
+  <data name="menu_productdetail" xml:space="preserve">
+    <value>urun-detay</value>
+  </data>
   <data name="menu_products" xml:space="preserve">
     <value>urunler</value>
   </data>
@@ -256,13 +265,16 @@
     <value>Biz</value>
   </data>
   <data name="pagetitle" xml:space="preserve">
-    <value>DENEYSAN - Eğitim Cihazları</value>
+    <value>KONTROLMATİK</value>
   </data>
   <data name="phone" xml:space="preserve">
     <value>Telefon</value>
   </data>
   <data name="products" xml:space="preserve">
     <value>Ürünler</value>
+  </data>
+  <data name="product_code" xml:space="preserve">
+    <value>Ürün Kodu</value>
   </data>
   <data name="references" xml:space="preserve">
     <value>Referanslar</value>
@@ -287,5 +299,20 @@
   </data>
   <data name="visionmision" xml:space="preserve">
     <value>Vizyon&amp;Misyon</value>
+  </data>
+  <data name="morebig" xml:space="preserve">
+    <value>Daha büyük görüntüle</value>
+  </data>
+  <data name="projectedetail" xml:space="preserve">
+    <value>Proje Detayı</value>
+  </data>
+  <data name="projects" xml:space="preserve">
+    <value>Projelerimiz</value>
+  </data>
+  <data name="newsdetail" xml:space="preserve">
+    <value>Haber Detayı</value>
+  </data>
+  <data name="searchresult" xml:space="preserve">
+    <value>Arama Sonuçları</value>
   </data>
 </root>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using web.Models;
 
 namespace web.Controllers
 {
@@ -22,7 +23,9 @@ namespace web.Controllers
         public ActionResult NewsContent(int hid)
         {
             var news = NewsManager.GetNewsItem(hid);
-            return View(news);
+            var allnews = NewsManager.GetNewsList(lang);
+            NewsWrapperModel m = new NewsWrapperModel(allnews, news);
+            return View(m);
         }
     }
 }

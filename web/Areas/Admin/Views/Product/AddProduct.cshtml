@@ -35,9 +35,15 @@
         </p>
         <p>
             @Html.Label("Ürün Grubu")
-            @Html.DropDownListFor(m => m.ProductGroupId, (IEnumerable<SelectListItem>)ViewBag.grouplist, "Dökümanı Seçiniz...", new { @class = "required" })
+            @Html.DropDownListFor(m => m.ProductGroupId, (IEnumerable<SelectListItem>)ViewBag.grouplist, "Ürün Grubu Seçiniz...", new { @class = "required" })
             @Html.ValidationMessageFor(m => m.ProductGroupId)
            <img src="/Areas/Admin/Content/images/icons/16/loader.gif" id="imgloader" class="imgloader" />
+        </p>
+        <p>
+            @Html.Label("Ürün Alt Grubu")
+            @Html.DropDownListFor(m => m.ProductSubGroupId, (IEnumerable<SelectListItem>)ViewBag.subgrouplist, "Ürün Alt Grubu Seçiniz...", new { @class = "required" })
+            @Html.ValidationMessageFor(m => m.ProductSubGroupId)
+           <img src="/Areas/Admin/Content/images/icons/16/loader.gif" id="imgloader2" class="imgloader" />
         </p>
         <p>
             @Html.LabelFor(m => m.Name)
@@ -48,6 +54,16 @@
             @Html.LabelFor(m=>m.Code)
             @Html.TextBoxFor(m=>m.Code, new { @class="textwidth50"})
             @Html.ValidationMessageFor(m => m.Code)
+        </p>
+        <p>
+            @Html.LabelFor(m=>m.Brand)
+            @Html.TextBoxFor(m=>m.Brand, new { @class="textwidth50"})
+            @Html.ValidationMessageFor(m => m.Brand)
+        </p>
+        <p>
+            @Html.LabelFor(m=>m.Year)
+            @Html.TextBoxFor(m=>m.Year, new { @class="textwidth50"})
+            @Html.ValidationMessageFor(m => m.Year)
         </p>
          <p style="display:none">
             @Html.LabelFor(m=>m.Price)

@@ -16,7 +16,7 @@ namespace BLL.CertificateBL
         static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static List<Certificate> GetCertificateList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Certificate.Where(d => d.Deleted == false && d.Language == language).OrderBy(d=>d.SortOrder).ToList();
                 return list;
@@ -25,7 +25,7 @@ namespace BLL.CertificateBL
 
         public static List<Certificate> GetCertificateListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Certificate.Where(d => d.Deleted == false && d.Language == language && d.Online==true).OrderBy(d=>d.SortOrder).ToList();
                 return list;
@@ -34,7 +34,7 @@ namespace BLL.CertificateBL
 
         public static bool AddCertificate(Certificate record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -67,7 +67,7 @@ namespace BLL.CertificateBL
 
         public static bool UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Certificate.SingleOrDefault(d => d.CertificateId == id);
                 try
@@ -92,7 +92,7 @@ namespace BLL.CertificateBL
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -120,7 +120,7 @@ namespace BLL.CertificateBL
 
         public static Certificate GetCertificateById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -139,7 +139,7 @@ namespace BLL.CertificateBL
 
         public static bool EditCertificate(Certificate Certificatemodel)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -183,7 +183,7 @@ namespace BLL.CertificateBL
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

@@ -16,6 +16,9 @@ namespace DAL.Entities
         [Display(Name="Proje İsmi")]
         [Required(ErrorMessage="Proje İsmini Giriniz.")]
         public string Name { get; set; }
+        [Display(Name = "Proje Alt Başlık")]
+        [Required(ErrorMessage = "Proje Alt Başlığını Giriniz.")]
+        public string SubTitle { get; set; }
         [Display(Name = "Proje Açıklaması")]
         public string Content { get; set; }
         [Display(Name = "Proje Ek Doya")]

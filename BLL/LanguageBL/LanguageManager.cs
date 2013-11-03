@@ -12,7 +12,7 @@ namespace BLL.LanguageBL
     {
         public static IEnumerable<Languages> GetLanguages()
         {
-            using (DeneysanContext db=new DeneysanContext())
+            using (MainContext db=new MainContext())
             {
                 IEnumerable<Languages> language_items = db.Languages.ToList();
                  return language_items;

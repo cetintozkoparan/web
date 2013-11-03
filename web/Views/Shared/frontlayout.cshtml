@@ -11,14 +11,14 @@
 <body>
 <div class="bg">
   <div class="wrapper2">
-    <div class="header2"> <a href="#" class="logo2"><img src="/img/logo.png" border="0" /></a>
+    <div class="header2"> <a href="/" class="logo2"><img src="/img/logo.png" border="0" /></a>
       <div class="search">
-        <input type="text" />
+         @{ Html.RenderAction("_search", "FSearch"); }
       </div>
       <ul class="topMenu">
         <li>@Html.ActionLink("TR", "ChangeCulture", "FHome", new { lang = "tr", returnUrl = this.Request.RawUrl }, null)</li>
         <li>@Html.ActionLink("EN", "ChangeCulture", "FHome", new { lang = "en", returnUrl = this.Request.RawUrl }, null)</li>
-        <li><a href="#" class="last">İLETİŞİM</a></li>
+        <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactdetails" class="last">@SharedRess.SharedStrings.contact.ToUpper()</a></li>
       </ul>
       <ul class="firstMenu">
         <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_aboutus">@SharedRess.SharedStrings.aboutus</a></li>

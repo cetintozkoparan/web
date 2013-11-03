@@ -27,11 +27,12 @@
         <thead>
             <tr>
                 <th class="center width5">Sırala</th>
-                 <th class="center widt5">Resim</th>
-                <th class="width50">Ürün Adı</th>
+                 <th class="center width5">Resim</th>
+                <th class="width35">Ürün Adı</th>
+                <th class="center witdh35">Alt Grubu</th>
                 <th class="center witdh10">Durum</th>
-                <th class="center witdh30">Döküman İşlemleri</th>
-                <th class="center witdh10">İşlem</th>
+                <th class="center witdh5">Döküman</th>
+                <th class="center witdh5">İşlem</th>
             </tr>
         </thead>
          <tbody id="item-list">
@@ -52,15 +53,18 @@
                         <span id="spanitem_@item.ProductId">@item.Name</span>
                         <input type="text" id="textitem_@item.ProductId" value="" class="displaynone textwidth90"/>
                     </td>
+                    <td>
+                        <span>@item.ProductSubGroup.GroupName</span>
+                    </td>
                     <td class="center">
                         @if (item.Online == true)
                         {<img   id="img_online_@item.ProductId" src="/Areas/Admin/Content/images/icons/online.png" class="cursorpointer" title="Offline yap" onclick="SetOnlineStatus('/Product/EditStatus',@item.ProductId)" />}
                         else{<img id="img_online_@item.ProductId" src="/Areas/Admin/Content/images/icons/offline.png" class="cursorpointer" title="Online yap" onclick="SetOnlineStatus('/Product/EditStatus',@item.ProductId)" />}
                     </td>
-                    <td class="center">
+                    <td class="center" style="text-align:center">
                          @if (@item.filetechnical != null)   
                          {
-                            <div id="divtechnical" style="float:left;"> 
+                            <div id="divtechnical" style=""> 
                             <img id="btntechnic_@item.ProductId"  src="/Areas/Admin/Content/images/icons/technic.png"  title="Teknik Döküman Kaldır" class="cursorpointer" width="16" height="16" onclick="RemoveTechnic(@item.ProductId)">
                             <a href="@item.filetechnical" target="blank">
                                 <img id="btn_save_@item.ProductId"  src="/Areas/Admin/Content/images/icons/lookup.png"  title="Teknik Döküman Gör" class="cursorpointer" width="16" height="16"></a>

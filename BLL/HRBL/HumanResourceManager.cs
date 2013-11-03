@@ -16,7 +16,7 @@ namespace BLL.HRBL
         static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static HumanResource GetHRByLanguage(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 HumanResource instional_info = db.HumanResource.SingleOrDefault(d => d.Language == language);
                 return instional_info;
@@ -25,7 +25,7 @@ namespace BLL.HRBL
 
         public static bool EditHumanResource(HumanResource record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 HumanResource editrecord = db.HumanResource.SingleOrDefault(d =>  d.Language == record.Language);
         
@@ -49,7 +49,7 @@ namespace BLL.HRBL
 
         public static List<HumanResourcePosition> GetHumanResourcePositionList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.HumanResourcePosition.Where(d => d.Deleted == false && d.Language == language).OrderBy(d => d.SortOrder).ToList();
                 return list;
@@ -58,7 +58,7 @@ namespace BLL.HRBL
 
         public static List<HumanResourcePosition> GetHumanResourcePositionListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.HumanResourcePosition.Where(d => d.Deleted == false && d.Language == language && d.Online == true).OrderBy(d => d.SortOrder).ToList();
                 return list;
@@ -67,7 +67,7 @@ namespace BLL.HRBL
 
         public static bool AddHumanResourcePosition(HumanResourcePosition record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -80,7 +80,7 @@ namespace BLL.HRBL
 
                     LogtrackManager logkeeper = new LogtrackManager();
                     logkeeper.LogDate = DateTime.Now;
-                    logkeeper.LogProcess = EnumLogType.Referans.ToString();
+                    logkeeper.LogProcess = EnumLogType.InsanKaynaklari.ToString();
                     logkeeper.Message = LogMessages.HumanResourcePositionAdded;
                     logkeeper.User = HttpContext.Current.User.Identity.Name;
                     logkeeper.Data = record.HumanResourcePositionName;
@@ -100,7 +100,7 @@ namespace BLL.HRBL
 
         public static bool UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.HumanResourcePosition.SingleOrDefault(d => d.HumanResourcePositionId == id);
                 try
@@ -125,7 +125,7 @@ namespace BLL.HRBL
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -136,7 +136,7 @@ namespace BLL.HRBL
 
                     LogtrackManager logkeeper = new LogtrackManager();
                     logkeeper.LogDate = DateTime.Now;
-                    logkeeper.LogProcess = EnumLogType.Referans.ToString();
+                    logkeeper.LogProcess = EnumLogType.InsanKaynaklari.ToString();
                     logkeeper.Message = LogMessages.HumanResourcePositionDeleted;
                     logkeeper.User = HttpContext.Current.User.Identity.Name;
                     logkeeper.Data = record.HumanResourcePositionName;
@@ -153,7 +153,7 @@ namespace BLL.HRBL
 
         public static HumanResourcePosition GetHumanResourcePositionById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -172,7 +172,7 @@ namespace BLL.HRBL
 
         public static bool EditHumanResourcePosition(HumanResourcePosition HumanResourcePositionmodel)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -182,13 +182,14 @@ namespace BLL.HRBL
                         record.Content = HumanResourcePositionmodel.Content;
                         record.HumanResourcePositionName = HumanResourcePositionmodel.HumanResourcePositionName;
                         record.Language = HumanResourcePositionmodel.Language;
+                        record.Workdef = HumanResourcePositionmodel.Workdef;
                        
                         record.Content = HumanResourcePositionmodel.Content;
                         db.SaveChanges();
 
                         LogtrackManager logkeeper = new LogtrackManager();
                         logkeeper.LogDate = DateTime.Now;
-                        logkeeper.LogProcess = EnumLogType.Referans.ToString();
+                        logkeeper.LogProcess = EnumLogType.InsanKaynaklari.ToString();
                         logkeeper.Message = LogMessages.HumanResourcePositionEdited;
                         logkeeper.User = HttpContext.Current.User.Identity.Name;
                         logkeeper.Data = record.HumanResourcePositionName;
@@ -212,7 +213,7 @@ namespace BLL.HRBL
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

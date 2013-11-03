@@ -18,7 +18,7 @@ namespace BLL.DocumentsBL
         #region documentgroup
         public static List<DocumentGroup> GetDocumentGroupList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.DocumentGroup.Where(d => d.Deleted == false && d.Language == language).OrderBy(d=>d.SortNumber).ToList();
                 return list;
@@ -27,7 +27,7 @@ namespace BLL.DocumentsBL
 
         public static List<DocumentGroup> GetDocumentGroupListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.DocumentGroup.Where(d => d.Deleted == false && d.Language == language && d.Online==true).OrderBy(d => d.SortNumber).ToList();
                 return list;
@@ -37,7 +37,7 @@ namespace BLL.DocumentsBL
 
         public static bool AddDocumentGroup(DocumentGroup record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -70,7 +70,7 @@ namespace BLL.DocumentsBL
 
         public static bool UpdateGroupStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.DocumentGroup.SingleOrDefault(d => d.DocumentGroupId == id);
                 try
@@ -95,7 +95,7 @@ namespace BLL.DocumentsBL
 
         public static bool DeleteGroup(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -123,7 +123,7 @@ namespace BLL.DocumentsBL
 
         public static DocumentGroup GetDocumentGroupById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -142,7 +142,7 @@ namespace BLL.DocumentsBL
 
         public static bool EditDocumentGroup(int id, string name,string pageslug)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -179,7 +179,7 @@ namespace BLL.DocumentsBL
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -210,7 +210,7 @@ namespace BLL.DocumentsBL
 
         public static List<Document> GetDocumentList(int gid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Document.Where(d => d.Deleted == false && d.DocumentGroupId == gid).OrderBy(d => d.SortNumber).ToList();
                 return list;
@@ -219,7 +219,7 @@ namespace BLL.DocumentsBL
 
         public static List<Document> GetDocumentListForFront(int gid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Document.Where(d => d.Deleted == false && d.DocumentGroupId == gid && d.Online==true).OrderBy(d => d.SortNumber).ToList();
                 return list;
@@ -228,7 +228,7 @@ namespace BLL.DocumentsBL
 
         public static bool AddDocument(Document record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -262,7 +262,7 @@ namespace BLL.DocumentsBL
 
         public static bool EditDocument(Document data)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -311,7 +311,7 @@ namespace BLL.DocumentsBL
 
         public static object UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Document.SingleOrDefault(d => d.DocumentId == id);
                 try
@@ -335,7 +335,7 @@ namespace BLL.DocumentsBL
 
         public static object DeleteDocument(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -363,7 +363,7 @@ namespace BLL.DocumentsBL
 
         public static Document GetDocumentById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -384,7 +384,7 @@ namespace BLL.DocumentsBL
 
         public static bool SortDocuments(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

@@ -46,10 +46,21 @@ namespace web.Areas.Admin.Controllers
             {
                 if (uploadfile != null && uploadfile.ContentLength > 0)
                 {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/news/", Utility.SetPagePlug(newsmodel.Header) + "_" + rand + Path.GetExtension(uploadfile.FileName));
-                    newsmodel.NewsImage = "/Content/images/news/" + Utility.SetPagePlug(newsmodel.Header) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                    using (System.Drawing.Image image = System.Drawing.Image.FromStream(uploadfile.InputStream, true, true))
+                    {
+                        if (image.Width == 470 && image.Height == 308)
+                        {
+                            Random random = new Random();
+                            int rand = random.Next(1000, 99999999);
+                            new ImageHelper(470, 308).SaveThumbnail(uploadfile, "/Content/images/news/", Utility.SetPagePlug(newsmodel.Header) + "_" + rand + Path.GetExtension(uploadfile.FileName));
+                            newsmodel.NewsImage = "/Content/images/news/" + Utility.SetPagePlug(newsmodel.Header) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                        }
+                        else
+                        {
+                            TempData["ImageSizeError"] = "Eklemiş olduğunuz resmin boyutları 470x308 olmalıdır...";
+                            return View();
+                        }
+                    }
                 }
                 else
                 {
@@ -130,10 +141,21 @@ namespace web.Areas.Admin.Controllers
             {
                 if (uploadfile != null && uploadfile.ContentLength > 0)
                 {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    new ImageHelper(280, 240).SaveThumbnail(uploadfile, "/Content/images/news/", Utility.SetPagePlug(newsmodel.Header) + "_" + rand + Path.GetExtension(uploadfile.FileName));
-                    newsmodel.NewsImage = "/Content/images/news/" + Utility.SetPagePlug(newsmodel.Header) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                    using (System.Drawing.Image image = System.Drawing.Image.FromStream(uploadfile.InputStream, true, true))
+                    {
+                        if (image.Width == 470 && image.Height == 308)
+                        {
+                            Random random = new Random();
+                            int rand = random.Next(1000, 99999999);
+                            new ImageHelper(470, 308).SaveThumbnail(uploadfile, "/Content/images/news/", Utility.SetPagePlug(newsmodel.Header) + "_" + rand + Path.GetExtension(uploadfile.FileName));
+                            newsmodel.NewsImage = "/Content/images/news/" + Utility.SetPagePlug(newsmodel.Header) + "_" + rand + Path.GetExtension(uploadfile.FileName);
+                        }
+                        else
+                        {
+                            TempData["ImageSizeError"] = "Eklemiş olduğunuz resmin boyutları 470x308 olmalıdır...";
+                            return View();
+                        }
+                    }
                 }
               
                 newsmodel.PageSlug = Utility.SetPagePlug(newsmodel.Header);

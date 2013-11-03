@@ -28,11 +28,42 @@ namespace web.Areas.Admin
             context.MapRoute("instituional_visionx", "yonetim/kurumsal/hakkimizda/{lang}", new { action = "Vizyon", Controller = "Institutional" });
             context.MapRoute("instituional_misionx", "yonetim/kurumsal/misyon/{lang}", new { action = "Misyon", Controller = "Institutional" });
 
+
+            context.MapRoute("ourservices_indexx", "yonetim/hizmetlerimiz", new { action = "OurServices", Controller = "Service" });
+            context.MapRoute("ourservices_indexx1", "yonetim/hizmetlerimiz/{lang}", new { action = "OurServices", Controller = "Service" });
+
             //HABERLER
             context.MapRoute("news_defaultx", "yonetim/haberler", new { action = "Index", Controller = "News" }, null, new[] { "web.Areas.Admin.Controllers" });
             context.MapRoute("newsx", "yonetim/haberler/{lang}", new { action = "Index", Controller = "News" });
             context.MapRoute("newsaddx", "yonetim/haberekle", new { action = "AddNews", Controller = "News" });
             context.MapRoute("newseditx", "yonetim/haberduzenle/{id}", new { action = "EditNews", Controller = "News" });
+
+            //PROJECTS
+            context.MapRoute("service_defaultx", "yonetim/hizmetler", new { action = "Index", Controller = "Service" });
+            context.MapRoute("servicex", "yonetim/hizmetler/{lang}", new { action = "Index", Controller = "Service" });
+            context.MapRoute("servicex2", "yonetim/hizmetler/{lang}/{id}", new { action = "Index", Controller = "Service" });
+            context.MapRoute("serviceaddx", "yonetim/hizmetekle", new { action = "AddService", Controller = "Service" });
+            context.MapRoute("serviceeditx", "yonetim/hizmetduzenle/{id}", new { action = "EditService", Controller = "Service" });
+
+            context.MapRoute("servicegroup_defaultx", "yonetim/hizmetgruplari", new { action = "Index", Controller = "ServiceGroup" });
+            context.MapRoute("servicegroupx", "yonetim/hizmetgruplari/{lang}", new { action = "Index", Controller = "ServiceGroup" });
+            context.MapRoute("servicegroupaddx", "yonetim/hizmetgrubuekle", new { action = "AddServiceGroup", Controller = "ServiceGroup" });
+            context.MapRoute("servicegroupeditx", "yonetim/hizmetgrubuduzenle/{id}", new { action = "EditServiceGroup", Controller = "ServiceGroup" });
+
+            //SECTORS
+            context.MapRoute("sector_defaultx", "yonetim/sektorler", new { action = "Index", Controller = "Sector" });
+            context.MapRoute("sectorx", "yonetim/sektorler/{lang}", new { action = "Index", Controller = "Sector" });
+            context.MapRoute("sectorx2", "yonetim/sektorler/{lang}/{id}", new { action = "Index", Controller = "Sector" });
+            context.MapRoute("sectoraddx", "yonetim/sektorekle", new { action = "AddSector", Controller = "Sector" });
+            context.MapRoute("sectoreditx", "yonetim/sektorduzenle/{id}", new { action = "EditSector", Controller = "Sector" });
+
+            context.MapRoute("sectorgroup_defaultx", "yonetim/sektorgruplari", new { action = "Index", Controller = "SectorGroup" });
+            context.MapRoute("sectorgroupx", "yonetim/sektorgruplari/{lang}", new { action = "Index", Controller = "SectorGroup" });
+            context.MapRoute("sectorgroupaddx", "yonetim/sektorgrubuekle", new { action = "AddSectorGroup", Controller = "SectorGroup" });
+            context.MapRoute("sectorgroupeditx", "yonetim/sektorgrubuduzenle/{id}", new { action = "EditSectorGroup", Controller = "SectorGroup" });
+
+            context.MapRoute("oursectors_indexx", "yonetim/sektorlerimiz", new { action = "OurSectors", Controller = "Sector" });
+            context.MapRoute("oursectors_indexx1", "yonetim/sektorlerimiz/{lang}", new { action = "OurSectors", Controller = "Sector" });
 
             //PROJECTS
             context.MapRoute("project_defaultx", "yonetim/projeler", new { action = "Index", Controller = "Project" });
@@ -63,12 +94,24 @@ namespace web.Areas.Admin
             context.MapRoute("linkeditx", "yonetim/linkduzenle/{id}", new { action = "EditLink", Controller = "Link" });
             context.MapRoute("linksx", "yonetim/linkler/{lang}", new { action = "Index", Controller = "Link" });
 
+            //Ekipmanlar
+            context.MapRoute("equipment_defaultx", "yonetim/ekipmanlar", new { action = "Index", Controller = "Equipment" });
+            context.MapRoute("equipmentaddx", "yonetim/ekipmanekle", new { action = "Add", Controller = "Equipment" });
+            context.MapRoute("equipmenteditx", "yonetim/ekipmanduzenle/{id}", new { action = "Edit", Controller = "Equipment" });
+            context.MapRoute("equipmentx", "yonetim/ekipmanlar/{lang}", new { action = "Index", Controller = "Equipment" });
+
 
             //REFERANSLAR
             context.MapRoute("references_defaultx", "yonetim/referanslar", new { action = "Index", Controller = "Reference" });
             context.MapRoute("referencesx", "yonetim/referanslar/{lang}", new { action = "Index", Controller = "Reference" });
             context.MapRoute("referenceaddx", "yonetim/referansekle", new { action = "AddReference", Controller = "Reference" });
             context.MapRoute("referenceeditx", "yonetim/referansduzenle/{id}", new { action = "EditReference", Controller = "Reference" });
+
+            //REFERANSLAR
+            context.MapRoute("banner_defaultx", "yonetim/banner", new { action = "Index", Controller = "Banner" });
+            context.MapRoute("bannerx", "yonetim/banner/{lang}", new { action = "Index", Controller = "Banner" });
+            context.MapRoute("banneraddx", "yonetim/bannerekle", new { action = "Add", Controller = "Banner" });
+            context.MapRoute("bannereditx", "yonetim/bannerduzenle/{id}", new { action = "Edit", Controller = "Banner" });
 
             //IS ORTAKLARI
             context.MapRoute("solutionpartner_defaultx", "yonetim/cozumortaklari", new { action = "Index", Controller = "SolutionPartner" });
@@ -103,9 +146,16 @@ namespace web.Areas.Admin
 
             //ÜRÜNLER
             context.MapRoute("productsx", "yonetim/urunler", new { action = "Index", Controller = "Product" });
+            
             context.MapRoute("productsgroups_defaultx", "yonetim/urungruplari", new { action = "Index", Controller = "ProductGroup" });
             context.MapRoute("productsgroups_editx", "yonetim/urungrubuduzenle/{id}", new { action = "EdtiGroup", Controller = "ProductGroup" });
             context.MapRoute("productsgroupsx", "yonetim/urungruplari/{lang}", new { action = "Index", Controller = "ProductGroup" });
+            
+            context.MapRoute("productssubgroups_defaultx", "yonetim/urunaltgruplari", new { action = "Index", Controller = "ProductSubGroup" });
+            context.MapRoute("productssubgroups_editx", "yonetim/urunaltgrubuduzenle/{id}", new { action = "EdtiGroup", Controller = "ProductSubGroup" });
+            context.MapRoute("productssubgroupsx", "yonetim/urunaltgruplari/{lang}", new { action = "Index", Controller = "ProductSubGroup" });
+            context.MapRoute("productssubgroupsx2", "yonetim/urunaltgruplari/{lang}/{id}", new { action = "Index", Controller = "ProductSubGroup" });
+            
             context.MapRoute("addproductsx", "yonetim/urunekle", new { action = "AddProduct", Controller = "Product" });
             context.MapRoute("editproductsx", "yonetim/urunduzenle/{id}", new { action = "EditProduct", Controller = "Product" });
             context.MapRoute("productslist_defaultx", "yonetim/urunlistesi", new { action = "Index", Controller = "Product" }, null, new[] { "web.Areas.Admin.Controllers" });

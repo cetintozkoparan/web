@@ -13,7 +13,7 @@ namespace BLL.Gallery
         #region GalleryGroup
         public static List<GalleryGroup> GetGalleryGroupList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.GalleryGroup.Where(d => d.Deleted == false && d.Language == language).OrderBy(d=>d.SortOrder).ToList();
                 return list;
@@ -22,7 +22,7 @@ namespace BLL.Gallery
 
         public static bool AddGalleryGroup(GalleryGroup record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -55,7 +55,7 @@ namespace BLL.Gallery
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -81,7 +81,7 @@ namespace BLL.Gallery
 
         public static bool UpdateGroupStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.GalleryGroup.SingleOrDefault(d => d.GalleryGroupId == id);
                 try
@@ -106,7 +106,7 @@ namespace BLL.Gallery
 
         public static bool DeleteGroup(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -134,7 +134,7 @@ namespace BLL.Gallery
 
         public static GalleryGroup GetGalleryGroupById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -153,7 +153,7 @@ namespace BLL.Gallery
 
         public static bool EditGalleryGroup(int id, string name, string pageslug)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -199,7 +199,7 @@ namespace BLL.Gallery
 
         public static object DeleteImage(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -217,7 +217,7 @@ namespace BLL.Gallery
 
         public static DAL.Entities.Gallery GetGalleryById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -236,7 +236,7 @@ namespace BLL.Gallery
 
         public static List<DAL.Entities.Gallery> GetGalleryList(int gid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Gallery.Where(d => d.GalleryGroupId == gid).ToList();
                 return list;

@@ -15,7 +15,7 @@ namespace BLL.NewsBL
         static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static List<News> GetNewsList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var news_list = db.News.Where(d => d.Deleted == false && d.Language == language).OrderByDescending(d => d.TimeCreated).OrderBy(d => d.SortOrder).ToList();
                 return news_list;
@@ -24,7 +24,7 @@ namespace BLL.NewsBL
 
         public static List<News> GetNewsListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var news_list = db.News.Where(d => d.Deleted == false && d.Language == language && d.Online == true).OrderByDescending(d => d.TimeCreated).OrderBy(d => d.SortOrder).ToList();
                 return news_list;
@@ -33,7 +33,7 @@ namespace BLL.NewsBL
 
         public static News GetNewsItem(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 News news = db.News.Where(d => d.NewsId == id).SingleOrDefault();
                 return news;
@@ -42,7 +42,7 @@ namespace BLL.NewsBL
 
         public static bool AddNews(News record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -53,6 +53,13 @@ namespace BLL.NewsBL
                     record.SortOrder = 9999;
                     db.News.Add(record);
                     db.SaveChanges();
+                    LogtrackManager logkeeper = new LogtrackManager();
+                    logkeeper.LogDate = DateTime.Now;
+                    logkeeper.LogProcess = EnumLogType.Haber.ToString();
+                    logkeeper.Message = LogMessages.NewsAdded;
+                    logkeeper.User = HttpContext.Current.User.Identity.Name;
+                    logkeeper.Data = record.Header;
+                    logkeeper.AddInfoLog(logger);
                     return true;
                 }
                 catch (Exception ex)
@@ -65,7 +72,7 @@ namespace BLL.NewsBL
 
         public static bool UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.News.SingleOrDefault(d => d.NewsId == id);
                 try
@@ -89,7 +96,7 @@ namespace BLL.NewsBL
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -117,7 +124,7 @@ namespace BLL.NewsBL
 
         public static News GetNewsById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -138,7 +145,7 @@ namespace BLL.NewsBL
 
         public static dynamic EditNews(News newsmodel)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -157,6 +164,14 @@ namespace BLL.NewsBL
                         record.Spot = newsmodel.Spot;
 
                         db.SaveChanges();
+
+                        LogtrackManager logkeeper = new LogtrackManager();
+                        logkeeper.LogDate = DateTime.Now;
+                        logkeeper.LogProcess = EnumLogType.Haber.ToString();
+                        logkeeper.Message = LogMessages.NewsEdited;
+                        logkeeper.User = HttpContext.Current.User.Identity.Name;
+                        logkeeper.Data = record.Header;
+                        logkeeper.AddInfoLog(logger);
                         return true;
                     }
                     else
@@ -172,7 +187,7 @@ namespace BLL.NewsBL
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

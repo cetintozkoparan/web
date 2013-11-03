@@ -61,9 +61,10 @@ namespace web.Areas.Admin.Controllers
 
         public ActionResult EdtiGroup() 
         {
-            var languages = LanguageManager.GetLanguages();
-                var list = new SelectList(languages, "Culture", "Language");
-                ViewBag.LanguageList = list;
+            var lang = FillLanguagesList();
+
+               
+
                 if(RouteData.Values["id"]!=null)
                 {
                     int nid=0;

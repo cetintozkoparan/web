@@ -1,100 +1,145 @@
-﻿@model DAL.Entities.Contact
+﻿@model web.Models.ContactWrapperModel
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
-
-<style type="text/css">
-.product-feature {position: relative;padding-left: 60px;margin-top: 30px;}
-.product-feature:first-child { margin-top: 0; }
-.product-feature h3 {font-size: 16px;line-height: 22px;color: #333;padding-bottom: 7px; margin-left:10px;}
-.product-feature p { margin: 0 0 0 10px; }
-.product-feature img,.product-feature > span {display: block;position: absolute;left: 0;top: 0;margin: 0;padding: 12px;width: 24px;height: 24px;border-radius: 24px;-moz-border-radius: 24px;-webkit-border-radius: 24px;}
-.product-feature > span {font-size: 25px;color: #FFF;text-align: center;line-height: 23px;}
-.icon-map-marker { background-image:url('/Content/Images/Front/map-marker.png'); background-repeat:no-repeat; }
-.icon-phone { background-image:url('/Content/Images/Front/icon-phone.png'); background-repeat:no-repeat; }
-.icon-envelope-alt { background-image:url('/Content/Images/Front/icon-envelope-alt.png'); background-repeat:no-repeat; }
-.icon-web { background-image:url('/Content/Images/Front/icon-web.png'); background-repeat:no-repeat; }
-</style>
-<div class="main_content mainpage pageheight" style="">
-    <div class="wrapper mainpage grid_12">
-        <div class="content_page page">
-            <h2>@ContactRess.ContactStrings.contact</h2>
-            <hr class="wide">
-            <div>
-                <div class="iletisim_left">
-                    <div class="product-feature"><span class="icon-map-marker"></span><h3>@SharedRess.SharedStrings.address</h3><p>@Model.Address</p></div>
-                    <div class="product-feature"><span class="icon-phone"></span><h3>@SharedRess.SharedStrings.phone / Fax</h3><p>@Model.Phone<br>@Model.Fax</p></div>
-                    <div class="product-feature"><span class="icon-envelope-alt"></span><h3>@SharedRess.SharedStrings.email</h3><p>@Model.Email<br>&nbsp;</p></div>
-                    <div class="product-feature"><span class="icon-web"></span><h3>Web</h3><p><a href="http://www.web.com">www.web.com</a> <br><a href="#">blog.web.com</a></p></div>
-                        
-                   @* <p>
-                        <strong>
-                            <span>@SharedRess.SharedStrings.address:</span>
-                        </strong>
-                        <br />
-                        <span>@Html.Raw(Model.Address)</span>
-                    </p>
-                    <p>
-                        <strong><span>@SharedRess.SharedStrings.phone:</span> </strong>
-                        <br />
-                        <span>@Model.Phone</span>
-                    </p>
-                    <p>
-                        <strong><span>@SharedRess.SharedStrings.fax:</span> </strong>
-                        <br />
-                        <span>@Model.Fax</span>
-                    </p>
-                    <p>
-                        <strong><span>@SharedRess.SharedStrings.email:</span> </strong>
-                        <br />
-                        <a href="mailto:@Model.Email">
-                            <span>@Model.Email</span></a>
-                    </p>
-                    <p>
-                        <strong>Web:</strong><br />
-                        <a href="http://www.web.com"><span>http://www.web.com</span></a>
-                    </p>
-                    <p>
-                        <strong><span>@ContactRess.ContactStrings.mapcoordinates</span> </strong>
-                        <br />
-                        <span>39.674064;27.935615</span>
-                    </p>*@
-                </div>
-               @* <div style="width:400px; float:right;">
-                    <div class="topmargin">
-                        
-                            
-                        </div>
-
-                </div>*@
-                <div class="iletisim_map mapPanelHandle" style="cursor:pointer;">
-                    @*<div id="gMap" class="gmap" data-zoom="14"></div>*@
-                    <img id="resimharita" src="~/Content/Images/Front/iletisim-harita.png" />
-                </div>
-
-                <br style="clear: both" />
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<script src="~/Content/Scripts/jquery-ui.js"></script>
-
-<script type="text/javascript">
-    $(function () {
-        $('.iletisim_map').hover(function () {
-            $('#resimharita').fadeToggle("fast", "linear");
-        });
-
-        $('.iletisim_map').click(function () {
-            $("html, body").animate({ scrollTop: 0 }, "slow");
-        });
-
-
-        setInterval(function () {
-            $("#mapPanelHandle").effect("highlight", "slow");
-        }, 2000);
+@if (@SharedRess.SharedStrings.menu_culture.Equals("tr"))
+{
+    <script src="~/Content/Scripts/jquery.validationEngine-tr.js"></script>
+}
+else
+{
+    <script src="~/Content/Scripts/jquery.validationEngine-en.js"></script>
+}
+<script src="~/Content/Scripts/jquery.maskedinput-1.3.min.js"></script>
+<script src="~/Content/Scripts/jquery.validationEngine.js"></script>
+<link href="~/Content/Styles/validationEngine.jquery.css" rel="stylesheet" />
+<script>
+    $(document).ready(function () {
+        jQuery("#contactform").validationEngine();
     });
 </script>
+<style type="text/css">
+    .contactList li { width:230px;}
+    .notification.error {background:#fccac3 url('/Content/images/Front/error.png') no-repeat 10px 50%;border-color:#ea5338;}
+    .notification {border-width:1px;border-style:solid;padding:17px 17px 17px 55px;margin-bottom:15px;-moz-border-radius:3px;-webkit-border:3px;border-radius:3px;}
+    .notification.success {background:#effeb9 url('/Content/images/Front/success.png') no-repeat 10px 50%;border-color:#98c700;}
+    .notification.info { background:#d4e7f5 url('/Content/images/Front/information.png') no-repeat 10px 14px;border-color:#589ad7;}
+    .notification.info span.strong {color:#152433;}
+    #Captcha { margin-bottom:0px;}
+    .kepce-input { border: 1px solid #e2e2e2;float: right;padding: 9px 0px 9px 10px;width: 37px;font-size: 12px;color: #ccc;outline: none;margin: 0 0 16px 0;font-family: 'Roboto', sans-serif;}
+</style>
+<div class="main2">
+      @Html.Partial("_main2Left")
+      
+      <div class="main2Right">
+        <div class="pagenav">
+         <ul>
+            <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_homepage">@SharedRess.SharedStrings.homepage</a></li>
+            <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_aboutus">@SharedRess.SharedStrings.aboutus</a></li>
+            <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_contactdetails" class="last selected">@SharedRess.SharedStrings.contact</a></li>
+          </ul>
+        </div>
+        <h3 class="pageTitle">@SharedRess.SharedStrings.contact</h3>
+          @if (TempData["required"] != null)
+          {
+              if (TempData["required"].ToString().Equals("true"))
+              {
+                    <div style="clear:both;"></div>
+                    <div class="notification error">@SharedRess.SharedStrings.requiredfields</div>
+              }
+          }
+          @if (TempData["captchaError"] != null)
+                    {
+                        <div style="clear:both;"></div>
+                        <div class="notification error">@TempData["captchaError"].ToString()</div>
+                    }
+            @if (TempData["sent"] != null)
+            {
+                if (TempData["sent"].ToString().Equals("true"))
+                {
+                        <div style="clear:both;"></div>
+                        <div class="notification success">@ContactRess.ContactStrings.messagesent</div>
+                }
+                else if (TempData["sent"].ToString().Equals("false"))
+                {
+                        <div style="clear:both;"></div>
+                        <div class="notification error">@ContactRess.ContactStrings.messagenotsent</div>
+                }
+            }
+        <div class="pageContent">
+          <div class="contactContent">
+          <div class="leftContactContent">
+            <img src="/img/iletisim.jpg" alt="iletisim" />
+          </div>
+          <div class="rightContactContent">
+          <div class="contactSection">
+          <div class="adressListImage"><img src="/img/contactHomeImg.png" alt="iletisim adresi" /></div>
+          <ul class="contactList">
+          <li>@SharedRess.SharedStrings.address:</li>
+          <li>@Model.contact.Address</li>
+          </ul>
+          </div>
+          <div class="contactSection">
+          <div class="adressListImage"><img src="/img/contactPhoneImg.png" alt="iletişim telefonu" /></div>
+          <ul class="contactList">
+          <li>@SharedRess.SharedStrings.phone:</li>
+          <li>@Model.contact.Phone</li>
+          
+          </ul>
+          </div>
+          <div class="contactSection">
+          <div class="adressListImage"><img src="/img/contactFaxImg.png" alt="iletişim fax" /></div>
+          <ul class="contactList">
+          <li>@SharedRess.SharedStrings.fax :</li>
+          <li>@Model.contact.Fax</li>
+ </ul>
+          </div>
+          <div class="contactSection">
+          <div class="adressListImage"><img src="/img/contactMailImg.png" alt="iletişim mail" /></div>
+          <ul class="contactList">
+          <li>@SharedRess.SharedStrings.email :</li>
+          <li><a class="mailTo" href="mailto:@Model.contact.Email">@Model.contact.Email</a></li>
+       
+          </ul>
+          <div class="contactMap"><iframe width="274" height="100" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=tr&amp;geocode=&amp;q=Tekstilkent+Koza+Plaza+Kontrolmatik++Esenler+&amp;aq=&amp;sll=41.070619,28.867508&amp;sspn=0.020027,0.042272&amp;ie=UTF8&amp;hq=Tekstilkent+Koza+Plaza+Kontrolmatik&amp;hnear=Esenler%2F%C4%B0stanbul,+T%C3%BCrkiye&amp;ll=41.071887,28.857319&amp;spn=0.020027,0.042272&amp;t=m&amp;z=14&amp;iwloc=A&amp;cid=8929121981949406896&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=tr&amp;geocode=&amp;q=Tekstilkent+Koza+Plaza+Kontrolmatik++Esenler+&amp;aq=&amp;sll=41.070619,28.867508&amp;sspn=0.020027,0.042272&amp;ie=UTF8&amp;hq=Tekstilkent+Koza+Plaza+Kontrolmatik&amp;hnear=Esenler%2F%C4%B0stanbul,+T%C3%BCrkiye&amp;ll=41.071887,28.857319&amp;spn=0.020027,0.042272&amp;t=m&amp;z=14&amp;iwloc=A&amp;cid=8929121981949406896" style="color:#0000FF;text-align:left">@SharedRess.SharedStrings.morebig</a></small></div>
+          </div>
+          </div>
+          
+          </div>
+          <div class="contactBottomContent">
+             @using (Html.BeginForm("Form", "FContact", FormMethod.Post, new { id = "contactform" }))
+             {
+                <div class="formLeft">
+                    @Html.TextBox("namesurname", null, new { @class = "validate[required] text-input contactInput", @placeholder = "Ad Soyad" })
+                    <div class="clear"></div>
+                    
+                    @Html.TextBox("email", null, new { @class = "validate[required,custom[email]] text-input contactInput", @placeholder = "Email" })
+                    <div class="clear"></div>
+                    
+                    @Html.TextBox("subject", null, new { @class = "validate[required] text-input contactInput lastInput", @placeholder = "Mesaj Konusu" })
+                </div>
+                
+                    @Html.TextArea("body", null, new { @class = "validate[required] text-input contactTextArea", @placeholder = "Mesaj içeriği..." })
+                    <div class="formBottom">
+                    
+                        <input style="float:right" type="submit" class="contactBtn" value="@ContactRess.ContactStrings.send" />
+
+                        <div class="editor-field" style="float:right; margin: 17px 8px 0 0;">  
+                            @Html.TextBox("kepce", null, new { @class = "validate[required] text-input kepce-input" })
+                            @*@Html.EditorFor(model => model.subcribe.Captcha) *@
+                            @*@Html.ValidationMessageFor(model => model.subcribe.Captcha) *@
+                        </div>
+
+                        <div class="editor-label" style="float:right;margin: 20px 3px 0 0;"> 
+                            <a href="@Url.Action("Index")"> 
+                                <img id="Captcha" alt="Captcha" src="@Url.Action("CaptchaImage")" style="" /> 
+                            </a> 
+                        </div> 
+                    
+                    </div>
+             }
+          
+          </div>
+        </div>
+      </div>
+    </div>

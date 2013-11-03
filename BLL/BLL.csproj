@@ -59,6 +59,12 @@
     <Compile Include="BankBL\BankManager.cs" />
     <Compile Include="CertificateBL\CertificateManager.cs" />
     <Compile Include="ContactBL\ContactManager.cs" />
+    <Compile Include="SectorGroupBL\SectorGroupManager.cs" />
+    <Compile Include="SectorBL\SectorManager.cs" />
+    <Compile Include="EquipmentBL\EquipmentManager.cs" />
+    <Compile Include="PhotoBL\PhotoManager.cs" />
+    <Compile Include="ServiceBL\ServiceManager.cs" />
+    <Compile Include="ServiceGroupBL\ServiceGroupManager.cs" />
     <Compile Include="MailBL\MailManager.cs" />
     <Compile Include="ProjectReferenceBL\ProjectReferenceGroupManager.cs" />
     <Compile Include="ProjectReferenceBL\ProjectReferenceManager.cs" />

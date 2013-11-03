@@ -17,6 +17,10 @@ namespace DAL.Entities
        
         [Display(Name = "Açıklama")]
         public string Content { get; set; }
+
+        [Display(Name = "İş Tanımı")]
+        public string Workdef { get; set; }
+        
         public Nullable<DateTime> TimeCreated { get; set; }
         public Nullable<DateTime> TimeUpdated { get; set; }
         public bool Deleted { get; set; }

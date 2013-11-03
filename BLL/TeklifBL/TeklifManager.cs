@@ -23,7 +23,7 @@ namespace BLL.TeklifBL
     {
         public static List<Teklif> GetList()
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 int status = Convert.ToInt32(EnumTeklifTip.Onaylanmadi);
                 var list = db.Teklif.OrderByDescending(d => d.TeklifTarihi).ToList();
@@ -33,7 +33,7 @@ namespace BLL.TeklifBL
 
         public static List<Teklif> GetList(int type)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
 
                 var list = db.Teklif.Where(d => d.Durum == type).OrderByDescending(d => d.TeklifTarihi).ToList();
@@ -43,7 +43,7 @@ namespace BLL.TeklifBL
 
         public static Teklif GetTeklifById(int teklifid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
 
                 var model = db.Teklif.SingleOrDefault(d => d.TeklifId == teklifid);
@@ -55,7 +55,7 @@ namespace BLL.TeklifBL
 
         public static List<TeklifUrun_Urun> GetUrunList(int teklifid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
 
                 // var model = db.TeklifUrun.Where(d => d.TeklifId == teklifid).ToList();
@@ -104,7 +104,7 @@ namespace BLL.TeklifBL
 
         public static bool UpdateTeklif(Teklif teklif)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -138,7 +138,7 @@ namespace BLL.TeklifBL
 
         public static bool AddTeklif(Teklif teklif, TeklifUrun[] teklifurun, Dictionary<string, string>[] products)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -220,7 +220,7 @@ namespace BLL.TeklifBL
 
         public static string[] HesaplamaYap(int id, string fiyat, int adet, string donanim, int teklifid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var urun = db.TeklifUrun.Where(d => d.TeklifId == teklifid && d.UrunId == id).SingleOrDefault();
                 urun.Fiyat = Convert.ToDecimal(fiyat);
@@ -258,7 +258,7 @@ namespace BLL.TeklifBL
 
         public static MemoryStream ProformaOnizle(string tekid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -697,7 +697,7 @@ namespace BLL.TeklifBL
 
         public static bool ProformaGonder(string tekid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -1188,7 +1188,7 @@ namespace BLL.TeklifBL
 
         public static void DeleteTeklif(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var model = db.Teklif.SingleOrDefault(d => d.TeklifId == id);
                 if (model != null)
@@ -1201,7 +1201,7 @@ namespace BLL.TeklifBL
 
         public static bool DeleteTeklifUrun(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var model = db.TeklifUrun.SingleOrDefault(d => d.TeklifUrunId == id);
                 if (model != null)

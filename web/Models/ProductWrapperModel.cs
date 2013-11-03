@@ -10,11 +10,14 @@ namespace web.Models
     {
         public IEnumerable<Product> products { get; set; }
         public IEnumerable<ProductGroup> productgroups { get; set; }
+        //public IEnumerable<ProductSubGroup> productsubgroups { get; set; }
 
         public ProductWrapperModel(IEnumerable<Product> products, IEnumerable<ProductGroup> productgroups)
         {
             this.products = products;
             this.productgroups = productgroups;
+            //this.productsubgroups = productsubgroups;
         }
     }
+
 }

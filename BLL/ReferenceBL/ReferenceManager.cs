@@ -16,7 +16,7 @@ namespace BLL.ReferenceBL
         static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static List<References> GetReferenceList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.References.Where(d => d.Deleted == false && d.Language == language).OrderBy(d=>d.SortOrder).ToList();
                 return list;
@@ -25,7 +25,7 @@ namespace BLL.ReferenceBL
 
         public static List<References> GetReferenceListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.References.Where(d => d.Deleted == false && d.Language == language && d.Online==true).OrderBy(d=>d.SortOrder).ToList();
                 return list;
@@ -34,7 +34,7 @@ namespace BLL.ReferenceBL
 
         public static bool AddReference(References record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -67,7 +67,7 @@ namespace BLL.ReferenceBL
 
         public static bool UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.References.SingleOrDefault(d => d.ReferenceId == id);
                 try
@@ -92,7 +92,7 @@ namespace BLL.ReferenceBL
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -120,7 +120,7 @@ namespace BLL.ReferenceBL
 
         public static References GetReferenceById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -139,7 +139,7 @@ namespace BLL.ReferenceBL
 
         public static bool EditReference(References referencemodel)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -183,7 +183,7 @@ namespace BLL.ReferenceBL
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

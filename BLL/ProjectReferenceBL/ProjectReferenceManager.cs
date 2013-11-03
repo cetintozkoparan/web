@@ -5,14 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.Context;
 using DAL.Entities;
+using BLL.LogBL;
+using System.Web;
+using log4net;
 
 namespace BLL.ProjectReferenceBL
 {
     public class ProjectReferenceManager
     {
+        static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static List<ProjectReferences> GetProjectReferenceList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.ProjectReferences.Where(d =>  d.Language == language).OrderBy(d=>d.SortOrder).ToList();
                 return list;
@@ -21,16 +26,25 @@ namespace BLL.ProjectReferenceBL
 
         public static List<ProjectReferences> GetProjectReferenceListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.ProjectReferences.Where(d => d.Language == language && d.Online==true).OrderBy(d => d.SortOrder).ToList();
                 return list;
             }
         }
 
+        public static List<ProjectReferences> GetProjectReferenceListForFront(int gid)
+        {
+            using (MainContext db = new MainContext())
+            {
+                var list = db.ProjectReferences.Where(d => d.ProjectReferenceGroupId == gid && d.Online == true).OrderBy(d => d.SortOrder).ToList();
+                return list;
+            }
+        }
+
         public static bool AddProjectReference(ProjectReferences record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -39,6 +53,14 @@ namespace BLL.ProjectReferenceBL
                     record.Online = true;
                     db.ProjectReferences.Add(record);
                     db.SaveChanges();
+
+                    LogtrackManager logkeeper = new LogtrackManager();
+                    logkeeper.LogDate = DateTime.Now;
+                    logkeeper.LogProcess = EnumLogType.Referans.ToString();
+                    logkeeper.Message = LogMessages.ReferenceAdded;
+                    logkeeper.User = HttpContext.Current.User.Identity.Name;
+                    logkeeper.Data = record.Name;
+                    logkeeper.AddInfoLog(logger);
 
                     return true;
                 }
@@ -53,7 +75,7 @@ namespace BLL.ProjectReferenceBL
 
         public static bool UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.ProjectReferences.SingleOrDefault(d => d.ProjectReferenceId == id);
                 try
@@ -78,13 +100,20 @@ namespace BLL.ProjectReferenceBL
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
                     var record = db.ProjectReferences.FirstOrDefault(d => d.ProjectReferenceId == id);
                     db.ProjectReferences.Remove(record);
                     db.SaveChanges();
+                    LogtrackManager logkeeper = new LogtrackManager();
+                    logkeeper.LogDate = DateTime.Now;
+                    logkeeper.LogProcess = EnumLogType.Referans.ToString();
+                    logkeeper.Message = LogMessages.ReferenceDeleted;
+                    logkeeper.User = HttpContext.Current.User.Identity.Name;
+                    logkeeper.Data = record.Name;
+                    logkeeper.AddInfoLog(logger);
                     return true;
                 }
                 catch (Exception)
@@ -96,7 +125,7 @@ namespace BLL.ProjectReferenceBL
 
         public static ProjectReferences GetProjectReferenceById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -115,7 +144,7 @@ namespace BLL.ProjectReferenceBL
 
         public static bool EditProjectReference(ProjectReferences ProjectReferencemodel)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -124,6 +153,7 @@ namespace BLL.ProjectReferenceBL
                     {
                         record.Content = ProjectReferencemodel.Content;
                         record.Name = ProjectReferencemodel.Name;
+                        record.SubTitle = ProjectReferencemodel.SubTitle;
                         
                         record.Language = ProjectReferencemodel.Language;
                         if (!string.IsNullOrEmpty(ProjectReferencemodel.ProjectReferenceFile))
@@ -133,7 +163,13 @@ namespace BLL.ProjectReferenceBL
                         record.Content = ProjectReferencemodel.Content;
                         db.SaveChanges();
 
-                       
+                        LogtrackManager logkeeper = new LogtrackManager();
+                        logkeeper.LogDate = DateTime.Now;
+                        logkeeper.LogProcess = EnumLogType.Referans.ToString();
+                        logkeeper.Message = LogMessages.ReferenceEdited;
+                        logkeeper.User = HttpContext.Current.User.Identity.Name;
+                        logkeeper.Data = record.Name;
+                        logkeeper.AddInfoLog(logger);
 
                         return true;
                     }
@@ -151,7 +187,7 @@ namespace BLL.ProjectReferenceBL
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

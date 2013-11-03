@@ -10,6 +10,7 @@ using BLL.LanguageBL;
 using BLL.Project;
 using DAL.Entities;
 using web.Areas.Admin.Filters;
+using BLL.PhotoBL;
 
 namespace web.Areas.Admin.Controllers
 {
@@ -38,11 +39,15 @@ namespace web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddProject(Projects newmodel, HttpPostedFileBase uploadfile)
+        public ActionResult AddProject(IEnumerable<HttpPostedFileBase> attachments, Projects newmodel, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadimage)
         {
             var languages = LanguageManager.GetLanguages();
             var list = new SelectList(languages, "Culture", "Language");
             ViewBag.LanguageList = list;
+            string lang = "";
+            if (RouteData.Values["lang"] == null)
+                lang = "tr";
+            else lang = RouteData.Values["lang"].ToString();
             if (ModelState.IsValid)
             {
                 if (uploadfile != null && uploadfile.ContentLength > 0)
@@ -52,9 +57,47 @@ namespace web.Areas.Admin.Controllers
                     uploadfile.SaveAs(Server.MapPath("/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName)));
                     newmodel.ProjectFile = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
                 }
+
+                if (uploadimage != null && uploadimage.ContentLength > 0)
+                {
+                    using (System.Drawing.Image image = System.Drawing.Image.FromStream(uploadimage.InputStream, true, true))
+                    {
+                        if (image.Width == 235 && image.Height == 200)
+                        {
+                            Random random = new Random();
+                            int rand = random.Next(1000, 99999999);
+                            uploadimage.SaveAs(Server.MapPath("/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName)));
+                            newmodel.Logo = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
+                        }
+                        else
+                        {
+                            TempData["ImageSizeError"] = "Eklemiş olduğunuz resmin boyutları 235x200 olmalıdır...";
+                            return View();
+                        }
+                    }
+                }
                 newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
                 newmodel.TimeCreated = DateTime.Now;
                 ViewBag.ProcessMessage = ProjectManager.AddProject(newmodel);
+                foreach (var item in attachments)
+                {
+                    if (item != null && item.ContentLength > 0)
+                    {
+                        Random random = new Random();
+                        int rand = random.Next(1000, 99999999);
+                        new ImageHelper(1024, 768).SaveThumbnail(item, "/Content/images/projects/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName));
+                        Photo p = new Photo();
+                        p.CategoryId = 2;
+                        p.ItemId = newmodel.ProjectId;
+                        p.Path = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
+                        p.Online = true;
+                        p.SortOrder = 9999;
+                        p.Language = lang;
+                        p.TimeCreated = DateTime.Now;
+                        p.Title = "Proje";
+                        PhotoManager.Save(p);
+                    }
+                }
                 ModelState.Clear();
 
                 return View();
@@ -83,15 +126,18 @@ namespace web.Areas.Admin.Controllers
             }
             else
                 return View();
-            return View();
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditProject(Projects newmodel, HttpPostedFileBase uploadfile)
+        public ActionResult EditProject(IEnumerable<HttpPostedFileBase> attachments, Projects newmodel, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadimage)
         {
             var languages = LanguageManager.GetLanguages();
             var list = new SelectList(languages, "Culture", "Language");
+            string lang = "";
+            if (RouteData.Values["lang"] == null)
+                lang = "tr";
+            else lang = RouteData.Values["lang"].ToString();
             ViewBag.LanguageList = list;
 
             if (ModelState.IsValid)
@@ -104,6 +150,24 @@ namespace web.Areas.Admin.Controllers
                     newmodel.ProjectFile = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadfile.FileName);
                 }
 
+                if (uploadimage != null && uploadimage.ContentLength > 0)
+                {
+                    using (System.Drawing.Image image = System.Drawing.Image.FromStream(uploadimage.InputStream, true, true))
+                    {
+                        if (image.Width == 235 && image.Height == 200)
+                        {
+                            Random random = new Random();
+                            int rand = random.Next(1000, 99999999);
+                            uploadimage.SaveAs(Server.MapPath("/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName)));
+                            newmodel.Logo = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
+                        }
+                        else
+                        {
+                            TempData["ImageSizeError"] = "Eklemiş olduğunuz resmin boyutları 235x200 olmalıdır...";
+                            return View();
+                        }
+                    }
+                }
                 newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
 
                 if (RouteData.Values["id"] != null)
@@ -114,6 +178,25 @@ namespace web.Areas.Admin.Controllers
                     {
                         newmodel.ProjectId = nid;
                         ViewBag.ProcessMessage = ProjectManager.EditProject(newmodel);
+                        foreach (var item in attachments)
+                        {
+                            if (item != null && item.ContentLength > 0)
+                            {
+                                Random random = new Random();
+                                int rand = random.Next(1000, 99999999);
+                                new ImageHelper(1024, 768).SaveThumbnail(item, "/Content/images/projects/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName));
+                                Photo p = new Photo();
+                                p.CategoryId = 2;
+                                p.ItemId = newmodel.ProjectId;
+                                p.Path = "/Content/images/projects/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
+                                p.Online = true;
+                                p.SortOrder = 9999;
+                                p.Language = lang;
+                                p.TimeCreated = DateTime.Now;
+                                p.Title = "Proje";
+                                PhotoManager.Save(p);
+                            }
+                        }
                         return View(newmodel);
                     }
                     else
@@ -141,6 +224,11 @@ namespace web.Areas.Admin.Controllers
             return lang;
         }
 
+        public PartialViewResult Photos(int categoryID, int itemId)
+        {
+            List<Photo> p = PhotoManager.GetList(categoryID, itemId);
+            return PartialView("_photos", p);
+        }
 
         public JsonResult EditStatus(int id)
         {

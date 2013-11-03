@@ -135,6 +135,12 @@
   <data name="career" xml:space="preserve">
     <value>CAREER</value>
   </data>
+  <data name="cv_not_sended" xml:space="preserve">
+    <value>Your CV has not been delivered successfuly.</value>
+  </data>
+  <data name="cv_sended" xml:space="preserve">
+    <value>Your CV has been delivered successfuly.</value>
+  </data>
   <data name="department" xml:space="preserve">
     <value>Department you want to apply</value>
   </data>

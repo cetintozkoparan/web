@@ -10,6 +10,7 @@ using BLL.LanguageBL;
 using BLL.ProjectReferenceBL;
 using DAL.Entities;
 using web.Areas.Admin.Filters;
+using BLL.PhotoBL;
 
 namespace web.Areas.Admin.Controllers
 {
@@ -43,14 +44,17 @@ namespace web.Areas.Admin.Controllers
             return View();
         }
 
-
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult AddProjectReference(ProjectReferences newmodel, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadimage)
+        public ActionResult AddProjectReference(IEnumerable<HttpPostedFileBase> attachments,ProjectReferences newmodel, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadimage)
         {
             var languages = LanguageManager.GetLanguages();
             var list = new SelectList(languages, "Culture", "Language");
             ViewBag.LanguageList = list;
+            string lang = "";
+            if (RouteData.Values["lang"] == null)
+                lang = "tr";
+            else lang = RouteData.Values["lang"].ToString();
             var groups = ProjectReferenceGroupManager.GetProjectReferenceGroupList(newmodel.Language);
             var grouplist = new SelectList(groups, "ProjectReferenceGroupId", "GroupName", newmodel.ProjectReferenceGroupId);
             ViewBag.GroupList = grouplist;
@@ -68,7 +72,7 @@ namespace web.Areas.Admin.Controllers
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    new ImageHelper(240, 240).SaveThumbnail(uploadimage, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
+                    new ImageHelper(1024, 768).SaveThumbnail(uploadimage, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
                     newmodel.Logo = "/Content/images/ProjectReferences/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
                 }
                 else
@@ -78,6 +82,26 @@ namespace web.Areas.Admin.Controllers
                 newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
                 newmodel.TimeCreated = DateTime.Now;
                 ViewBag.ProcessMessage = ProjectReferenceManager.AddProjectReference(newmodel);
+                foreach (var item in attachments)
+                {
+                    if (item != null && item.ContentLength > 0)
+                    {
+                        Random random = new Random();
+                        int rand = random.Next(1000, 99999999);
+                        new ImageHelper(1024, 768).SaveThumbnail(item, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName));
+                        Photo p = new Photo();
+                        p.CategoryId = 2;
+                        p.ItemId = newmodel.ProjectReferenceId;
+                        p.Path = "/Content/images/ProjectReferences/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
+                        p.Online = true;
+                        p.SortOrder = 9999;
+                        p.Language = lang;
+                        p.TimeCreated = DateTime.Now;
+                        p.Title = "Referans";
+
+                        PhotoManager.Save(p);
+                    }
+                }
                 ModelState.Clear();
                 
                 return View();
@@ -86,6 +110,16 @@ namespace web.Areas.Admin.Controllers
                 return View();
         }
 
+        public PartialViewResult Photos(int categoryID, int itemId)
+        {
+            List<Photo> p = PhotoManager.GetList(categoryID, itemId);
+            return PartialView("_photos", p);
+        }
+
+        public void DeletePhoto(int id)
+        {
+            PhotoManager.Delete(id);
+        }
 
         public ActionResult EditProjectReference()
         {
@@ -99,6 +133,7 @@ namespace web.Areas.Admin.Controllers
                 if (isnumber)
                 {
                     ProjectReferences editrecord = ProjectReferenceManager.GetProjectReferenceById(nid);
+                    
                     var pjgroups = ProjectReferenceGroupManager.GetProjectReferenceGroupList(editrecord.Language);
                     var grouplist = new SelectList(pjgroups, "ProjectReferenceGroupId", "GroupName", editrecord.ProjectReferenceGroupId);
                     ViewBag.GroupList = grouplist;
@@ -109,18 +144,20 @@ namespace web.Areas.Admin.Controllers
             }
             else
                 return View();
-            return View();
         }
 
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult EditProjectReference(ProjectReferences newmodel, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadimage)
+        public ActionResult EditProjectReference(IEnumerable<HttpPostedFileBase> attachments, ProjectReferences newmodel, HttpPostedFileBase uploadfile, HttpPostedFileBase uploadimage)
         {
             var languages = LanguageManager.GetLanguages();
             var list = new SelectList(languages, "Culture", "Language");
             ViewBag.LanguageList = list;
-
+            string lang = "";
+            if (RouteData.Values["lang"] == null)
+                lang = "tr";
+            else lang = RouteData.Values["lang"].ToString();
             if (ModelState.IsValid)
             {
                 if (uploadfile != null && uploadfile.ContentLength > 0)
@@ -135,7 +172,7 @@ namespace web.Areas.Admin.Controllers
                 {
                     Random random = new Random();
                     int rand = random.Next(1000, 99999999);
-                    new ImageHelper(240, 240).SaveThumbnail(uploadimage, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
+                    new ImageHelper(1024, 768).SaveThumbnail(uploadimage, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
                     newmodel.Logo = "/Content/images/ProjectReferences/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
                 }
                 newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
@@ -148,6 +185,29 @@ namespace web.Areas.Admin.Controllers
                     {
                         newmodel.ProjectReferenceId = nid;
                         ViewBag.ProcessMessage = ProjectReferenceManager.EditProjectReference(newmodel);
+                        var pjgroups = ProjectReferenceGroupManager.GetProjectReferenceGroupList(newmodel.Language);
+                        var grouplist = new SelectList(pjgroups, "ProjectReferenceGroupId", "GroupName", newmodel.ProjectReferenceGroupId);
+                        ViewBag.GroupList = grouplist;
+                            foreach (var item in attachments)
+                            {
+                                if (item != null && item.ContentLength > 0)
+                                {
+                                    Random random = new Random();
+                                    int rand = random.Next(1000, 99999999);
+                                    new ImageHelper(1024, 768).SaveThumbnail(item, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName));
+                                    Photo p = new Photo();
+                                    p.CategoryId = 1;
+                                    p.ItemId = newmodel.ProjectReferenceId;
+                                    p.Path = "/Content/images/ProjectReferences/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(item.FileName);
+                                    p.Online = true;
+                                    p.SortOrder = 9999;
+                                    p.Language = lang;
+                                    p.TimeCreated = DateTime.Now;
+                                    p.Title = "Referans";
+                                    PhotoManager.Save(p);
+                                }
+                            }
+                       
                         return View(newmodel);
                     }
                     else
@@ -173,6 +233,11 @@ namespace web.Areas.Admin.Controllers
             var languages = LanguageManager.GetLanguages();
             var list = new SelectList(languages, "Culture", "Language", lang);
             ViewBag.LanguageList = list;
+            
+            var prgroups = ProjectReferenceGroupManager.GetProjectReferenceGroupList(lang);
+            var grouplist = new SelectList(prgroups, "ProjectReferenceGroupId", "GroupName");
+            ViewBag.GroupList = grouplist;
+
             return lang;
         }
 

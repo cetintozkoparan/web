@@ -14,7 +14,10 @@
     <div id="page-header">
        <h2>HABER BİLGİLERİ</h2>
     </div> 
-    
+     @if (TempData["ImageSizeError"] != null)
+    {
+        <div class="notification error">@TempData["ImageSizeError"].ToString()</div>
+    }
 <section class="grid_12 form">
     @Html.Hidden("ProcessMessage",(object)@ViewBag.ProcessMessage) 
     @using(Html.BeginForm("AddNews", "News", FormMethod.Post, new { enctype = "multipart/form-data"}))

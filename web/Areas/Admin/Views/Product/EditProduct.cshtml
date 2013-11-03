@@ -50,6 +50,16 @@
             @Html.TextBoxFor(m=>m.Code, new { @class="textwidth50"})
             @Html.ValidationMessageFor(m => m.Code)
         </p>
+               <p>
+            @Html.LabelFor(m=>m.Brand)
+            @Html.TextBoxFor(m=>m.Brand, new { @class="textwidth50"})
+            @Html.ValidationMessageFor(m => m.Brand)
+        </p>
+        <p>
+            @Html.LabelFor(m=>m.Year)
+            @Html.TextBoxFor(m=>m.Year, new { @class="textwidth50"})
+            @Html.ValidationMessageFor(m => m.Year)
+        </p>
          <p style="display:none">
             @Html.LabelFor(m=>m.Price)
          @*   @Html.TextBoxFor(m=>m.Price, new { @class="textwidth10"})*@

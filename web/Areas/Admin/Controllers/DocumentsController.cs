@@ -208,8 +208,6 @@ namespace web.Areas.Admin.Controllers
             string[] idsList = psl.list;
             bool issorted = DocumentManager.SortDocuments(idsList);
             return Json(issorted);
-
-
         }
         public class JsonList
         {

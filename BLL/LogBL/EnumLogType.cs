@@ -15,6 +15,9 @@ namespace BLL.LogBL
         Dokuman,
         Urun,
         UrunGrup,
-        BankaBilgisi
+        BankaBilgisi,
+        CozumOrtaklari,
+        InsanKaynaklari,
+        Login
     }
 }

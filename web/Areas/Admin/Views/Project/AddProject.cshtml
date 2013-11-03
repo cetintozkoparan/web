@@ -7,6 +7,7 @@
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Content/scripts/plugins/jquery.MultiFile.js"></script>
 
 @Html.Partial("project_leftbar")
 
@@ -14,7 +15,10 @@
     <div id="page-header">
        <h2>PROJE BİLGİLERİ</h2>
     </div> 
-    
+    @if (TempData["ImageSizeError"] != null)
+    {
+        <div class="notification error">@TempData["ImageSizeError"].ToString()</div>
+    }
 <section class="grid_12 form">
     @Html.Hidden("ProcessMessage",(object)@ViewBag.ProcessMessage) 
     @using(Html.BeginForm("AddProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data"}))
@@ -35,6 +39,11 @@
             @Html.TextBoxFor(m=>m.Name, new { @class="textwidth50"})
             @Html.ValidationMessageFor(m => m.Name)
         </p>
+        <p>
+            @Html.LabelFor(m=>m.SubTitle)
+            @Html.TextBoxFor(m=>m.SubTitle, new { @class="textwidth50"})
+            @Html.ValidationMessageFor(m => m.SubTitle)
+        </p>
          <p>
             <label>Logo</label>
             
@@ -45,7 +54,12 @@
             
             <input type="file" name="uploadfile" id="uploadfile" />
         </p>
-       
+        <p style="float:left; margin-right:4px !important;">
+            <label>Proje Fotoğrafları</label>
+        </p>
+        <div style="width:249px; width:25%; float:left">
+             <input type="file" style="width:99%" name="attachments" class="multi"/>
+        </div>
         <p>
             @Html.LabelFor(m=>m.Content)
             @Html.TextAreaFor(m=>m.Content,5,0, new { id="txtcontent", @class="textwidth50"})

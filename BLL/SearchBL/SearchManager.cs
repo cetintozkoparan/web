@@ -13,9 +13,9 @@ namespace BLL.SearchBL
         {
             string lang = System.Threading.Thread.CurrentThread.CurrentUICulture.ToString();
 
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
-                var projects = db.Projects.Where(d=>d.Online == true).FullTextSearch(text);
+                var projects = db.Projects.Where(d => d.Online == true & d.Deleted == false).FullTextSearch(text);
                 var prods = db.Product.Where(d=>d.Online == true & d.Deleted == false).FullTextSearch(text);
                 var result = new List<Tuple<string, string>>();
                 string route, link = string.Empty;

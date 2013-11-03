@@ -13,7 +13,7 @@
         $("#ProjectGroupId").attr("disabled", "disabled");
         $("#ProjectGroupId").empty().append($("<option></option>").val("").html("Proje Grubu Seçiniz..."));
     }
-
+    
     $("#Language").change(function () {
 
         var val = $("#Language option:selected").val();

@@ -13,7 +13,7 @@ namespace BLL.LinkBL
 
         public static List<ImportantLinks> GetImportantLinksList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.ImportantLinks.Where(d => d.Language == language).OrderBy(d=>d.SortNumber).ToList();
                 return list;
@@ -23,7 +23,7 @@ namespace BLL.LinkBL
 
         public static List<ImportantLinks> GetImportantLinksListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.ImportantLinks.Where(d => d.Language == language && d.Online == true).ToList();
                 return list;
@@ -32,7 +32,7 @@ namespace BLL.LinkBL
 
         public static bool AddImportantLinks(ImportantLinks record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -53,7 +53,7 @@ namespace BLL.LinkBL
 
         public static bool UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.ImportantLinks.SingleOrDefault(d => d.LinkId == id);
                 try
@@ -78,7 +78,7 @@ namespace BLL.LinkBL
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -100,7 +100,7 @@ namespace BLL.LinkBL
 
         public static ImportantLinks GetImportantLinksById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -124,7 +124,7 @@ namespace BLL.LinkBL
         }
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -149,7 +149,7 @@ namespace BLL.LinkBL
 
         public static bool EditImportantLink(ImportantLinks model)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

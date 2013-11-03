@@ -135,6 +135,12 @@
   <data name="career" xml:space="preserve">
     <value>KARİYER</value>
   </data>
+  <data name="cv_not_sended" xml:space="preserve">
+    <value>CV'niz gönderilememektedir. Lütfen iletişime geçiniz.</value>
+  </data>
+  <data name="cv_sended" xml:space="preserve">
+    <value>CV'niz başarı ile gönderilmiştir.</value>
+  </data>
   <data name="department" xml:space="preserve">
     <value>Başvuracağınız Pozisyon</value>
   </data>

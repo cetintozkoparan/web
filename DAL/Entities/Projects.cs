@@ -14,6 +14,9 @@ namespace DAL.Entities
         [Display(Name="Proje İsmi")]
         [Required(ErrorMessage="Proje İsmini Giriniz.")]
         public string Name { get; set; }
+        [Display(Name = "Alt Açıklama")]
+        [Required(ErrorMessage = "Alt açıklama giriniz.")]
+        public string SubTitle { get; set; }
         [Display(Name = "Proje Açıklaması")]
         public string Content { get; set; }
         [Display(Name = "Proje Ek Doya")]
@@ -27,6 +30,5 @@ namespace DAL.Entities
         public string PageSlug { get; set; }
         public string Logo { get; set; }
         public bool Deleted { get; set; }
-        public DateTime TimeUpdated { get; set; }
     }
 }

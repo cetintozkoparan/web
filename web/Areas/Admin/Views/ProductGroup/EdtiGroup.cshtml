@@ -25,8 +25,9 @@
          <label for="drplanguage">Dil</label>
          @Html.DropDownListFor(m=>m.Language,(IEnumerable<SelectListItem>)ViewBag.LanguageList,"Dil Seçiniz...")
         </p>
+        
         <p>
-         <label for="txtname">Grup Adı</label>
+         <label for="txtname">Alt Grup Adı</label>
           @Html.TextBoxFor(m=>m.GroupName, new { @class="textwidth50"})
           @Html.ValidationMessageFor(m => m.GroupName)
         </p>
@@ -41,7 +42,8 @@
         </p>
     </fieldset>
     }
-
+       </section>
+    </div>
 
 <script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/tablesorter.js"></script>
 <script src="~/Areas/Admin/Content/scripts/plugins/tablesorter/jquery.tablesorter.pager.js"></script>
@@ -52,6 +54,6 @@
 <script src="~/Areas/Admin/Content/scripts/myscripts/MessageBox.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/SortOrder.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/generalprocess.js"></script>
-<script src="~/Areas/Admin/Content/scripts/pagescripts/product/productgroup.js"></script>
+<script src="~/Areas/Admin/Content/scripts/pagescripts/product/productsubgroup.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/SetOnlineStatusRecord.js"></script>
 <script src="~/Areas/Admin/Content/scripts/myscripts/DeleteRecordTable.js"></script>

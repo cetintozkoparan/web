@@ -10,7 +10,7 @@
           <ul>
             <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_homepage">@SharedRess.SharedStrings.homepage</a></li>
             <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_aboutus">@SharedRess.SharedStrings.aboutus</a></li>
-            <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_solutionpartners" class="last">@SharedRess.SharedStrings.solutionpartners</a></li>
+            <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_solutionpartners" class="last selected">@SharedRess.SharedStrings.solutionpartners</a></li>
           </ul>
         </div>
         <h3 class="pageTitle">@SharedRess.SharedStrings.solutionpartners.ToUpper()</h3>
@@ -20,7 +20,7 @@
             {
                 <tr>
                   <td width="250" align="center" valign="top"><img src="@sp.Logo" /></td>
-                  <td><h4>@sp.SolutionPartnerName </h4>
+                  <td><h4><a href="@sp.Link" target="_blank">@sp.SolutionPartnerName</a></h4>
                     <p>@sp.Content</p></td>
                 </tr>
             }

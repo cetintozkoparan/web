@@ -8,9 +8,9 @@ using DAL.Context;
 
 namespace myBLOGData.Context
 {
-    public class DatabaseCreatorClass : IDatabaseInitializer<DeneysanContext>
+    public class DatabaseCreatorClass : IDatabaseInitializer<MainContext>
     {
-        public void InitializeDatabase(DeneysanContext context)
+        public void InitializeDatabase(MainContext context)
         {
             if (context.Database.Exists())
             {
@@ -23,11 +23,7 @@ namespace myBLOGData.Context
             else
             {
                 context.Database.Create();
-              
             }
-          
-          
         }
-    
     }
 }

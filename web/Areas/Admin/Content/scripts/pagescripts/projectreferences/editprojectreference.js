@@ -8,7 +8,7 @@
 
 
     var selval = $("#Language option:selected").val();
-    
+
     if (selval == "") {
         $("#ProjectReferenceGroupId").attr("disabled", "disabled");
         $("#ProjectReferenceGroupId").empty().append($("<option></option>").val("").html("Proje Grubu Seçiniz..."));
@@ -42,11 +42,11 @@
 
 
         }
-             
-      
+
+
     });
 
-    
-   
-   
+
+
+
 });

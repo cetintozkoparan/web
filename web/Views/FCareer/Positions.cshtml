@@ -1,0 +1,135 @@
+﻿@model IEnumerable<DAL.Entities.HumanResourcePosition>
+@{
+    Layout = "~/Views/Shared/frontlayout.cshtml";
+}
+<script src="~/js/jquery.validate.js"></script>
+<script src="~/js/additional-methods.js"></script>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        
+        $(".cvBtn").click(function () {
+            $(this).closest("form").submit();
+            return false;
+        });
+
+        //$("input:file").change(function () {
+        //    $(".cvFile").removeClass("error");
+
+        //    //var fileName = $(this).val();
+        //    //$(".filename").html(fileName);
+        //});
+
+        jQuery.validator.setDefaults({
+            success: "valid"
+        });
+
+        $.validator.addClassRules({
+            cvFile: {
+                required: true,
+                extension: "doc|docx|pdf"
+            }
+        });
+        
+        $('form').each(function () {
+            $(this).validate();
+        });
+
+        $('ul#tab li:first').addClass('aktif');
+        $('div.tabicerik').hide();
+        $('div.tabicerik:first').show();
+        $('ul#tab li').click(function () {
+
+            var index = $(this).index();
+
+            $('ul#tab li').removeClass('aktif');
+
+            $(this).addClass('aktif');
+
+            $("div.tabicerik").hide();
+
+            $("div.tabicerik:eq(" + index + ")").slideToggle('slow');
+            return false
+
+        })
+
+
+    });
+</script>
+<style type="text/css">
+    .basvuruform label { color: red; display: inline-block; width:120px; height: 24px;}
+    label.valid { background: url('/img/checked.gif') no-repeat center;}
+    .contactList li { width:230px;}
+    .notification.error {background:#fccac3 url('/Content/images/Front/error.png') no-repeat 10px 50%;border-color:#ea5338;}
+    .notification {border-width:1px;border-style:solid;padding:17px 17px 17px 55px;margin-bottom:15px;-moz-border-radius:3px;-webkit-border:3px;border-radius:3px;}
+    .notification.success {background:#effeb9 url('/Content/images/Front/success.png') no-repeat 10px 50%;border-color:#98c700;}
+    .notification.info { background:#d4e7f5 url('/Content/images/Front/information.png') no-repeat 10px 14px;border-color:#589ad7;}
+    .notification.info span.strong {color:#152433;}
+</style>
+@Html.Partial("_main2Left")
+<div class="main2Right">
+    <div class="pagenav">
+        <ul>
+            <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_homepage">@SharedRess.SharedStrings.homepage</a></li>
+            <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_aboutus">@SharedRess.SharedStrings.aboutus</a></li>
+            <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_humanresources" class="last selected">@SharedRess.SharedStrings.humanresources</a></li>
+        </ul>
+    </div>
+    <h3 class="pageTitle openposition">@SharedRess.SharedStrings.humanresources.ToUpper()</h3>
+    @if (TempData["sent"] != null)
+    {
+        if (TempData["sent"].ToString().Equals("true"))
+        {
+                <div style="clear:both;"></div>
+                <div class="notification success">@CareerRess.CareerStrings.cv_sended</div>
+        }
+        else if (TempData["sent"].ToString().Equals("false"))
+        {
+                <div style="clear:both;"></div>
+                <div class="notification error">@CareerRess.CareerStrings.cv_not_sended</div>
+        }
+    }
+    <div class="pageContentHR">
+        <div class="HRHeading">
+            <h4 class="firstHR">Pozisyon</h4>
+            <h4>Açıklama</h4>
+        </div>
+        <div class="HRLeft">
+            <ul class="HRLinkContent" id="tab">
+                @foreach (var sp in Model)
+                {
+                    <li><a class="hrLink" href="#">@sp.HumanResourcePositionName</a></li>
+                }
+            </ul>
+        </div>
+        <div class="HRRight">
+            @foreach (var sp in Model)
+            {
+                <div class="tabicerik">
+                    <div class="tabSection">
+                        <h4>Genel Bilgiler:</h4>
+                        <p>@sp.Content</p>
+                        @using (Html.BeginForm("SendCV", "FCareer", FormMethod.Post, new { @class = "basvuruform", enctype = "multipart/form-data", @style = "text-align:center; width: 160px; float: left;" }))
+                        {
+                        @*<form action="#" name="cvSendForm" id="cvSendForm" >*@
+                            <input type="file" style="width: 80px;" name="attachedfile" class="cvFile" /><br />
+                            <input type="hidden" value="@sp.HumanResourcePositionName" name="Pozisyon" />
+                            <input type="submit" name="cvgonder" id="cvgonder" style="float:none; margin: 10px 0 0 0;" class="cvBtn" value="CV GÖNDER" /><br /><br />
+                            <span style="font-size:11px; margin-top:15px; width:120px;">(.doc | .docx | .pdf)</span>
+                        @*</form>*@
+                        }
+                    </div>
+
+                    <div class="tabSection">
+                        <h4>İş Tanımı:</h4>
+                        <p>@sp.Workdef
+                        </p>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

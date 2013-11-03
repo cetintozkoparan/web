@@ -18,12 +18,39 @@ namespace web.Controllers
 
         public ActionResult Index()
         {
-            //var product_group_list = ProductManager.GetProductGroupListForFront(lang);
-            //var product_list = ProductManager.GetProductListAllForFront(lang);
-            //ProductWrapperModel modelbind = new ProductWrapperModel(product_list, product_group_list);
-            //return View(modelbind);
-            var product_list = ProductManager.GetProductListAllForFront(lang);
-            return View(product_list);
+            var product_group_list = ProductManager.GetProductGroupListForFront(lang);
+            List<DAL.Entities.Product> product_list = new List<DAL.Entities.Product>();
+
+            if (RouteData.Values["gid"] != null)
+            {
+                product_list = ProductManager.GetProductListForFront(Convert.ToInt32(RouteData.Values["gid"].ToString()));
+                var grp = ProductManager.GetGroupById(Convert.ToInt32(RouteData.Values["gid"].ToString()));
+                ViewBag.grpname = grp.GroupName;
+            }
+            else if (RouteData.Values["sgid"] != null)
+            {
+                product_list = ProductManager.GetProductListBySubGroupForFront(Convert.ToInt32(RouteData.Values["sgid"].ToString()));
+                var subgrp = ProductManager.GetSubGroupById(Convert.ToInt32(RouteData.Values["sgid"].ToString()));
+                var grp = ProductManager.GetGroupById(subgrp.ProductGroupId);
+                ViewBag.grpid = subgrp.ProductGroupId;
+                ViewBag.subgrpname = subgrp.GroupName;
+                ViewBag.grpname = grp.GroupName;
+            }
+            else
+            {
+                product_list = ProductManager.GetProductListAllForFront(lang);
+            }
+            
+            ProductWrapperModel modelbind = new ProductWrapperModel(product_list, product_group_list);
+            return View(modelbind);
+        }
+
+        public ActionResult subproductgroups(int id)
+        {
+            var psg = ProductManager.GetProductSubGroupListForFront(lang, id);
+            var pg = ProductManager.GetProductGroupById(id);
+            ProductSubWrapperModel pswm = new ProductSubWrapperModel(psg, pg);
+            return PartialView("_subproductgroups", pswm);
         }
 
         //public ActionResult ProductList(int gid)
@@ -36,8 +63,20 @@ namespace web.Controllers
 
         public ActionResult ProductDetail(int pid)
         {
+            var product_group_list = ProductManager.GetProductGroupListForFront(lang);
+            
             var product = ProductManager.GetProductById(pid);
-            return View(product);
+            var psg = ProductManager.GetProductSubGroupById(product.ProductSubGroupId);
+            var pg = ProductManager.GetProductGroupById(product.ProductGroupId);
+
+            ViewBag.grpid = pg.ProductGroupId;
+            ViewBag.sgid = psg.ProductSubGroupId;
+            ViewBag.subgrpname = psg.GroupName;
+            ViewBag.grpname = pg.GroupName;
+
+            ProductDetailWrapperModel model = new ProductDetailWrapperModel(product, product_group_list);
+            
+            return View(model);
         }
 
         [HttpPost]

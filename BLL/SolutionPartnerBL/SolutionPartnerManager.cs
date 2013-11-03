@@ -16,7 +16,7 @@ namespace BLL.SolutionPartnerBL
         static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static List<SolutionPartner> GetSolutionPartnerList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.SolutionPartner.Where(d => d.Deleted == false && d.Language == language).OrderBy(d=>d.SortOrder).ToList();
                 return list;
@@ -25,7 +25,7 @@ namespace BLL.SolutionPartnerBL
 
         public static List<SolutionPartner> GetSolutionPartnerListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.SolutionPartner.Where(d => d.Deleted == false && d.Language == language && d.Online==true).OrderBy(d=>d.SortOrder).ToList();
                 return list;
@@ -34,7 +34,7 @@ namespace BLL.SolutionPartnerBL
 
         public static bool AddSolutionPartner(SolutionPartner record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -47,7 +47,7 @@ namespace BLL.SolutionPartnerBL
 
                     LogtrackManager logkeeper = new LogtrackManager();
                     logkeeper.LogDate = DateTime.Now;
-                    logkeeper.LogProcess = EnumLogType.Referans.ToString();
+                    logkeeper.LogProcess = EnumLogType.CozumOrtaklari.ToString();
                     logkeeper.Message = LogMessages.SolutionPartnerAdded;
                     logkeeper.User = HttpContext.Current.User.Identity.Name;
                     logkeeper.Data = record.SolutionPartnerName;
@@ -67,7 +67,7 @@ namespace BLL.SolutionPartnerBL
 
         public static bool UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.SolutionPartner.SingleOrDefault(d => d.SolutionPartnerId == id);
                 try
@@ -92,7 +92,7 @@ namespace BLL.SolutionPartnerBL
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -103,7 +103,7 @@ namespace BLL.SolutionPartnerBL
 
                     LogtrackManager logkeeper = new LogtrackManager();
                     logkeeper.LogDate = DateTime.Now;
-                    logkeeper.LogProcess = EnumLogType.Referans.ToString();
+                    logkeeper.LogProcess = EnumLogType.CozumOrtaklari.ToString();
                     logkeeper.Message = LogMessages.SolutionPartnerDeleted;
                     logkeeper.User = HttpContext.Current.User.Identity.Name;
                     logkeeper.Data = record.SolutionPartnerName;
@@ -120,7 +120,7 @@ namespace BLL.SolutionPartnerBL
 
         public static SolutionPartner GetSolutionPartnerById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -139,7 +139,7 @@ namespace BLL.SolutionPartnerBL
 
         public static bool EditSolutionPartner(SolutionPartner SolutionPartnermodel)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -159,7 +159,7 @@ namespace BLL.SolutionPartnerBL
 
                         LogtrackManager logkeeper = new LogtrackManager();
                         logkeeper.LogDate = DateTime.Now;
-                        logkeeper.LogProcess = EnumLogType.Referans.ToString();
+                        logkeeper.LogProcess = EnumLogType.CozumOrtaklari.ToString();
                         logkeeper.Message = LogMessages.SolutionPartnerEdited;
                         logkeeper.User = HttpContext.Current.User.Identity.Name;
                         logkeeper.Data = record.SolutionPartnerName;
@@ -183,7 +183,7 @@ namespace BLL.SolutionPartnerBL
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

@@ -12,7 +12,7 @@ namespace BLL.InstituionalBL
     {
         public static Institutional GetInstationalByLanguage(string language,int typeid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 Institutional instional_info = db.Institutional.SingleOrDefault(d => d.TypeId == typeid && d.Language == language);
                 return instional_info;
@@ -21,7 +21,7 @@ namespace BLL.InstituionalBL
 
         public static bool EditInstituional(Institutional record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

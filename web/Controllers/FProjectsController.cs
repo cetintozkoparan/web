@@ -2,6 +2,9 @@
 using BLL.Project;
 using System.Web.Mvc;
 using web.Models;
+using BLL.PhotoBL;
+using DAL.Entities;
+using System.Collections.Generic;
 
 namespace web.Controllers
 {
@@ -14,15 +17,18 @@ namespace web.Controllers
 
         public ActionResult Index()
         {
-            var news = ProjectManager.GetProjectListForFront(lang);
-            return View(news);
+            return View();
         }
 
         public ActionResult ProjectContent(int id)
         {
-            var project = ProjectManager.GetProjectById(id);
-            return View(project);
+            var plist = ProjectManager.GetProjectListForFront(lang);
+            var p = ProjectManager.GetProjectById(id);
+            var photos = PhotoManager.GetList(2, id);
+            ProjectWrapperModel m = new ProjectWrapperModel(photos,plist, p);
+            return View(m);
         }
 
+       
     }
 }

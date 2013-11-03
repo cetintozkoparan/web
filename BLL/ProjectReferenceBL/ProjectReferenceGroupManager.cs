@@ -18,7 +18,7 @@ namespace BLL.ProjectReferenceBL
         #region ProjectReferenceGroup
         public static List<ProjectReferenceGroup> GetProjectReferenceGroupList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.ProjectReferenceGroup.Where(d => d.Deleted == false && d.Language == language).OrderBy(d=>d.SortNumber).ToList();
                 return list;
@@ -27,7 +27,7 @@ namespace BLL.ProjectReferenceBL
 
         public static List<ProjectReferenceGroup> GetProjectReferenceGroupListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.ProjectReferenceGroup.Where(d => d.Deleted == false && d.Language == language && d.Online==true).OrderBy(d => d.SortNumber).ToList();
                 return list;
@@ -37,7 +37,7 @@ namespace BLL.ProjectReferenceBL
 
         public static bool AddProjectReferenceGroup(ProjectReferenceGroup record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -70,7 +70,7 @@ namespace BLL.ProjectReferenceBL
 
         public static bool UpdateGroupStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.ProjectReferenceGroup.SingleOrDefault(d => d.ProjectReferenceGroupId == id);
                 try
@@ -95,7 +95,7 @@ namespace BLL.ProjectReferenceBL
 
         public static bool DeleteGroup(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -123,7 +123,7 @@ namespace BLL.ProjectReferenceBL
 
         public static ProjectReferenceGroup GetProjectReferenceGroupById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -142,7 +142,7 @@ namespace BLL.ProjectReferenceBL
 
         public static bool EditProjectReferenceGroup(int id, string name,string pageslug)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -179,7 +179,7 @@ namespace BLL.ProjectReferenceBL
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -206,7 +206,7 @@ namespace BLL.ProjectReferenceBL
 
         public static object UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Document.SingleOrDefault(d => d.DocumentId == id);
                 try
@@ -230,7 +230,7 @@ namespace BLL.ProjectReferenceBL
 
         public static object DeleteDocument(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -258,7 +258,7 @@ namespace BLL.ProjectReferenceBL
 
         public static Document GetDocumentById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -279,7 +279,7 @@ namespace BLL.ProjectReferenceBL
 
         public static bool SortDocuments(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

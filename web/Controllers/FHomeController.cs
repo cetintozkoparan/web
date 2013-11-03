@@ -5,6 +5,9 @@ using BLL.NewsBL;
 using BLL.ReferenceBL;
 using BLL.Project;
 using BLL.DocumentsBL;
+using BLL.PhotoBL;
+using BLL.SectorGroupBL;
+using BLL.ProductBL;
 namespace web.Controllers
 {
     public class FHomeController : Controller
@@ -15,9 +18,16 @@ namespace web.Controllers
         {
             var news = NewsManager.GetNewsListForFront(lang);
             var references = ReferenceManager.GetReferenceListForFront(lang);
-            var docs = DocumentManager.GetDocumentListForFront(DocumentManager.GetDocumentGroupListForFront(lang).First().DocumentGroupId).Take(5);
+            var docgroup = DocumentManager.GetDocumentGroupListForFront(lang).First();
+            var docs = DocumentManager.GetDocumentListForFront(docgroup.DocumentGroupId).Take(5);
             var projects = ProjectManager.GetProjectListForFront(lang).Take(4);
-            HomePageWrapperModel modelbind = new HomePageWrapperModel(news, references, projects, docs);
+            var photos = PhotoManager.GetListForFront(lang, 0);
+            var sectors = SectorGroupManager.GetSectorGroupListForFront(lang);
+            var prods = ProductManager.GetProductListAllForFront(lang);
+            ViewBag.docgroupSlug = docgroup.PageSlug;
+            ViewBag.docgroupid = docgroup.DocumentGroupId;
+            ViewBag.docgroup = docgroup.GroupName;
+            HomePageWrapperModel modelbind = new HomePageWrapperModel(prods, sectors, news, references, projects, docs, photos);
             return View(modelbind);
         }
 

@@ -14,7 +14,7 @@ namespace BLL.Project
     {
         public static List<Projects> GetProjectList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Projects.Where(d => d.Language == language).OrderBy(d => d.SortOrder).ToList();
                 return list;
@@ -23,7 +23,7 @@ namespace BLL.Project
 
         public static List<Projects> GetProjectListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Projects.Where(d => d.Language == language && d.Online == true).OrderBy(d => d.SortOrder).ToList();
                 return list;
@@ -32,7 +32,7 @@ namespace BLL.Project
 
         public static bool AddProject(Projects record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -55,7 +55,7 @@ namespace BLL.Project
 
         public static bool UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Projects.SingleOrDefault(d => d.ProjectId == id);
                 try
@@ -80,7 +80,7 @@ namespace BLL.Project
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -98,7 +98,7 @@ namespace BLL.Project
 
         public static Projects GetProjectById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -117,7 +117,7 @@ namespace BLL.Project
 
         public static bool EditProject(Projects Projectmodel)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -126,11 +126,16 @@ namespace BLL.Project
                     {
                         record.Content = Projectmodel.Content;
                         record.Name = Projectmodel.Name;
-
+                        record.PageSlug = Projectmodel.PageSlug;
+                        record.SubTitle = Projectmodel.SubTitle;
                         record.Language = Projectmodel.Language;
                         if (!string.IsNullOrEmpty(Projectmodel.ProjectFile))
                         {
                             record.ProjectFile = Projectmodel.ProjectFile;
+                        }
+                        if (!string.IsNullOrEmpty(Projectmodel.Logo))
+                        {
+                            record.Logo = Projectmodel.Logo;
                         }
                         record.Content = Projectmodel.Content;
                         db.SaveChanges();
@@ -153,7 +158,7 @@ namespace BLL.Project
 
         public static bool SortRecords(string[] idsList)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

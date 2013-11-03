@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using web.Areas.Admin.Filters;
 using web.Areas.Admin.Models;
 using BLL.TeklifBL;
+using BLL.LogBL;
 
 namespace web.Areas.Admin.Controllers
 {
@@ -16,8 +17,9 @@ namespace web.Areas.Admin.Controllers
         // GET: /Admin/Home/
 
         public ActionResult Index()
-        {
-            return View();
+        {   
+            return View(new LogtrackManager().GetErrors().Take(30));
+
              //var list = TeklifManager.GetList();
              //if (RouteData.Values["type"] != null)
              //{

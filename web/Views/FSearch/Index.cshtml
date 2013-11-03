@@ -2,7 +2,24 @@
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
-<div class="main_content mainpage pageheight" style="">
+
+<style type="text/css">
+    .biz { width:800px;}
+    .biz ul li a { background: url(/img/arrow.png) left top no-repeat;}
+    .biz ul li a:hover { background: url(/img/arrow2.png) left top no-repeat;}
+</style>
+ <div class="biz">
+    <h2 class="sectionTitle"><span>@SharedRess.SharedStrings.searchresult.ToUpper()</span></h2>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="@item.Item2">@item.Item1.ToUpper()</a></li>
+            <li style="margin-top: -10px;margin-left: 21px;margin-bottom: 10px;color: #ed1c24;">http://www.kontrolmatik.com@(item.Item2)</li>
+        }
+    </ul>
+</div>
+
+@*<div class="main_content mainpage pageheight" style="">
     <div class="wrapper mainpage grid_12">
         <div class="content_page page">
             <h2>ARAMA SONUÇLARI</h2>
@@ -21,4 +38,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@

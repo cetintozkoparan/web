@@ -37,7 +37,7 @@
     }
 
     $("#Language").change(function () {
-
+        
         var val = $("#Language option:selected").val();
         if (val == "") { $("#ProductGroupId").attr("disabled", true); }
         else {
@@ -66,6 +66,38 @@
         }
              
       
+    });
+
+    $("#ProductGroupId").change(function () {
+        
+        var val = $("#ProductGroupId option:selected").val();
+        if (val == "") { $("#ProductSubGroupId").attr("disabled", true); }
+        else {
+            $("#imgloader2").css("display", "inline-block");
+            $.ajax({
+                type: 'POST',
+                url: '/Product/LoadSubGroup',
+                data: '{id:"' + val + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: 'json',
+                success: function (result) {
+                    $("#ProductSubGroupId").empty().append($("<option></option>").val("").html("Ürün Alt Grubunu Seçiniz..."));
+
+                    $.each(result, function (i, item) {
+                        $("#ProductSubGroupId").append($("<option></option>").val(item.Value).html(item.Text));
+                    });
+                    $("#ProductSubGroupId").removeAttr("disabled");
+                    $("#imgloader2").css("display", "none");
+                },
+                error: function () {
+
+                }
+            });
+
+
+        }
+
+
     });
 
     

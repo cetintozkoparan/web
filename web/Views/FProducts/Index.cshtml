@@ -1,29 +1,58 @@
-﻿@*@model web.Models.ProductWrapperModel*@
-@model IEnumerable<DAL.Entities.Product>
+﻿@model web.Models.ProductWrapperModel
+@*@model IEnumerable<DAL.Entities.Product>*@
 @{
     Layout = "~/Views/Shared/frontlayout.cshtml";
 }
+<style type="text/css">.pageContent img { margin-bottom:0;}</style>
+    <div class="main2Left">
+        <div class="urunler leftMenu">
+            <h2 class="sectionTitle"><span>@SharedRess.SharedStrings.products.ToUpper()</span></h2>
+            <ul>
+        @foreach (var group in Model.productgroups){
+                <li>
+                    <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@group.PageSlug/@group.ProductGroupId">@group.GroupName</a>
+                      <ul>
+                        @{Html.RenderAction("subproductgroups", "FProducts", new { id = group.ProductGroupId });}
+                      </ul>
+                </li>
+         }
+            </ul>
+        </div>
+    </div>
 
-    @Html.Partial("_main2Left")
     <div class="main2Right">
         <div class="pagenav">
             <ul>
-            <li><a href="#">@SharedRess.SharedStrings.homepage</a></li>
-            <li><a href="#" class="last">@SharedRess.SharedStrings.products</a></li>
+            <li><a href="/">@SharedRess.SharedStrings.homepage</a></li>
+                @if (this.ViewContext.RouteData.Values["gid"] != null)
+                {
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products">@SharedRess.SharedStrings.products</a></li>        
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@ViewBag.grpname/@this.ViewContext.RouteData.Values["gid"].ToString()" class="last">@ViewBag.grpname</a></li>        
+                }
+                else if (this.ViewContext.RouteData.Values["sgid"] != null)
+                {
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products">@SharedRess.SharedStrings.products</a></li>        
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@this.ViewContext.RouteData.Values["group"].ToString()/@ViewBag.grpid">@ViewBag.grpname</a></li>        
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@this.ViewContext.RouteData.Values["group"].ToString()/@this.ViewContext.RouteData.Values["subgroup"].ToString()/@this.ViewContext.RouteData.Values["sgid"].ToString()" class="last">@ViewBag.subgrpname</a></li>        
+                }else
+                {
+                    <li><a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products" class="last">@SharedRess.SharedStrings.products</a></li>                
+                }
+            
             </ul>
         </div>
     <h3 class="pageTitle">@SharedRess.SharedStrings.products</h3>
     <div class="pageContent">
     @{int i = 0;}
 
-        @foreach (var product in Model){
+        @foreach (var product in Model.products){
             i++;
             if (i%3 != 0)
             {
                 <div class="productContent">
                     <div class="productImage">
-                        <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@product.ProductGroup.PageSlug/@product.PageSlug/@product.ProductId">
-                            <img src="/img/product_01.jpg" alt="Line Differential Protection" />
+                        <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_productdetail/@product.ProductGroup.PageSlug/@product.ProductSubGroup.PageSlug/@product.PageSlug/@product.ProductId">
+                            <img src="@product.ProductImage" width="225" height="140" alt="@product.Name" />
                         </a>
                     </div>
                     <div class="clear">&nbsp;</div>
@@ -38,7 +67,7 @@
                 <div class="productContent lastContent">
                     <div class="productImage">
                         <a href="/@SharedRess.SharedStrings.menu_culture/@SharedRess.SharedStrings.menu_products/@product.ProductGroup.PageSlug/@product.PageSlug/@product.ProductId">
-                            <img src="/img/product_01.jpg" alt="Line Differential Protection" />
+                            <img src="@product.ProductImage" width="225" height="140" alt="@product.Name" />
                         </a>
                     </div>
                     <div class="clear">&nbsp;</div>

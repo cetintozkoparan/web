@@ -10,11 +10,13 @@ namespace BLL.LogBL
     {
         public static string ReferenceAdded = "Yeni Referans Eklendi";
         public static string ReferenceNotAdded = "Yeni Referans Eklenemedi";
-
         public static string ReferenceEdited = " Referans Düzenlendi";
         public static string ReferenceNotEdited = " Referans Düzenlenemedi";
         public static string ReferenceDeleted = "Referans Silindi";
         public static string ReferenceNotDeleted = "Referans Silinemedi";
+
+        public static string Logined = "Sisteme giriş yapıldı";
+        public static string NotLogined = "Sisteme giriş yapılamadı";
 
         public static string SolutionPartnerAdded = "Çözüm Ortağı Eklendi";
         public static string SolutionPartnerNotAdded = "Çözüm Ortağı Eklenemedi";
@@ -79,6 +81,8 @@ namespace BLL.LogBL
 
         public static string NewsAdded = "Yeni Haber Eklendi";
         public static string NewsNotAdded = "Yeni Haber Eklenemedi";
+        public static string NewsEdited = "Haber Düzenlendi";
+        public static string NewsNotEdited = "Haber Düzenlendi";
         public static string NewsDeleted = "Haber Silindi";
         public static string NewsNotDeleted = "Haber Silinemedi";
 

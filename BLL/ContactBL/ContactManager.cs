@@ -16,7 +16,7 @@ namespace BLL.ContactBL
         static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static Contact GetContact(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.Contact.Where(d=>d.Language == language).SingleOrDefault();
                 return list;
@@ -25,7 +25,7 @@ namespace BLL.ContactBL
 
         public static dynamic EditContact(Contact record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {

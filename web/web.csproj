@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CaptchaMvc">
+      <HintPath>..\packages\CaptchaMvc.Mvc4.1.4.1\lib\net40-full\CaptchaMvc.dll</HintPath>
+    </Reference>
     <Reference Include="CKEditor.NET, Version=3.6.2.0, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\PROJELER\MVC-PROJELERİ\myBLOG\myBLOG\bin\CKEditor.NET.dll</HintPath>
@@ -185,6 +188,13 @@
     <Compile Include="Areas\Admin\Controllers\BankController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\CertificateController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BannerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SectorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SectorGroupController.cs" />
+    <Compile Include="Areas\Admin\Controllers\EquipmentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServiceGroupController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductSubGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectReferenceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectReferenceGroupController.cs" />
     <Compile Include="Areas\Admin\Controllers\SolutionPartnerController.cs" />
@@ -210,6 +220,9 @@
     <Compile Include="Areas\Admin\Helpers\Utility.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Areas\Admin\Models\TeklifModel.cs" />
+    <Compile Include="Controllers\FSectorController.cs" />
+    <Compile Include="Controllers\FEquipmentController.cs" />
+    <Compile Include="Controllers\FServiceController.cs" />
     <Compile Include="Controllers\FCertificateController.cs" />
     <Compile Include="Controllers\FReferencesController.cs" />
     <Compile Include="Controllers\FDocumentsController.cs" />
@@ -231,6 +244,17 @@
     <Compile Include="Helpers\Enums\EnumMailUser.cs" />
     <Compile Include="Helpers\Enums\InstituionalTypes.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ContactWrapperModel.cs" />
+    <Compile Include="Models\NewsWrapperModel.cs" />
+    <Compile Include="Models\SectorSubWrapperModel.cs" />
+    <Compile Include="Models\SectorWrapperModel.cs" />
+    <Compile Include="Models\ProjectReferencesSubWrapperModel.cs" />
+    <Compile Include="Models\ProjectReferencesWrapperModel.cs" />
+    <Compile Include="Models\ProjectWrapperModel.cs" />
+    <Compile Include="Models\ServiceSubWrapperModel.cs" />
+    <Compile Include="Models\ServiceWrapperModel.cs" />
+    <Compile Include="Models\ProductDetailWrapperModel.cs" />
+    <Compile Include="Models\ProductSubWrapperModel.cs" />
     <Compile Include="Models\OfferWrapperModel.cs" />
     <Compile Include="Models\HomePageWrapperModel.cs" />
     <Compile Include="Models\ProductWrapperModel.cs" />
@@ -1478,6 +1502,7 @@
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\images\Jellyfish.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Desert.jpg" />
     <Content Include="Areas\Admin\Content\CKEditor\userfiles\_thumbs\Images\Jellyfish.jpg" />
+    <Content Include="Areas\Admin\Content\images\banner.png" />
     <Content Include="Areas\Admin\Content\images\bg-buttons-left.gif" />
     <Content Include="Areas\Admin\Content\images\bg-buttons-right.gif" />
     <Content Include="Areas\Admin\Content\images\bg-login.jpg" />
@@ -1493,9 +1518,15 @@
     <Content Include="Areas\Admin\Content\images\icons\technic.png" />
     <Content Include="Areas\Admin\Content\images\icons\usermanual.png" />
     <Content Include="Areas\Admin\Content\images\icons\video.png" />
+    <Content Include="Areas\Admin\Content\images\ik.png" />
+    <Content Include="Areas\Admin\Content\images\iletisim.png" />
     <Content Include="Areas\Admin\Content\images\link-arrow-hover.gif" />
     <Content Include="Areas\Admin\Content\images\link-arrow-regular.gif" />
     <Content Include="Areas\Admin\Content\images\logo-web.png" />
+    <Content Include="Areas\Admin\Content\images\news.png" />
+    <Content Include="Areas\Admin\Content\images\ortak.png" />
+    <Content Include="Areas\Admin\Content\images\product.png" />
+    <Content Include="Areas\Admin\Content\images\project.png" />
     <Content Include="Areas\Admin\Content\images\ql-databases.gif" />
     <Content Include="Areas\Admin\Content\images\ql-design.gif" />
     <Content Include="Areas\Admin\Content\images\ql-media.gif" />
@@ -1505,6 +1536,7 @@
     <Content Include="Areas\Admin\Content\images\ql-photos.gif" />
     <Content Include="Areas\Admin\Content\images\ql-settings.gif" />
     <Content Include="Areas\Admin\Content\images\ql-users.gif" />
+    <Content Include="Areas\Admin\Content\images\reference.png" />
     <Content Include="Areas\Admin\Content\images\sunny.png" />
     <Content Include="Areas\Admin\Content\images\yeni.gif" />
     <Content Include="Areas\Admin\Content\images\yeni.png" />
@@ -1513,6 +1545,29 @@
     <Content Include="Areas\Admin\Content\scripts\pagescripts\contact\contact.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\certificate\addCertificate.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\certificate\Certificatelist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\banner\addbanner.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\banner\bannerlist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\sectorgroups\addsectorgroup.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\sectorgroups\editsectorgroup.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\sectorgroups\sectorgrouplist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\sectors\addsector.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\sectors\editsector.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\sectors\oursectors.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\sectors\sector.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\sectors\sectorgroup.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\sectors\sectorlist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\equipment\add.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\equipment\list.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\services\ourservices.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\services\service.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\services\addservice.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\services\servicegroup.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\services\servicelist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\services\editservice.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\servicegroups\addservicegroup.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\servicegroups\editservicegroup.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\servicegroups\servicegrouplist.js" />
+    <Content Include="Areas\Admin\Content\scripts\pagescripts\product\productsubgroup.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\projectreferences\addprojectreference.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\projectreferences\editprojectreference.js" />
     <Content Include="Areas\Admin\Content\scripts\pagescripts\projectreferences\projectreferencegroup.js" />
@@ -1551,7 +1606,11 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-1.9.1.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-ui-1.10.3.custom.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.blockUI.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.corners.min.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.form.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.MetaData.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.min.js" />
     <Content Include="Areas\Admin\Content\CKEditor\ckeditor\.htaccess" />
     <Content Include="Areas\Admin\Content\CKEditor\ckeditor\ckeditor.pack" />
@@ -1689,8 +1748,11 @@
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.cookie.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.lightbox-0.5.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.msgbox.min.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.MultiFile.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.MultiFile.pack.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.number.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.number.min.js" />
+    <Content Include="Areas\Admin\Content\scripts\plugins\jquery.simpleWeather-2.0.1.min.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.tipsy.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.tokeninput.js" />
     <Content Include="Areas\Admin\Content\scripts\plugins\jquery.treeview.min.js" />
@@ -1760,6 +1822,10 @@
     <Content Include="Areas\Admin\Content\styles\style.css" />
     <Content Include="Areas\Admin\Content\styles\table.css" />
     <Content Include="Areas\Admin\Content\styles\visualize.css" />
+    <Content Include="Content\Images\Certificate\1-sertifika_5117120.jpg" />
+    <Content Include="Content\Images\Certificate\1-sertifika_51866853.png" />
+    <Content Include="Content\Images\Certificate\2-sertifika_27498451.png" />
+    <Content Include="Content\Images\Certificate\3-sertifika_12470711.jpg" />
     <Content Include="Content\Images\Front\address-ico.png" />
     <Content Include="Content\Images\Front\agri-eml.png" />
     <Content Include="Content\Images\Front\aksaray.png" />
@@ -1846,6 +1912,13 @@
     <Content Include="Content\Images\icons\portfolio-nav.png" />
     <Content Include="Content\Images\icons\portfolio-overlay.png" />
     <Content Include="Content\Images\icons\trash.gif" />
+    <Content Include="Content\Images\Photos\1otomatik-kontrol-sistemlerimiz-sayesinde-enerjinizi-verimli-sekilde-kullanir-dunyamizin-dogalligini-korumaya-yardimci-olursunuz_20651944.jpg" />
+    <Content Include="Content\Images\Photos\1otomatik-kontrol-sistemlerimiz-sayesinde-enerjinizi-verimli-sekilde-kullanir-dunyamizin-dogalligini-korumaya-yardimci-olursunuz_50265933.jpg" />
+    <Content Include="Content\Images\Photos\2otomatik-kontrol-sistemlerimiz-sayesinde-enerjinizi-verimli-sekilde-kullanir-dunyamizin-dogalligini-korumaya-yardimci-olursunuz_72486378.jpg" />
+    <Content Include="Content\Images\Photos\oootomatik-kontrol-sistemlerimiz-sayesinde-enerjinizi-verimli-sekilde-kullanir-dunyamizin-dogalligini-korumaya-yardimci-olursunuz_28632827.jpg" />
+    <Content Include="Content\Images\Photos\oootomatik-kontrol-sistemlerimiz-sayesinde-enerjinizi-verimli-sekilde-kullanir-dunyamizin-dogalligini-korumaya-yardimci-olursunuz_46660792.jpg" />
+    <Content Include="Content\Images\Photos\otomatik-kontrol-sistemlerimiz-sayesinde-enerjinizi-verimli-sekilde-kullanir-dunyamizin-dogalligini-korumaya-yardimci-olursunuz_48603570.jpg" />
+    <Content Include="Content\Images\Photos\otomatik-kontrol-sistemlerimiz-sayesinde-enerjinizi-verimli-sekilde-kullanir-dunyamizin-dogalligini-korumaya-yardimci-olursunuz_56601892.jpg" />
     <Content Include="Content\Images\prettyPhoto\dark_rounded\btnNext.png" />
     <Content Include="Content\Images\prettyPhoto\dark_rounded\btnPrevious.png" />
     <Content Include="Content\Images\prettyPhoto\dark_rounded\contentPattern.png" />
@@ -1917,6 +1990,7 @@
     <Content Include="Content\Styles\reset.css" />
     <Content Include="Content\Styles\style.css" />
     <Content Include="Content\Styles\validationEngine.jquery.css" />
+    <Content Include="css\bxslider.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
@@ -1998,7 +2072,21 @@
     <Content Include="Areas\Admin\Views\HumanResource\EditHumanResourcePosition.cshtml" />
     <Content Include="Areas\Admin\Views\HumanResource\HumanResourcePositions.cshtml" />
     <Content Include="Areas\Admin\Views\Updates\Index.cshtml" />
-    <Content Include="img\Thumbs.db" />
+    <Content Include="img\bx_loader.gif" />
+    <Content Include="img\checked.gif" />
+    <Content Include="img\contactFaxImg.png" />
+    <Content Include="img\contactHomeImg.png" />
+    <Content Include="img\contactMailImg.png" />
+    <Content Include="img\contactPhoneImg.png" />
+    <Content Include="img\enerjiTrans.jpg" />
+    <Content Include="img\iletisim.jpg" />
+    <Content Include="img\maden.jpg" />
+    <Content Include="img\news\news01.jpg" />
+    <Content Include="img\oil-gas.jpg" />
+    <Content Include="img\reference\next.png" />
+    <Content Include="img\reference\prev.png" />
+    <Content Include="img\reference\referansdetay_01.jpg" />
+    <Content Include="img\reference\referans_01_thumb.jpg" />
     <Content Include="Areas\Admin\Views\Certificate\AddCertificate.cshtml" />
     <Content Include="Areas\Admin\Views\Certificate\EditCertificate.cshtml" />
     <Content Include="Areas\Admin\Views\Certificate\Index.cshtml" />
@@ -2011,6 +2099,41 @@
     <Content Include="Areas\Admin\Views\ProjectReference\projectreference_leftbar.cshtml" />
     <Content Include="Areas\Admin\Views\ProjectReferenceGroup\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProjectReferenceGroup\projectreference_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductSubGroup\EdtiGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductSubGroup\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductSubGroup\product_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\AddService.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\EditService.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\service_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceGroup\AddServiceGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceGroup\EditServiceGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceGroup\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceGroup\servicegroup_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\OurServices.cshtml" />
+    <Content Include="img\reference\Thumbs.db" />
+    <Content Include="Areas\Admin\Views\Equipment\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Equipment\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Equipment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Equipment\leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_photos.cshtml" />
+    <Content Include="Areas\Admin\Views\Banner\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Banner\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Banner\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Banner\leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\SectorGroup\AddSectorGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\SectorGroup\EditSectorGroup.cshtml" />
+    <Content Include="Areas\Admin\Views\SectorGroup\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SectorGroup\sectorgroup_leftbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Sector\AddSector.cshtml" />
+    <Content Include="Areas\Admin\Views\Sector\EditSector.cshtml" />
+    <Content Include="Areas\Admin\Views\Sector\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sector\OurSectors.cshtml" />
+    <Content Include="Areas\Admin\Views\Sector\sector_leftbar.cshtml" />
+    <Content Include="img\news\Thumbs.db" />
+    <Content Include="Areas\Admin\Views\Shared\project_photos.cshtml" />
+    <Content Include="Content\Images\Photos\banner_28565826.jpg" />
+    <Content Include="Content\Images\Photos\banner_50996733.jpg" />
     <None Include="Properties\PublishProfiles\deneme.pubxml" />
     <None Include="Properties\PublishProfiles\deneysan.pubxml" />
     <None Include="Properties\PublishProfiles\kontrolmatik.pubxml" />
@@ -2044,15 +2167,22 @@
     <Content Include="img\search.png" />
     <Content Include="img\seperator.png" />
     <Content Include="img\slide01.jpg" />
+    <Content Include="img\slide02.jpg" />
+    <Content Include="img\slide03.jpg" />
+    <Content Include="img\slide04.jpg" />
+    <Content Include="img\slide05.jpg" />
+    <Content Include="img\telekom.jpg" />
     <Content Include="img\titleBg.png" />
     <Content Include="img\transportation.jpg" />
     <Content Include="img\water.jpg" />
     <Content Include="img\whiteTrans.png" />
     <Content Include="img\yuksekgerilim.jpg" />
+    <Content Include="js\additional-methods.js" />
     <Content Include="js\jquery-1.8.3.min.js" />
     <Content Include="js\jquery.bxslider.min.js" />
     <Content Include="js\jquery.easing.js" />
     <Content Include="js\jquery.slidorion.min.js" />
+    <Content Include="js\jquery.validate.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
@@ -2122,6 +2252,14 @@
     <Content Include="Views\Shared\_main2Left.cshtml" />
     <Content Include="Views\FSolutionPartner\Index.cshtml" />
     <Content Include="Views\FCertificate\Index.cshtml" />
+    <Content Include="Views\Shared\_subproductgroups.cshtml" />
+    <Content Include="Views\FService\Index.cshtml" />
+    <Content Include="Views\Shared\_services.cshtml" />
+    <Content Include="Views\FCareer\Positions.cshtml" />
+    <Content Include="Views\FEquipment\Index.cshtml" />
+    <Content Include="Views\FReferences\Detail.cshtml" />
+    <Content Include="Views\FSector\Index.cshtml" />
+    <Content Include="Views\Shared\_Sectors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2135,15 +2273,16 @@
     <Folder Include="Areas\Admin\Content\CKEditor\ckfinder\plugins\watermark\bin\Release\" />
     <Folder Include="Areas\Admin\Content\images\icons\small\" />
     <Folder Include="Areas\Admin\Content\scripts\pagescripts\NewFolder1\" />
-    <Folder Include="Areas\Admin\Views\Service\" />
     <Folder Include="Content\Images\Banka\" />
     <Folder Include="Content\Images\bankinfo\" />
     <Folder Include="Content\Images\documents\" />
+    <Folder Include="Content\Images\gallery\" />
     <Folder Include="Content\Images\news\" />
     <Folder Include="Content\Images\productcategory\" />
     <Folder Include="Content\Images\products\" />
     <Folder Include="Content\Images\projects\" />
     <Folder Include="Content\Images\references\" />
+    <Folder Include="Content\Images\sectors\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

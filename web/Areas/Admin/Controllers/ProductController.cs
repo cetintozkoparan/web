@@ -188,6 +188,7 @@ namespace web.Areas.Admin.Controllers
 
 
             var grouplist = new SelectList(groups, "ProductGroupId", "GroupName", id);
+            
             ViewBag.GroupList = grouplist;
 
             return id;
@@ -379,7 +380,8 @@ namespace web.Areas.Admin.Controllers
             var groups = ProductManager.GetProductGroupList(lang);
             var grouplist = new SelectList(groups, "ProductGroupId", "GroupName");
             ViewBag.GroupList = grouplist;
-
+            var subgrouplist = new SelectList(new List<ProductSubGroup>(), "ProductSubGroupId", "GroupName");
+            ViewBag.SubGroupList = subgrouplist;
             return lang;
         }
 
@@ -388,6 +390,14 @@ namespace web.Areas.Admin.Controllers
         {
             var grouplst = ProductManager.GetProductGroupList(lang);
             JsonResult result = Json(new SelectList(grouplst, "ProductGroupId", "GroupName"));
+            return result;
+        }
+
+        [HttpPost]
+        public ActionResult LoadSubGroup(int id)
+        {
+            var grouplst = ProductManager.GetProductSubGroupList("",id);
+            JsonResult result = Json(new SelectList(grouplst, "ProductSubGroupId", "GroupName"));
             return result;
         }
 

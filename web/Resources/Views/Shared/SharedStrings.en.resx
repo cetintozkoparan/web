@@ -126,6 +126,12 @@
   <data name="bankaccounts" xml:space="preserve">
     <value>Bank Accounts</value>
   </data>
+  <data name="brand" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="category" xml:space="preserve">
+    <value>Category</value>
+  </data>
   <data name="certificates" xml:space="preserve">
     <value>Certificates</value>
   </data>
@@ -225,6 +231,9 @@
   <data name="menu_offer" xml:space="preserve">
     <value>offer</value>
   </data>
+  <data name="menu_productdetail" xml:space="preserve">
+    <value>product-detail</value>
+  </data>
   <data name="menu_products" xml:space="preserve">
     <value>products</value>
   </data>
@@ -256,13 +265,16 @@
     <value>Our</value>
   </data>
   <data name="pagetitle" xml:space="preserve">
-    <value>DENEYSAN - Education Devices</value>
+    <value>KONTROLMATİK</value>
   </data>
   <data name="phone" xml:space="preserve">
     <value>Phone</value>
   </data>
   <data name="products" xml:space="preserve">
     <value>Products</value>
+  </data>
+  <data name="product_code" xml:space="preserve">
+    <value>Product Code</value>
   </data>
   <data name="references" xml:space="preserve">
     <value>References</value>
@@ -287,5 +299,20 @@
   </data>
   <data name="visionmision" xml:space="preserve">
     <value>Vision&amp;Mision</value>
+  </data>
+  <data name="morebig" xml:space="preserve">
+    <value>Show big map</value>
+  </data>
+  <data name="projectedetail" xml:space="preserve">
+    <value>Project Detail</value>
+  </data>
+  <data name="projects" xml:space="preserve">
+    <value>Our Projects</value>
+  </data>
+  <data name="newsdetail" xml:space="preserve">
+    <value>News Detail</value>
+  </data>
+  <data name="searchresult" xml:space="preserve">
+    <value>Search Results</value>
   </data>
 </root>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,10 @@ namespace DAL.Entities
         public string HMoneyType { get; set; }
         public ProductGroup ProductGroup { get; set; }
 
+        [Required(ErrorMessage = "Ürün Alt Grubunu Seçiniz.")]
+        public int ProductSubGroupId { get; set; }
+        public ProductSubGroup ProductSubGroup { get; set; }
+
         public string ProductImage { get; set; }
         public string ProductImageThumb { get; set; }
         public string Content { get; set; }
@@ -54,5 +59,14 @@ namespace DAL.Entities
         public int SortNumber { get; set; }
         [Display(Name = "Ürün Açıklaması")]
         public string PageSlug { get; set; }
+
+        [Display(Name = "Marka")]
+        [Required(ErrorMessage = "Marka Giriniz.")]
+        public string Brand { get; set; }
+        
+        [Display(Name = "Yıl")]
+        [Required(ErrorMessage = "Yılı giriniz")]
+        public string Year { get; set; }
+        
     }
 }

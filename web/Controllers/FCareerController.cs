@@ -1,4 +1,5 @@
 ﻿using BLL.HRBL;
+using BLL.MailBL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +24,53 @@ namespace web.Controllers
             return View(content);
         }
 
+        public ActionResult Positions()
+        {
+            var content = HumanResourceManager.GetHumanResourcePositionListForFront(lang);
+            return View(content);
+        }
+
         [HttpGet]
         public ActionResult ApplicationForm()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult SendCV(HttpPostedFileBase attachedfile, string Pozisyon)
+        {
+            try
+            {
+                var mset = MailManager.GetMailSettings();
+                var msend = MailManager.GetMailUsersList(0);
+
+                using (var client = new SmtpClient(mset.ServerHost, mset.Port))
+                {
+                    client.EnableSsl = true;//burası düzeltilecek
+                    client.Credentials = new NetworkCredential(mset.ServerMail, mset.Password);
+                    var mail = new MailMessage();
+                    mail.From = new MailAddress(mset.ServerMail);
+                    foreach (var item in msend)
+                        mail.To.Add(item.MailAddress);
+                    mail.Subject = "Yeni CV İletisi";
+                    mail.IsBodyHtml = true;
+                    mail.Body = "<h5><b>Başvurulan Pozisyon: </b>" + Pozisyon ;
+                    if (attachedfile != null && attachedfile.ContentLength > 0)
+                    {
+                        var attachment = new Attachment(attachedfile.InputStream, attachedfile.FileName);
+                        mail.Attachments.Add(attachment);
+                    }
+                    if (mail.To.Count > 0) client.Send(mail);
+                }
+                TempData["sent"] = "true";
+                return RedirectToAction("Positions");
+            }
+            catch (Exception ex)
+            {
+                TempData["sent"] = "false";
+            }
+
+            return RedirectToAction("Positions");
         }
 
         [HttpPost]

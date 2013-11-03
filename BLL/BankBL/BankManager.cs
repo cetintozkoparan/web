@@ -16,7 +16,7 @@ namespace BLL.BankBL
         static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static List<BankInfo> GetBankInfoList(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.BankInfo.Where(d =>  d.Language == language).ToList();
                 return list;
@@ -26,7 +26,7 @@ namespace BLL.BankBL
 
         public static List<BankInfo> GetBankInfoListForFront(string language)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.BankInfo.Where(d => d.Language == language && d.Online==true).ToList();
                 return list;
@@ -35,7 +35,7 @@ namespace BLL.BankBL
 
         public static bool AddBankInfo(BankInfo record)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -66,7 +66,7 @@ namespace BLL.BankBL
 
         public static bool UpdateStatus(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 var list = db.BankInfo.SingleOrDefault(d => d.BankId == id);
                 try
@@ -91,7 +91,7 @@ namespace BLL.BankBL
 
         public static bool Delete(int id)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -119,7 +119,7 @@ namespace BLL.BankBL
 
         public static BankInfo GetBankInfoById(int nid)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
@@ -138,7 +138,7 @@ namespace BLL.BankBL
 
         public static bool EditBank(BankInfo model)
         {
-            using (DeneysanContext db = new DeneysanContext())
+            using (MainContext db = new MainContext())
             {
                 try
                 {
