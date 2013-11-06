@@ -22,7 +22,7 @@ namespace BLL.LogBL
         {
             using (MainContext db = new MainContext())
             {
-                var list = db.Log4Net_Error.OrderByDescending(d => d.Date).ToList();
+                var list = new List<Log4Net_Error>();
                 return list;
             };
         }

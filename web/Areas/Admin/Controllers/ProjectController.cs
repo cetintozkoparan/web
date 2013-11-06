@@ -164,7 +164,7 @@ namespace web.Areas.Admin.Controllers
                         else
                         {
                             TempData["ImageSizeError"] = "Eklemiş olduğunuz resmin boyutları 235x200 olmalıdır...";
-                            return View();
+                            return RedirectToAction("EditProject", "Project", new { id = RouteData.Values["id"] });
                         }
                     }
                 }

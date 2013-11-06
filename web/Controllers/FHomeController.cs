@@ -16,7 +16,7 @@ namespace web.Controllers
         
         public ActionResult Index()
         {
-            var news = NewsManager.GetNewsListForFront(lang);
+            var news = NewsManager.GetNewsListForFront(lang).Take(4);
             var references = ReferenceManager.GetReferenceListForFront(lang);
             var docgroup = DocumentManager.GetDocumentGroupListForFront(lang).First();
             var docs = DocumentManager.GetDocumentListForFront(docgroup.DocumentGroupId).Take(5);

@@ -4,6 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
 }
 
+<style>.MultiFile-label {margin-top:10px;}</style>
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/table.css" rel="stylesheet" />
@@ -60,6 +61,8 @@
         <div style="width:249px; width:25%; float:left">
              <input type="file" style="width:99%" name="attachments" class="multi"/>
         </div>
+        <div style="height: 40px;clear: both;"></div>
+
         <p>
             @Html.LabelFor(m=>m.Content)
             @Html.TextAreaFor(m=>m.Content,5,0, new { id="txtcontent", @class="textwidth50"})

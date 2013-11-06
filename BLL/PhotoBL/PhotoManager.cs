@@ -31,7 +31,7 @@ namespace BLL.PhotoBL
         {
             using (MainContext db = new MainContext())
             {
-                return db.Photo.Where(d => d.ItemId == itemId && d.CategoryId == categoryID).ToList();
+                return db.Photo.Where(d => d.ItemId == itemId && d.CategoryId == categoryID).OrderBy(d => d.SortOrder).ToList();
             }
         }
 
@@ -39,7 +39,7 @@ namespace BLL.PhotoBL
         {
             using (MainContext db = new MainContext())
             {
-                return db.Photo.Where(d => d.Language == lang && d.CategoryId == categoryID).ToList();
+                return db.Photo.Where(d => d.Language == lang && d.CategoryId == categoryID).OrderBy(d => d.SortOrder).ToList();
             }
         }
 
@@ -47,7 +47,7 @@ namespace BLL.PhotoBL
         {
             using (MainContext db = new MainContext())
             {
-                return db.Photo.Where(d => d.CategoryId == categoryID).OrderBy(d=>d.SortOrder).ToList();
+                return db.Photo.Where(d => d.CategoryId == categoryID).OrderBy(d => d.SortOrder).OrderBy(d => d.SortOrder).ToList();
             }
         }
 

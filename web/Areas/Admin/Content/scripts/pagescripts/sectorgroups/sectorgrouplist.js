@@ -5,5 +5,5 @@
         window.location.href = "/yonetim/hizmetgruplari/" + lang;
     });
 
-    SortOrder("/ServiceGroup/SortRecords");
+    SortOrder("/SectorGroup/SortRecords");
 });

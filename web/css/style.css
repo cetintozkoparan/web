@@ -53,6 +53,8 @@ body { font-family: 'Roboto', sans-serif; font-size: 12px; color: #777; }
 .mainSlider .bx-wrapper .bx-viewport { background: #fff; }
 .mainSlider .bx-wrapper .bx-pager, .mainSlider .bx-wrapper .bx-controls-auto { position: absolute; bottom: -30px; width: 100%; }
 
+ul li { background: url(/img/arrow.png) left center no-repeat;}
+
 .blackBg { height: 65px; width: 1440px; background: url(/img/blackTrans.png) repeat; position: relative; bottom: 65px; margin: 0 auto; }
 .mainMenu { list-style: none; width: 960px; position: absolute; top: 385px; }
 .mainMenu li {  width: 192px; float: left; text-decoration: none; color: #fff; font-size: 14px; font-weight: 500; }

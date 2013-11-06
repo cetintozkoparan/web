@@ -70,10 +70,21 @@ namespace web.Areas.Admin.Controllers
 
                 if (uploadimage != null && uploadimage.ContentLength > 0)
                 {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    new ImageHelper(1024, 768).SaveThumbnail(uploadimage, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
-                    newmodel.Logo = "/Content/images/ProjectReferences/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
+                    using (System.Drawing.Image image = System.Drawing.Image.FromStream(uploadimage.InputStream, true, true))
+                    {
+                        if (image.Width == 166 && image.Height == 135)
+                        {
+                            Random random = new Random();
+                            int rand = random.Next(1000, 99999999);
+                            new ImageHelper(166, 135).SaveThumbnail(uploadimage, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
+                            newmodel.Logo = "/Content/images/ProjectReferences/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
+                        }
+                        else
+                        {
+                            TempData["ImageSizeError"] = "Eklemiş olduğunuz Logo boyutları 166x135 olmalıdır...";
+                            return RedirectToAction("EditProjectReference", "ProjectReference", new { id = RouteData.Values["id"] });
+                        }
+                    }
                 }
                 else
                 {
@@ -170,10 +181,21 @@ namespace web.Areas.Admin.Controllers
 
                 if (uploadimage != null && uploadimage.ContentLength > 0)
                 {
-                    Random random = new Random();
-                    int rand = random.Next(1000, 99999999);
-                    new ImageHelper(1024, 768).SaveThumbnail(uploadimage, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
-                    newmodel.Logo = "/Content/images/ProjectReferences/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
+                    using (System.Drawing.Image image = System.Drawing.Image.FromStream(uploadimage.InputStream, true, true))
+                    {
+                        if (image.Width == 166 && image.Height == 135)
+                        {
+                            Random random = new Random();
+                            int rand = random.Next(1000, 99999999);
+                            new ImageHelper(166, 135).SaveThumbnail(uploadimage, "/Content/images/ProjectReferences/", Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName));
+                            newmodel.Logo = "/Content/images/ProjectReferences/" + Utility.SetPagePlug(newmodel.Name) + "_" + rand + Path.GetExtension(uploadimage.FileName);
+                        }
+                        else
+                        {
+                            TempData["ImageSizeError"] = "Eklemiş olduğunuz Logo boyutları 166x135 olmalıdır...";
+                            return RedirectToAction("EditProjectReference", "ProjectReference", new { id = RouteData.Values["id"] });
+                        }
+                    }
                 }
                 newmodel.PageSlug = Utility.SetPagePlug(newmodel.Name);
 

@@ -3,6 +3,7 @@
     ViewBag.Title = "AddProjectReference";
     Layout = "~/Areas/Admin/Views/Shared/adminlayout.cshtml";
 }
+<style>.MultiFile-label {margin-top:10px;}</style>
 
 <link href="~/Areas/Admin/Content/styles/pluginstyles/jquery.msgbox.css" rel="stylesheet" />
 <link href="~/Areas/Admin/Content/styles/forms.css" rel="stylesheet" />
@@ -14,7 +15,10 @@
     <div id="page-header">
        <h2>REFERANS BİLGİLERİ</h2>
     </div> 
-    
+    @if (TempData["ImageSizeError"] != null)
+    {
+        <div class="notification error">@TempData["ImageSizeError"].ToString()</div>
+    }
 <section class="grid_12 form">
     @Html.Hidden("ProcessMessage",(object)@ViewBag.ProcessMessage) 
     @using(Html.BeginForm("AddProjectReference", "ProjectReference", FormMethod.Post, new { enctype = "multipart/form-data"}))
@@ -63,6 +67,7 @@
         <div style="width:249px; width:25%; float:left">
              <input type="file" style="width:99%" name="attachments" class="multi"/>
         </div>
+        <div style="height: 40px;clear: both;"></div>
         
        
        
